@@ -16,6 +16,12 @@ class Usuario extends db_abstract_class
     private $direccion;
     private $telefono;
     private $tel_familiar;
+    private $riesgos;
+    private $eps;
+    private $pension;
+    private $rh;
+    private $rol;
+    private $usuario;
 
     /**
      * Especialidad constructor.
@@ -37,14 +43,19 @@ class Usuario extends db_abstract_class
             $this->direccion = "";
             $this->telefono = "";
             $this->tel_familiar = "";
+            $this->riesgos = "";
+            $this->eps = "";
+            $this->pension = "";
+            $this->rh = "";
+            $this->rol = "";
+            $this->usuario = "";
 
         }
     }
 
     public static function buscarForId($id)
     {
-        
-        $Especial = new Clientes();
+        /*$Especial = new Clientes();
         if ($id > 0){
             $getrow = $Especial->getRow("SELECT * FROM clientes WHERE idClientes =?", array($id));
             $Especial->idClientes = $getrow['idClientes'];
@@ -58,7 +69,7 @@ class Usuario extends db_abstract_class
             return $Especial;
         }else{
             return NULL;
-        }
+        }*/
     }
 
    public static function buscar($query)
@@ -75,6 +86,12 @@ class Usuario extends db_abstract_class
             $Usuarios->direccion = $valor['direccion'];
             $Usuarios->telefono = $valor['telefono'];
             $Usuarios->tel_familiar = $valor['tel_familiar'];
+            $Usuarios->riesgos = $valor['riesgos'];
+            $Usuarios->eps = $valor['eps'];
+            $Usuarios->pension = $valor['pension'];
+            $Usuarios->rh = $valor['rh'];
+            $Usuarios->rol = $valor['rol'];
+            $Usuarios->usuario = $valor['usuario'];
             
 
             array_push($arrayUsuarios, $Usuarios);
@@ -86,25 +103,25 @@ class Usuario extends db_abstract_class
 
      static function getAll()
     {
-        return Usuario::buscar("SELECT nomb_usua, ape_usua, direccion, telefono, tel_familiar FROM usuario");
+        return Usuario::buscar("SELECT nomb_usua, ape_usua, direccion, telefono, riesgos, eps, pension, rh, rol, usuario, tel_familiar FROM usuario");
     }
 
     public function insertar()
     {
-        $this->insertRow("INSERT INTO mydb.despacho VALUES (NULL, ?, ?, ?, ?)", array(
+       /* $this->insertRow("INSERT INTO mydb.despacho VALUES (NULL, ?, ?, ?, ?)", array(
                 $this->idTransporte,
                 $this->idPedidos,
                 $this->idClientes,
                 $this->idTipoArena,
             )
         );
-        $this->Disconnect();
+        $this->Disconnect();*/
     }
 
     public function editar()
     {
 
-        $this->updateRow("UPDATE mydb.clientes SET Nombres = ?, Apellidos = ?, TipoDoc = ?, Cedula = ?, Telefono = ?, Contraseña = ? WHERE idClientes = ?", array(
+      /*  $this->updateRow("UPDATE mydb.clientes SET Nombres = ?, Apellidos = ?, TipoDoc = ?, Cedula = ?, Telefono = ?, Contraseña = ? WHERE idClientes = ?", array(
             $this->Nombres,
             $this->Apellidos,
             $this->TipoDoc,
@@ -113,12 +130,12 @@ class Usuario extends db_abstract_class
             $this->Contraseña,
             $this->idClientes,
         ));
-        $this->Disconnect();
+        $this->Disconnect();*/
     }
 
     protected function eliminar($id)
     {
-        return Clientes::buscar("delete from clientes where idCliente=?");
+      /*  return Clientes::buscar("delete from clientes where idCliente=?");*/
     }
 
     
@@ -219,6 +236,126 @@ class Usuario extends db_abstract_class
     public function setTel_familiar($tel_familiar)
     {
         $this->tel_familiar = $tel_familiar;
+
+        return $this;
+    }
+
+    /**
+     * Get the value of riesgos
+     */ 
+    public function getRiesgos()
+    {
+        return $this->riesgos;
+    }
+
+    /**
+     * Set the value of riesgos
+     *
+     * @return  self
+     */ 
+    public function setRiesgos($riesgos)
+    {
+        $this->riesgos = $riesgos;
+
+        return $this;
+    }
+
+    /**
+     * Get the value of eps
+     */ 
+    public function getEps()
+    {
+        return $this->eps;
+    }
+
+    /**
+     * Set the value of eps
+     *
+     * @return  self
+     */ 
+    public function setEps($eps)
+    {
+        $this->eps = $eps;
+
+        return $this;
+    }
+
+    /**
+     * Get the value of pension
+     */ 
+    public function getPension()
+    {
+        return $this->pension;
+    }
+
+    /**
+     * Set the value of pension
+     *
+     * @return  self
+     */ 
+    public function setPension($pension)
+    {
+        $this->pension = $pension;
+
+        return $this;
+    }
+
+    /**
+     * Get the value of rh
+     */ 
+    public function getRh()
+    {
+        return $this->rh;
+    }
+
+    /**
+     * Set the value of rh
+     *
+     * @return  self
+     */ 
+    public function setRh($rh)
+    {
+        $this->rh = $rh;
+
+        return $this;
+    }
+
+    /**
+     * Get the value of rol
+     */ 
+    public function getRol()
+    {
+        return $this->rol;
+    }
+
+    /**
+     * Set the value of rol
+     *
+     * @return  self
+     */ 
+    public function setRol($rol)
+    {
+        $this->rol = $rol;
+
+        return $this;
+    }
+
+    /**
+     * Get the value of usuario
+     */ 
+    public function getUsuario()
+    {
+        return $this->usuario;
+    }
+
+    /**
+     * Set the value of usuario
+     *
+     * @return  self
+     */ 
+    public function setUsuario($usuario)
+    {
+        $this->usuario = $usuario;
 
         return $this;
     }

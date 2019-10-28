@@ -1,5 +1,5 @@
 <?php
-require ("../modelo/Usuario.php") ?>
+require ("../modelo/Nomina.php") ?>
 
 
 <!doctype html>
@@ -8,7 +8,7 @@ require ("../modelo/Usuario.php") ?>
 <head>
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <title>Usuarios</title>
+    <title>Nomina</title>
     <?php require("head.php");?>
 </head>
 
@@ -86,39 +86,33 @@ require ("../modelo/Usuario.php") ?>
                                             <thead>
                                                 <tr>
                                                     
-                                                    <th>Nombre</th>
-                                                    <th>Apellido</th>
-                                                    <th>Direccion</th>
-                                                    <th>Celular</th>
-                                                    <th>Telefono Familiar</th>
-                                                    <th>Riesgos</th>
-                                                    <th>Eps</th>
-                                                    <th>Pension</th>
-                                                    <th>Rh</th>
-                                                    <th>Rol</th>
-                                                    <th>Usuario</th>
-                                                    <th>Acciones</th>
-
+                                                    <th>Cod_nom</th>
+                                                    <th>ide_usua</th>
+                                                    <th>Cod_anti</th>
+                                                    <th>Fecha_nom</th>
+                                                    <th>Cod_Act</th>
+                                                    <th>Precio</th>
+                                                    <th>Desde</th>
+                                                    <th>Hasta</th>
+                                                    
                                                 </tr>
                                             </thead>
                                             <tbody>
 
                                             <?php
-                                                $arrayUsuarios = Usuario::getAll();
-                                                foreach ($arrayUsuarios as $Usuarios){
+                                                $arrayNomina = Nomina::getAll();
+                                                foreach ($arrayNomina as $Nomina){
                                             ?>
                                         <tr>
-                                            <td><?php echo $Usuarios->getNomb_usua();?></td>
-                                            <td><?php echo $Usuarios->getApe_usua();?></td>
-                                            <td><?php echo $Usuarios->getDireccion();?></td>
-                                            <td><?php echo $Usuarios->getTelefono();?></td>
-                                            <td><?php echo $Usuarios->getTel_familiar();?></td>
-                                            <td><?php echo $Usuarios->getRiesgos();?></td>
-                                            <td><?php echo $Usuarios->getEps();?></td>
-                                            <td><?php echo $Usuarios->getPension();?></td>
-                                            <td><?php echo $Usuarios->getRh();?></td>
-                                            <td><?php echo $Usuarios->getRol();?></td>
-                                            <td><?php echo $Usuarios->getUsuario();?></td>
+                                            <td><?php echo $Nomina->getCod_nom();?></td>
+                                            <td><?php echo $Nomina->getide_usua();?></td>
+                                            <td><?php echo $Nomina->getCod_anti();?></td>
+                                            <td><?php echo $Nomina->getFecha_nom();?></td>
+                                            <td><?php echo $Nomina->getCod_act();?></td>
+                                            <td><?php echo $Nomina->getPrecio();?></td>
+                                            <td><?php echo $Nomina->getDesde();?></td>
+                                            <td><?php echo $Nomina->getHasta();?></td>
+                                           
 
                                         </tr>
                                     <?php } ?>

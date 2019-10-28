@@ -1,5 +1,5 @@
 <?php
-require ("../modelo/Usuario.php") ?>
+require ("../modelo/Actividades.php") ?>
 
 
 <!doctype html>
@@ -8,7 +8,7 @@ require ("../modelo/Usuario.php") ?>
 <head>
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <title>Usuarios</title>
+    <title>Actividades</title>
     <?php require("head.php");?>
 </head>
 
@@ -86,39 +86,31 @@ require ("../modelo/Usuario.php") ?>
                                             <thead>
                                                 <tr>
                                                     
-                                                    <th>Nombre</th>
-                                                    <th>Apellido</th>
-                                                    <th>Direccion</th>
-                                                    <th>Celular</th>
-                                                    <th>Telefono Familiar</th>
-                                                    <th>Riesgos</th>
-                                                    <th>Eps</th>
-                                                    <th>Pension</th>
-                                                    <th>Rh</th>
-                                                    <th>Rol</th>
-                                                    <th>Usuario</th>
-                                                    <th>Acciones</th>
-
+                                                    <th>Cod_act</th>
+                                                    <th>ide_usua</th>
+                                                    <th>Actividad</th>
+                                                    <th>Pago</th>
+                                                    <th>Fecha</th>
+                                                    <th>Desde</th>
+                                                    <th>Hasta</th>
+                                                    
                                                 </tr>
                                             </thead>
                                             <tbody>
 
                                             <?php
-                                                $arrayUsuarios = Usuario::getAll();
-                                                foreach ($arrayUsuarios as $Usuarios){
+                                                $arrayActividades = Actividades::getAll();
+                                                foreach ($arrayActividades as $Actividades){
                                             ?>
                                         <tr>
-                                            <td><?php echo $Usuarios->getNomb_usua();?></td>
-                                            <td><?php echo $Usuarios->getApe_usua();?></td>
-                                            <td><?php echo $Usuarios->getDireccion();?></td>
-                                            <td><?php echo $Usuarios->getTelefono();?></td>
-                                            <td><?php echo $Usuarios->getTel_familiar();?></td>
-                                            <td><?php echo $Usuarios->getRiesgos();?></td>
-                                            <td><?php echo $Usuarios->getEps();?></td>
-                                            <td><?php echo $Usuarios->getPension();?></td>
-                                            <td><?php echo $Usuarios->getRh();?></td>
-                                            <td><?php echo $Usuarios->getRol();?></td>
-                                            <td><?php echo $Usuarios->getUsuario();?></td>
+                                            <td><?php echo $Actividades->getCod_act();?></td>
+                                            <td><?php echo $Actividades->getide_usua();?></td>
+                                            <td><?php echo $Actividades->getActividad();?></td>
+                                            <td><?php echo $Actividades->getPago();?></td>
+                                            <td><?php echo $Actividades->getFecha();?></td>
+                                            <td><?php echo $Actividades->getDesde();?></td>
+                                            <td><?php echo $Actividades->getHasta();?></td>
+                                           
 
                                         </tr>
                                     <?php } ?>
