@@ -148,7 +148,7 @@ require ("../modelo/Usuario.php") ?>
                                 <div class="row">
                                     <div class="col-lg-12 ">
                                         <div class="all-form-element-inner">
-                                            <form action="#">
+                                            <form method="post" action="../controlador/usuarioController.php?action=crear">
                                                 <div class="col-lg-12 ">
                                                     <div class="form-group-inner col-lg-6">
                                                         <div class="row">
@@ -157,7 +157,7 @@ require ("../modelo/Usuario.php") ?>
                                                                     class="login2 pull-right pull-right-pro">Nombres</label>
                                                             </div>
                                                             <div class="col-lg-9 col-md-9 col-sm-9 col-xs-12">
-                                                                <input type="text" class="form-control" />
+                                                                <input name="nombr_usua" type="text" class="form-control" />
                                                             </div>
                                                         </div>
                                                     </div>
@@ -168,7 +168,7 @@ require ("../modelo/Usuario.php") ?>
                                                                     class="login2 pull-right pull-right-pro">Apellidos</label>
                                                             </div>
                                                             <div class="col-lg-9 col-md-9 col-sm-9 col-xs-12">
-                                                                <input type="text" class="form-control" />
+                                                                <input name="ape_usua" type="text" class="form-control" />
                                                             </div>
                                                         </div>
                                                     </div>
@@ -181,7 +181,7 @@ require ("../modelo/Usuario.php") ?>
                                                                     class="login2 pull-right pull-right-pro">Direccion</label>
                                                             </div>
                                                             <div class="col-lg-9 col-md-9 col-sm-9 col-xs-12">
-                                                                <input type="text" class="form-control" />
+                                                                <input name="direccion" type="text" class="form-control" />
                                                             </div>
                                                         </div>
                                                     </div>
@@ -192,7 +192,7 @@ require ("../modelo/Usuario.php") ?>
                                                                     Familiar</label>
                                                             </div>
                                                             <div class="col-lg-9 col-md-9 col-sm-9 col-xs-12">
-                                                                <input type="text" class="form-control" />
+                                                                <input name="nom_familiar" type="text" class="form-control" />
                                                             </div>
                                                         </div>
                                                     </div>
@@ -205,7 +205,7 @@ require ("../modelo/Usuario.php") ?>
                                                                     Familiar</label>
                                                             </div>
                                                             <div class="col-lg-9 col-md-9 col-sm-9 col-xs-12">
-                                                                <input type="text" class="form-control" />
+                                                                <input name="tel_familiar" type="text" class="form-control" />
                                                             </div>
                                                         </div>
                                                     </div>
@@ -216,7 +216,7 @@ require ("../modelo/Usuario.php") ?>
                                                                     class="login2 pull-right pull-right-pro">Riesgos</label>
                                                             </div>
                                                             <div class="col-lg-9 col-md-9 col-sm-9 col-xs-12">
-                                                                <input type="email" class="form-control" />
+                                                                <input name="riesgos" type="text" class="form-control" />
                                                             </div>
                                                         </div>
                                                     </div>
@@ -230,7 +230,7 @@ require ("../modelo/Usuario.php") ?>
                                                             </div>
                                                             <div class="col-lg-9 col-md-9 col-sm-9 col-xs-12">
                                                                 <div class="form-select-list">
-                                                                    <select class="form-control custom-select-value"
+                                                                    <select name="eps" class="form-control custom-select-value"
                                                                         name="account">
                                                                         <option>Sanitas</option>
                                                                         <option>Nueva eps</option>
@@ -247,7 +247,7 @@ require ("../modelo/Usuario.php") ?>
                                                                     class="login2 pull-right pull-right-pro">Pension</label>
                                                             </div>
                                                             <div class="col-lg-9 col-md-9 col-sm-9 col-xs-12">
-                                                                <input type="TEXT" class="form-control" />
+                                                                <input name="pension" type="TEXT" class="form-control" />
                                                             </div>
                                                         </div>
                                                     </div>
@@ -261,7 +261,7 @@ require ("../modelo/Usuario.php") ?>
                                                             </div>
                                                             <div class="col-lg-9 col-md-9 col-sm-9 col-xs-12">
                                                                     <div class="form-select-list">
-                                                                        <select class="form-control custom-select-value"
+                                                                        <select name="rh" class="form-control custom-select-value"
                                                                             name="account">
                                                                             <option>A+</option>
                                                                             <option>B+</option>
@@ -275,14 +275,20 @@ require ("../modelo/Usuario.php") ?>
                                                         <div class="row">
                                                             <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
                                                                 <label
-                                                                    class="login2 pull-right pull-right-pro">Rol</label>
+                                                                    class="login2 pull-right pull-right-pro">rol</label>
                                                             </div>
                                                             <div class="col-lg-9 col-md-9 col-sm-9 col-xs-12">
-                                                                <input type="TEXT" class="form-control" />
-                                                            </div>
+                                                                    <div class="form-select-list">
+                                                                        <select name="rol" class="form-control custom-select-value"
+                                                                            name="account">
+                                                                            <option>A+</option>
+                                                                            <option>B+</option>
+    
+                                                                        </select>
+                                                                    </div>
+                                                                </div>
                                                         </div>
                                                     </div>
-                                                </div>
                                                 <div class="col-lg-12 ">
                                                     <div class="form-group-inner col-lg-6">
                                                         <div class="row">
@@ -291,7 +297,7 @@ require ("../modelo/Usuario.php") ?>
                                                                     class="login2 pull-right pull-right-pro">Usuario</label>
                                                             </div>
                                                             <div class="col-lg-9 col-md-9 col-sm-9 col-xs-12">
-                                                                <input type="TEXT" class="form-control" />
+                                                                <input name="usuario" type="TEXT" class="form-control" />
                                                             </div>
                                                         </div>
                                                     </div>
@@ -302,7 +308,7 @@ require ("../modelo/Usuario.php") ?>
                                                                     class="login2 pull-right pull-right-pro">Contraseña</label>
                                                             </div>
                                                             <div class="col-lg-9 col-md-9 col-sm-9 col-xs-12">
-                                                                <input type="password" class="form-control" />
+                                                                <input name="contrasena" type="password" class="form-control" />
                                                             </div>
                                                         </div>
                                                     </div>
@@ -315,8 +321,8 @@ require ("../modelo/Usuario.php") ?>
                         </div>
                     </div>
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
-                        <button type="button" class="btn btn-primary">Agregar</button>
+                        <button type="submit" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+                        <button type="submit" class="btn btn-primary">Agregar</button>
                     </div>
                 </div>
             </div>

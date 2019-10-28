@@ -65,15 +65,17 @@ class Transportedecarga extends db_abstract_class
         $getrows = $tmp->getRows($query);
 
         foreach ($getrows as $valor) {
+           
             $Transportedecarga = new Transportedecarga();
             $Transportedecarga->cod_trans = $valor['cod_trans'];
             $Transportedecarga->ide_usua = $valor['ide_usua'];
             $Transportedecarga->cod_puer = $valor['cod_puer'];
                        
             array_push($arrayTransportedecarga, $Transportedecarga);
-                      
+                   
         }
         $tmp->Disconnect();
+        
         return $arrayTransportedecarga;
     }
 

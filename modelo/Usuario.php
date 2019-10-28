@@ -108,14 +108,24 @@ class Usuario extends db_abstract_class
 
     public function insertar()
     {
-       /* $this->insertRow("INSERT INTO mydb.despacho VALUES (NULL, ?, ?, ?, ?)", array(
-                $this->idTransporte,
-                $this->idPedidos,
-                $this->idClientes,
-                $this->idTipoArena,
+        $this->insertRow("INSERT INTO usuario VALUES (NULL, ?, ?, ?, ?, ?,? , ?, ? , ?, ?, ?, ?, ?)", array(
+                $this->ide_usua,
+                $this->nomb_usua,
+                $this->ape_usua,
+                $this->direccion,
+                $this->telefono,
+                $this->tel_familiar,
+                $this->nom_familiar,
+                $this->riesgos,
+                $this->eps,
+                $this->pension,
+                $this->rh,
+                $this->rol,
+                $this->usuario,
+                $this->contrasena
             )
         );
-        $this->Disconnect();*/
+        $this->Disconnect();
     }
 
     public function editar()
