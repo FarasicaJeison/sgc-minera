@@ -57,7 +57,6 @@ abstract class db_abstract_class {
     //Getting multiple rows
     //$getrows = $database->getRows("SELECT id, username FROM users");
     public function getRows($query, $params=array()){
-        
         try{
             $stmt = $this->datab->prepare($query);
             $stmt->execute($params);
