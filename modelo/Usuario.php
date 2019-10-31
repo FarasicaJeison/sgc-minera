@@ -10,7 +10,8 @@
 require_once('db_abstract_class.php');
 
 class Usuario extends db_abstract_class
-{
+{   
+    private $ide_usua;
     private $nombUsua;
     private $apeUsua;
     private $direccion;
@@ -40,6 +41,7 @@ class Usuario extends db_abstract_class
                 $this->$campo = $valor;
             }
         }else {
+
             $this->nomUsua = "";
             $this->apeUsua= "";
             $this->direccion = "";
@@ -75,6 +77,27 @@ class Usuario extends db_abstract_class
             return NULL;
         }*/
     }
+    static public function selectUsuario ($isRequired=true, $id, $nombre, $class){
+       
+        $arrayUsuarios = Usuario::getAll();
+       
+        $htmlSelect = '<select class="form-control custom-select-value">';
+        $htmlSelect .= "<option value=''>Seleccione</option> ";
+        if(count($arrayUsuarios)>0){
+            foreach ($arrayUsuarios as $usuario){
+                $htmlSelect .= "<option value='".$usuario->getIde_usua()."'>".$usuario->getNombUsua()." -- ".$usuario->getIde_usua()." "."</option>";
+            }
+            $htmlSelect .= "</select>";
+        }
+        else
+        {
+            $htmlSelect = '<select>';
+            $htmlSelect .= "<option value='nada'>Seleccione</option>";
+            $htmlSelect .= "</select>";
+        }
+        return $htmlSelect;
+    }
+
 
    public static function buscar($query)
     {
@@ -85,6 +108,7 @@ class Usuario extends db_abstract_class
 
         foreach ($getrows as $valor) {
             $Usuarios = new Usuario();
+            $Usuarios->ide_usua= $valor['ide_usua'];
             $Usuarios->nombUsua = $valor['nombUsua'];
             $Usuarios->apeUsua = $valor['apeUsua'];
             $Usuarios->direccion = $valor['direccion'];
@@ -96,7 +120,6 @@ class Usuario extends db_abstract_class
             $Usuarios->rh = $valor['rh'];
             $Usuarios->rol = $valor['rol'];
             $Usuarios->usuario = $valor['usuario'];
-            
 
             array_push($arrayUsuarios, $Usuarios);
 
@@ -107,13 +130,13 @@ class Usuario extends db_abstract_class
 
      static function getAll()
     {
-        return Usuario::buscar("SELECT nombUsua, apeUsua, direccion, telefono, riesgos, eps, pension, rh, rol, usuario, telFamiliar FROM usuario order by 1 desc");
+        return Usuario::buscar("SELECT ide_usua,nombUsua, apeUsua, direccion, telefono, riesgos, eps, pension, rh, rol, usuario, telFamiliar FROM usuario order by 1 desc");
     }
 
     public function insertar()
     {
-        $this->insertRow("INSERT INTO sgc_minera.usuario VALUES (null,?,?,?,?,?,?,?,?,?,?,?,?,?)", array(
-                
+        $this->insertRow("INSERT INTO sgc_minera.usuario VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?)", array(
+            $this->ide_usua,
             $this->nombUsua,
             $this->apeUsua,
             $this->direccion,
@@ -412,6 +435,26 @@ class Usuario extends db_abstract_class
     public function setContrasena($contrasena)
     {
         $this->contrasena = $contrasena;
+
+        return $this;
+    }
+
+    /**
+     * Get the value of ide_usua
+     */ 
+    public function getIde_usua()
+    {
+        return $this->ide_usua;
+    }
+
+    /**
+     * Set the value of ide_usua
+     *
+     * @return  self
+     */ 
+    public function setIde_usua($ide_usua)
+    {
+        $this->ide_usua = $ide_usua;
 
         return $this;
     }

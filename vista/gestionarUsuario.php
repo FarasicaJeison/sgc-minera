@@ -86,7 +86,7 @@ require("../modelo/Usuario.php");
                                         <table id="table" data-toggle="table" data-pagination="true" data-search="true">
                                             <thead>
                                                 <tr>
-
+                                                    <th>Documento</th>
                                                     <th>Nombre</th>
                                                     <th>Apellido</th>
                                                     <th>Direccion</th>
@@ -96,7 +96,7 @@ require("../modelo/Usuario.php");
                                                     <th>Eps</th>
                                                     <th>Pension</th>
                                                     <th>Rh</th>
-                                                    <th>Rol</th>
+                                                   
                                                     <th>Usuario</th>
                                                     <th>Acciones</th>
 
@@ -109,6 +109,7 @@ require("../modelo/Usuario.php");
                                                 foreach ($arrayUsuarios as $Usuarios) {
                                                     ?>
                                                     <tr>
+                                                        <td><?php echo $Usuarios->getIde_usua(); ?></td>
                                                         <td><?php echo $Usuarios->getNombUsua(); ?></td>
                                                         <td><?php echo $Usuarios->getApeUsua(); ?></td>
                                                         <td><?php echo $Usuarios->getDireccion(); ?></td>
@@ -118,10 +119,10 @@ require("../modelo/Usuario.php");
                                                         <td><?php echo $Usuarios->getEps(); ?></td>
                                                         <td><?php echo $Usuarios->getPension(); ?></td>
                                                         <td><?php echo $Usuarios->getRh(); ?></td>
-                                                        <td><?php echo $Usuarios->getRol(); ?></td>
+                                                      
                                                         <td><?php echo $Usuarios->getUsuario(); ?></td>
                                                         <td>
-                                                        <a href="editarClientes.php?id=1" type="button" data-toggle="tooltip" title="Actualizar" class="btn docs-tooltip  btn-xs"><i class="fa fa-edit"></i></a>
+                                                        <a href="editarClientes.php?id=<?php echo $Usuarios->getIde_usua(); ?>" type="button" data-toggle="tooltip" title="Actualizar" class="btn docs-tooltip  btn-xs"><i class="fa fa-edit"></i></a>
 
                                                          </td>
 
@@ -139,7 +140,7 @@ require("../modelo/Usuario.php");
             </div>
         </div>
         <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-            <div class="modal-dialog" role="document">
+            <div class="modal-dialog modal-lg" role="document">
                 <form method="post" action="../controlador/usuarioController.php?action=crear">
                     <div class="modal-content">
                         <div class="modal-header">
@@ -154,7 +155,17 @@ require("../modelo/Usuario.php");
                                     <div class="row">
                                         <div class="col-lg-12 ">
                                             <div class="all-form-element-inner">
-                                                <div class="col-lg-12 ">
+                                            <div class="col-lg-12 ">
+                                                    <div class="form-group-inner col-lg-6">
+                                                        <div class="row">
+                                                            <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
+                                                                <label class="login2 pull-right pull-right-pro">Documento</label>
+                                                            </div>
+                                                            <div class="col-lg-9 col-md-9 col-sm-9 col-xs-12">
+                                                                <input id="documento" name="documento" type="text" class="form-control" />
+                                                            </div>
+                                                        </div>
+                                                    </div>
                                                     <div class="form-group-inner col-lg-6">
                                                         <div class="row">
                                                             <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
@@ -165,6 +176,10 @@ require("../modelo/Usuario.php");
                                                             </div>
                                                         </div>
                                                     </div>
+                                                    
+                                                </div>
+                                                <div class="col-lg-12 ">
+                                                   
                                                     <div class="form-group-inner col-lg-6">
                                                         <div class="row">
                                                             <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
@@ -172,6 +187,16 @@ require("../modelo/Usuario.php");
                                                             </div>
                                                             <div class="col-lg-9 col-md-9 col-sm-9 col-xs-12">
                                                                 <input id="apeUsua" name="apeUsua" type="text" class="form-control" />
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group-inner col-lg-6">
+                                                        <div class="row">
+                                                            <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
+                                                                <label class="login2 pull-right pull-right-pro">Telefono</label>
+                                                            </div>
+                                                            <div class="col-lg-9 col-md-9 col-sm-9 col-xs-12">
+                                                                <input id="telefono" name="telefono" type="text" class="form-control" />
                                                             </div>
                                                         </div>
                                                     </div>
@@ -190,8 +215,7 @@ require("../modelo/Usuario.php");
                                                     <div class="form-group-inner col-lg-6">
                                                         <div class="row">
                                                             <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
-                                                                <label class="login2 pull-right pull-right-pro">Nombre
-                                                                    Familiar</label>
+                                                                <label class="login2 pull-right pull-right-pro">Nombre Familiar</label>
                                                             </div>
                                                             <div class="col-lg-9 col-md-9 col-sm-9 col-xs-12">
                                                                 <input id="nomFamiliar" name="nomFamiliar" type="text" class="form-control" />
@@ -222,7 +246,7 @@ require("../modelo/Usuario.php");
                                                         </div>
                                                     </div>
                                                 </div>
-                                                <div class="col-lg-12 ">
+                                                <div class="col-lg-12">
                                                     <div class="form-group-inner col-lg-6">
                                                         <div class="row">
                                                             <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
@@ -230,7 +254,7 @@ require("../modelo/Usuario.php");
                                                             </div>
                                                             <div class="col-lg-9 col-md-9 col-sm-9 col-xs-12">
                                                                 <div class="form-select-list">
-                                                                    <select name="eps" id="eps" class="form-control custom-select-value" name="account">
+                                                                    <select name="eps" id="eps" class="form-control custom-select-value" >
                                                                         <option>Sanitas</option>
                                                                         <option>Nueva eps</option>
 
@@ -275,8 +299,8 @@ require("../modelo/Usuario.php");
                                                             <div class="col-lg-9 col-md-9 col-sm-9 col-xs-12">
                                                                 <div class="form-select-list">
                                                                     <select name="rol" id="rol" class="form-control custom-select-value" name="account">
-                                                                        <option>A+</option>
-                                                                        <option>B+</option>
+                                                                        <option>Empleado</option>
+                                                                        <option>Admin</option>
 
                                                                     </select>
                                                                 </div>

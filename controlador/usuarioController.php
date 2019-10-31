@@ -33,6 +33,7 @@ class UsuarioController
 
         try {
             $arrayUsuarios = array();
+            $arrayUsuarios['ide_usua'] = $_POST['documento'];
             $arrayUsuarios['nombUsua'] = $_POST['nombUsua'];
             $arrayUsuarios['apeUsua'] = $_POST['apeUsua'];
             $arrayUsuarios['direccion'] = $_POST['direccion'];
@@ -47,6 +48,7 @@ class UsuarioController
             $arrayUsuarios['usuario'] = $_POST['usuario'];
             $arrayUsuarios['contrasena'] = $_POST['contrasena'];
             $Usuarios = new Usuario($arrayUsuarios);
+           
             $Usuarios->insertar();
             header("Location: ../vista/gestionarUsuario.php");
         } catch (Exception $e) {
