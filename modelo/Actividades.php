@@ -101,14 +101,17 @@ class Actividades extends db_abstract_class
 
     public function insertar()
     {
-       /* $this->insertRow("INSERT INTO mydb.despacho VALUES (NULL, ?, ?, ?, ?)", array(
-                $this->idTransporte,
-                $this->idPedidos,
-                $this->idClientes,
-                $this->idTipoArena,
+        $this->insertRow("INSERT INTO sgc_minera.actividades VALUES (NULL, ?, ?, ?, ?, ?, ?)", array(
+              
+                $this->ide_usua,
+                $this->actividad,
+                $this->pago,
+                $this->fecha,
+                $this->desde,
+                $this->hasta,
             )
         );
-        $this->Disconnect();*/
+        $this->Disconnect();
     }
 
     public function editar()

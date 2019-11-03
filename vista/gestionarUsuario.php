@@ -74,10 +74,11 @@ require("../modelo/Usuario.php");
                             <div class="sparkline13-list">
                                 <div class="sparkline13-hd">
                                     <div class="main-sparkline13-hd ">
-
+                                        Datos Empleados
                                         <button type="button" class="btn btn-primary float-right" data-toggle="modal" data-target="#exampleModal">
                                             Nuevo
                                         </button>
+                                        <br>  <br>
                                     </div>
                                 </div>
                                 <div class="sparkline13-graph">
@@ -89,7 +90,7 @@ require("../modelo/Usuario.php");
                                                     <th>Documento</th>
                                                     <th>Nombre</th>
                                                     <th>Apellido</th>
-                                                    <th>Direccion</th>
+                                                    
                                                     <th>Celular</th>
                                                     <th>Telefono Familiar</th>
                                                     <th>Riesgos</th>
@@ -112,7 +113,7 @@ require("../modelo/Usuario.php");
                                                         <td><?php echo $Usuarios->getIde_usua(); ?></td>
                                                         <td><?php echo $Usuarios->getNombUsua(); ?></td>
                                                         <td><?php echo $Usuarios->getApeUsua(); ?></td>
-                                                        <td><?php echo $Usuarios->getDireccion(); ?></td>
+                                                       
                                                         <td><?php echo $Usuarios->getTelefono(); ?></td>
                                                         <td><?php echo $Usuarios->getTelFamiliar(); ?></td>
                                                         <td><?php echo $Usuarios->getRiesgos(); ?></td>
@@ -122,8 +123,8 @@ require("../modelo/Usuario.php");
                                                       
                                                         <td><?php echo $Usuarios->getUsuario(); ?></td>
                                                         <td>
-                                                        <a href="editarClientes.php?id=<?php echo $Usuarios->getIde_usua(); ?>" type="button" data-toggle="tooltip" title="Actualizar" class="btn docs-tooltip  btn-xs"><i class="fa fa-edit"></i></a>
-
+                                                        <a href="gestionarUsuario.php?idUsuario=<?php echo $Usuarios->getIde_usua(); ?>"  title="Eliminar" class="btn btn-primary btn-circle btn-sm"> <span class="fas fa-pencil-alt " style='color:white'></span></a>
+                                                        <a href="../controlador/usuarioController.php?action=ActivarUsuario&idUsuario=<?php echo $Usuarios->getIde_usua(); ?>"  title="Eliminar" class="btn btn-danger btn-circle btn-sm"> <span class="fas fa-trash" style='color:white'></span></a>
                                                          </td>
 
 
@@ -139,9 +140,15 @@ require("../modelo/Usuario.php");
                 </div>
             </div>
         </div>
+        <?php
+        if(isset($_GET['idUsuario'])){
+            $dataUsuario = usuarioController::buscarID($_GET["idUsuario"]);
+            
+        }
+        ?>
         <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
             <div class="modal-dialog modal-lg" role="document">
-                <form method="post" action="../controlador/usuarioController.php?action=crear">
+                <form method="post" action="../controlador/usuarioController.php?action=registro">
                     <div class="modal-content">
                         <div class="modal-header">
                             <h5 class="modal-title" id="exampleModalLabel">Agregar persona</h5>
@@ -162,7 +169,7 @@ require("../modelo/Usuario.php");
                                                                 <label class="login2 pull-right pull-right-pro">Documento</label>
                                                             </div>
                                                             <div class="col-lg-9 col-md-9 col-sm-9 col-xs-12">
-                                                                <input id="documento" name="documento" type="text" class="form-control" />
+                                                                <input id="documento" name="documento" value="<?php echo $dataUsuario->getIde_usua()?>" type="text" class="form-control" value=""/>
                                                             </div>
                                                         </div>
                                                     </div>
@@ -172,7 +179,7 @@ require("../modelo/Usuario.php");
                                                                 <label class="login2 pull-right pull-right-pro">Nombres</label>
                                                             </div>
                                                             <div class="col-lg-9 col-md-9 col-sm-9 col-xs-12">
-                                                                <input id="nombUsua" name="nombUsua" type="text" class="form-control" />
+                                                                <input id="nombUsua" name="nombUsua"  type="text" class="form-control" />
                                                             </div>
                                                         </div>
                                                     </div>
@@ -339,6 +346,7 @@ require("../modelo/Usuario.php");
                             </div>
                         </div>
                         <div class="modal-footer">
+                            <input name="usuarioEditar" for=""/>
                             <button type="submit" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
                             <button type="submit" class="btn btn-primary">Agregar</button>
                         </div>

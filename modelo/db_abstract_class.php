@@ -83,6 +83,7 @@ abstract class db_abstract_class {
     //updating existing row
     //$updaterow = $database->updateRow("UPDATE users SET username = ?, email = ? WHERE id = ?", array("yusafk", "yusafk@email.com", "1"));
     public function updateRow($query, $params){
+       // var_dump($params);
         return $this->insertRow($query, $params);
     }
 
