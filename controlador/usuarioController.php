@@ -12,10 +12,24 @@ class UsuarioController
 
     static function main($action)
     {
-        if ($action == "crear") {
+        if ($action == "registro") {
+            UsuarioController::registro();
+        }else if($action=="ActivarUsuario"){
+            UsuarioController::ActivarUsuario();
+        }else if($action=="llenardatos"){
+            UsuarioController::llenardatos();
+        }
+    }
+    static public function llenardatos(){
+        $llenarDatos = UsuarioController::buscarID($_GET["id"]);
+        
+    }
+
+    static public function registro(){
+        if(!is_null($_POST['usuarioEditar'])){
             UsuarioController::crear();
         }else{
-            echo "hola";
+            UsuarioController::editarUsuario();
         }
     }
     static public function Usuario($id)
@@ -56,64 +70,54 @@ class UsuarioController
         }
     }
 
-    /*  static public function selectEspecialista ($isRequired=true, $id="idPedidos", $nombre="idPeidos", $class=""){
-    $arrEspecialistas = Pedidos::getAll(); 
-    $htmlSelect = "<select ".(($isRequired) ? "required" : "")." id= '".$id."' name='".$nombre."' class='".$class."'>";
-    $htmlSelect .= "<option >Seleccione</option>";
-    if(count($arrEspecialistas) > 0){
-        foreach ($arrEspecialistas as $especialista)
-            $htmlSelect .= "<option value='".$especialista->getIdPedidos()."'>".$especialista->getCantidad()." ".$especialista->getTransporte()." ".$especialista->getCliente()."</option>";
-    }
-    $htmlSelect .= "</select>";
-    return $htmlSelect;
-}*/
-
-
-    static public function editar()
+    static public function editarUsuario()
     {
         try {
-            $arrayEspecialidad = array();
-            $arrayEspecialidad['Nombre'] = $_POST['Nombres'];
-            $arrayEspecialidad['Valor'] = $_POST['Valor'];
-            $arrayEspecialidad['idTipoArena'] = $_POST['idTipoArena'];
-            $especial = new Arena($arrayEspecialidad);
-            //var_dump($arrayEspecialidad);
-            $especial->editar();
+            $arrayUsuarios['ide_usua'] = $_POST['documento'];
+            $arrayUsuarios['nombUsua'] = $_POST['nombUsua'];
+            $arrayUsuarios['apeUsua'] = $_POST['apeUsua'];
+            $arrayUsuarios['direccion'] = $_POST['direccion'];
+            $arrayUsuarios['telefono'] = $_POST['telefono'];
+            $arrayUsuarios['telFamiliar'] = $_POST['telFamiliar'];
+            $arrayUsuarios['nomFamiliar'] = $_POST['nomFamiliar'];
+            $arrayUsuarios['riesgos'] = $_POST['riesgos'];
+            $arrayUsuarios['eps'] = $_POST['eps'];
+            $arrayUsuarios['pension'] = $_POST['pension'];
+            $arrayUsuarios['rh'] = $_POST['rh'];
+            $arrayUsuarios['rol'] = $_POST['rol'];
+            $arrayUsuarios['usuario'] = $_POST['usuario'];
+            $arrayUsuarios['contrasena'] = $_POST['contrasena'];
+            $Usuarios = new Usuario($arrayUsuarios);
+           
+            $Usuarios->editar();
             header("Location: ../Vista/indexA.php?respuesta=correcto");
         } catch (Exception $e) {
             header("Location: ../Vista/editarArena.php?respuesta=error");
         }
+       return UsuarioController::buscarID($_GET["id"]);
     }
 
 
-    static public function ActivarEspecialidad()
+    static public function ActivarUsuario()
     {
+        
         try {
-            $ObjEspecialidad = Pedidos::buscarForId($_GET['IdPedidos']);
-            $ObjEspecialidad->setEstado("Activo");
+           
+            $ObjEspecialidad = Usuario::buscarForId($_GET['idUsuario']);
+            $ObjEspecialidad->setEstado(1);
             $ObjEspecialidad->editar();
-            header("Location: ../Vista/gestionarPedidos.php");
+            header("Location: ../vista/gestionarUsuario.php");
         } catch (Exception $e) {
-            header("Location: ../Vista/gestionarPedidos.php?respuestaA=error");
+            header("Location: ../vista/gestionarPedidos.php?respuest=error");
         }
     }
 
-    static public function InactivarEspecialidad()
-    {
-        try {
-            $ObjEspecialidad = Especialidad::buscarForId($_GET['idPedidos']);
-            $ObjEspecialidad->setEstado("Inactivo");
-            $ObjEspecialidad->editar();
-            header("Location: ../Vista/gestionarPedidos.php");
-        } catch (Exception $e) {
-            header("Location: ../Vista/gestionarPedidos.php?respuestaD=error");
-        }
-    }
+   
 
     static public function buscarID($id)
     {
         try {
-            return Arena::buscarForId($id);
+            return Usuario::buscarForId($id);
         } catch (Exception $e) {
             header("Location: ../gestionarArena.php?respuesta=error");
         }

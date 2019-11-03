@@ -8,28 +8,28 @@
                     <ul class="metismenu" id="menu1">
 
                         <li>
-                            <a title="Landing Page" href="gestionarUsuario.php" aria-expanded="false"><span
-                                    class="educate-icon educate-professor icon-wrap" aria-hidden="true"></span> <span
+                            <a title="Landing Page" href="gestionarUsuario.php" ><span
+                                    class="educate-icon educate-professor icon-wrap" ></span> <span
                                     class="mini-click-non">Usuario</span></a>
                         </li>
                         <li>
-                            <a title="Landing Page" href="GestionarACtividades.php" aria-expanded="false"><span
-                                    class="educate-icon educate-event icon-wrap sub-icon-mg" aria-hidden="true"></span>
+                            <a title="Landing Page" href="GestionarACtividades.php" ><span
+                                    class="educate-icon educate-event icon-wrap sub-icon-mg" ></span>
                                 <span class="mini-click-non">Actividades</span></a>
                         </li>
                         <li>
-                            <a title="Landing Page" href="GestionarNomina.php" aria-expanded="false"><span
-                                    class="educate-icon educate-event icon-wrap sub-icon-mg" aria-hidden="true"></span>
+                            <a title="Landing Page" href="GestionarNomina.php" ><span
+                                    class="educate-icon educate-event icon-wrap sub-icon-mg" ></span>
                                 <span class="mini-click-non">Nomina</span></a>
                         </li>
                         <li>
-                            <a title="Landing Page" href="GestionarAnticipos.php" aria-expanded="false"><span
-                                    class="educate-icon educate-event icon-wrap sub-icon-mg" aria-hidden="true"></span>
+                            <a title="Landing Page" href="GestionarAnticipos.php" ><span
+                                    class="educate-icon educate-event icon-wrap sub-icon-mg" ></span>
                                 <span class="mini-click-non">Anticipo</span></a>
                         </li>
                         <li>
-                            <a title="Landing Page" href="GestionarTransporte.php" aria-expanded="false"><span
-                                    class="educate-icon educate-event icon-wrap sub-icon-mg" aria-hidden="true"></span>
+                            <a title="Landing Page" href="GestionarTransporte.php" ><span
+                                    class="educate-icon educate-event icon-wrap sub-icon-mg" ></span>
                                 <span class="mini-click-non">Transporte Coche</span></a>
                         </li>
                     </ul>

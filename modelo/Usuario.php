@@ -25,6 +25,7 @@ class Usuario extends db_abstract_class
     private $rol;
     private $usuario;
     private $contrasena;
+    private $estado;
 
     /**
      * Especialidad constructor.
@@ -61,27 +62,35 @@ class Usuario extends db_abstract_class
 
     public static function buscarForId($id)
     {
-        /*$Especial = new Clientes();
+        $Usuarios = new Usuario();
         if ($id > 0){
-            $getrow = $Especial->getRow("SELECT * FROM clientes WHERE idClientes =?", array($id));
-            $Especial->idClientes = $getrow['idClientes'];
-            $Especial->Nombres = $getrow['Nombres'];
-            $Especial->Apellidos = $getrow['Apellidos'];
-            $Especial->TipoDoc = $getrow['TipoDoc'];
-            $Especial->Cedula = $getrow['Cedula'];
-            $Especial->Telefono = $getrow['Telefono'];
-            $Especial->Contraseña = $getrow['Contraseña'];
-            $Especial->Disconnect();
-            return $Especial;
+            $getrow = $Usuarios->getRow("SELECT * FROM usuario WHERE ide_usua =?", array($id));
+            $Usuarios = new Usuario();
+            $Usuarios->ide_usua= $getrow['ide_usua'];
+            $Usuarios->nombUsua = $getrow['nombUsua'];
+            $Usuarios->apeUsua = $getrow['apeUsua'];
+            $Usuarios->direccion = $getrow['direccion'];
+            $Usuarios->telefono = $getrow['telefono'];
+            $Usuarios->telFamiliar = $getrow['telFamiliar'];
+            $Usuarios->riesgos = $getrow['riesgos'];
+            $Usuarios->eps = $getrow['eps'];
+            $Usuarios->pension = $getrow['pension'];
+            $Usuarios->rh = $getrow['rh'];
+            $Usuarios->rol = $getrow['rol'];
+            $Usuarios->usuario = $getrow['usuario'];
+            $Usuarios->usuario = $getrow['contrasena'];
+            $Usuarios->usuario = $getrow['estado'];
+            $Usuarios->Disconnect();
+            return $Usuarios;
         }else{
             return NULL;
-        }*/
+        }
     }
     static public function selectUsuario ($isRequired=true, $id, $nombre, $class){
        
         $arrayUsuarios = Usuario::getAll();
        
-        $htmlSelect = '<select class="form-control custom-select-value">';
+        $htmlSelect = '<select name="usuario" class="form-control custom-select-value" >';
         $htmlSelect .= "<option value=''>Seleccione</option> ";
         if(count($arrayUsuarios)>0){
             foreach ($arrayUsuarios as $usuario){
@@ -120,6 +129,9 @@ class Usuario extends db_abstract_class
             $Usuarios->rh = $valor['rh'];
             $Usuarios->rol = $valor['rol'];
             $Usuarios->usuario = $valor['usuario'];
+            $Usuarios->contrasena = $valor['contrasena'];
+            $Usuarios->estado = $valor['estado'];
+
 
             array_push($arrayUsuarios, $Usuarios);
 
@@ -135,7 +147,7 @@ class Usuario extends db_abstract_class
 
     public function insertar()
     {
-        $this->insertRow("INSERT INTO sgc_minera.usuario VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?)", array(
+        $this->insertRow("INSERT INTO sgc_minera.usuario VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)", array(
             $this->ide_usua,
             $this->nombUsua,
             $this->apeUsua,
@@ -150,6 +162,7 @@ class Usuario extends db_abstract_class
             $this->rol,
             $this->usuario,
             $this->contrasena,
+            $this->estado=1,
             )
         );  
         $this->Disconnect();
@@ -158,16 +171,30 @@ class Usuario extends db_abstract_class
     public function editar()
     {
 
-      /*  $this->updateRow("UPDATE mydb.clientes SET Nombres = ?, Apellidos = ?, TipoDoc = ?, Cedula = ?, Telefono = ?, Contraseña = ? WHERE idClientes = ?", array(
-            $this->Nombres,
-            $this->Apellidos,
-            $this->TipoDoc,
-            $this->Cedula,
-            $this->Telefono,
-            $this->Contraseña,
-            $this->idClientes,
+       $this->updateRow("UPDATE sgc_minera.usuario SET nombUsua = ?, apeUsua = ?, direccion = ?, telefono = ?, 
+       telFamiliar = ?, nomFamiliar = ?,
+       riesgos = ?, eps = ?, pension = ?, rh = ?, rol = ?, usuario = ?, 
+       contrasena=?, estado=?
+       
+       WHERE ide_usua = ?", array(
+       
+        $this->nombUsua,
+        $this->apeUsua,
+        $this->direccion,
+        $this->telefono,
+        $this->telFamiliar,
+        $this->nomFamiliar,
+        $this->riesgos,
+        $this->eps,
+        $this->pension,
+        $this->rh,
+        $this->rol,
+        $this->usuario,
+        $this->contrasena,
+        $this->estado,
+        $this->ide_usua,
         ));
-        $this->Disconnect();*/
+        $this->Disconnect();
     }
 
     protected function eliminar($id)
@@ -455,6 +482,26 @@ class Usuario extends db_abstract_class
     public function setIde_usua($ide_usua)
     {
         $this->ide_usua = $ide_usua;
+
+        return $this;
+    }
+
+    /**
+     * Get the value of estado
+     */ 
+    public function getEstado()
+    {
+        return $this->estado;
+    }
+
+    /**
+     * Set the value of estado
+     *
+     * @return  self
+     */ 
+    public function setEstado($estado)
+    {
+        $this->estado = $estado;
 
         return $this;
     }
