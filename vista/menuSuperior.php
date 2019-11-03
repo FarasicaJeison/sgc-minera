@@ -24,7 +24,7 @@
                                                     <a href="#" data-toggle="dropdown" role="button"
                                                         aria-expanded="false" class="nav-link dropdown-toggle">
                                                         <img src="img/product/pro4.jpg" alt="" />
-                                                        <span class="admin-name">Prof.Anderson</span>
+                                                        <span class="admin-name">lorena</span>
                                                         <i class="fa fa-angle-down edu-icon edu-down-arrow"></i>
                                                     </a>
                                                     <ul role="menu"

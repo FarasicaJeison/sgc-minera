@@ -97,11 +97,12 @@ require ("../modelo/Transportedecarga.php") ?>
                                             <?php
                                                 $arrayTransportedecarga = Transportedecarga::getAll();
                                                 foreach ($arrayTransportedecarga as $Transportedecarga){
+                                                    
                                             ?>
                                         <tr>
-                                            <td><?php echo $Transportedecarga>getCod_trans();?></td>
-                                            <td><?php echo $Transportedecarga->getide_usua();?></td>
-                                            <td><?php echo $Transportedecarga->getcod_puert();?></td>
+                                            <td><?php echo $Transportedecarga->getCod_trans();?></td>
+                                            <td><?php echo $Transportedecarga->getIde_usua();?></td>
+                                            <td><?php echo $Transportedecarga->getCod_puer();?></td>
                                                                                        
 
                                         </tr>
@@ -121,7 +122,7 @@ require ("../modelo/Transportedecarga.php") ?>
             <div class="modal-dialog" role="document">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h5 class="modal-title" id="exampleModalLabel">Agregar persona</h5>
+                        <h5 class="modal-title" id="exampleModalLabel">Agregar Transporte Carga</h5>
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                             <span aria-hidden="true">&times;</span>
                         </button>
@@ -138,86 +139,14 @@ require ("../modelo/Transportedecarga.php") ?>
                                                         <div class="row">
                                                             <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
                                                                 <label
-                                                                    class="login2 pull-right pull-right-pro">Nombres</label>
-                                                            </div>
-                                                            <div class="col-lg-9 col-md-9 col-sm-9 col-xs-12">
-                                                                <input type="text" class="form-control" />
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="form-group-inner col-lg-6">
-                                                        <div class="row">
-                                                            <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
-                                                                <label
-                                                                    class="login2 pull-right pull-right-pro">Apellidos</label>
-                                                            </div>
-                                                            <div class="col-lg-9 col-md-9 col-sm-9 col-xs-12">
-                                                                <input type="text" class="form-control" />
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="col-lg-12 ">
-                                                    <div class="form-group-inner col-lg-6">
-                                                        <div class="row">
-                                                            <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
-                                                                <label
-                                                                    class="login2 pull-right pull-right-pro">Direccion</label>
-                                                            </div>
-                                                            <div class="col-lg-9 col-md-9 col-sm-9 col-xs-12">
-                                                                <input type="text" class="form-control" />
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="form-group-inner col-lg-6">
-                                                        <div class="row">
-                                                            <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
-                                                                <label class="login2 pull-right pull-right-pro">Nombre
-                                                                    Familiar</label>
-                                                            </div>
-                                                            <div class="col-lg-9 col-md-9 col-sm-9 col-xs-12">
-                                                                <input type="text" class="form-control" />
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="col-lg-12">
-                                                    <div class="form-group-inner col-lg-6">
-                                                        <div class="row">
-                                                            <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
-                                                                <label class="login2 pull-right pull-right-pro">Telefono
-                                                                    Familiar</label>
-                                                            </div>
-                                                            <div class="col-lg-9 col-md-9 col-sm-9 col-xs-12">
-                                                                <input type="text" class="form-control" />
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="form-group-inner col-lg-6">
-                                                        <div class="row">
-                                                            <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
-                                                                <label
-                                                                    class="login2 pull-right pull-right-pro">Riesgos</label>
-                                                            </div>
-                                                            <div class="col-lg-9 col-md-9 col-sm-9 col-xs-12">
-                                                                <input type="email" class="form-control" />
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="col-lg-12 ">
-                                                    <div class="form-group-inner col-lg-6">
-                                                        <div class="row">
-                                                            <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
-                                                                <label
-                                                                    class="login2 pull-right pull-right-pro">Eps</label>
+                                                                    class="login2 pull-right pull-right-pro">Cod Transporte</label>
                                                             </div>
                                                             <div class="col-lg-9 col-md-9 col-sm-9 col-xs-12">
                                                                 <div class="form-select-list">
                                                                     <select class="form-control custom-select-value"
                                                                         name="account">
-                                                                        <option>Sanitas</option>
-                                                                        <option>Nueva eps</option>
+                                                                        <option>1</option>
+                                                                        <option>2</option>
 
                                                                     </select>
                                                                 </div>
@@ -228,69 +157,48 @@ require ("../modelo/Transportedecarga.php") ?>
                                                         <div class="row">
                                                             <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
                                                                 <label
-                                                                    class="login2 pull-right pull-right-pro">Pension</label>
+                                                                    class="login2 pull-right pull-right-pro">ide Usuario</label>
                                                             </div>
                                                             <div class="col-lg-9 col-md-9 col-sm-9 col-xs-12">
-                                                                <input type="TEXT" class="form-control" />
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="col-lg-12 ">
-                                                    <div class="form-group-inner col-lg-6">
-                                                        <div class="row">
-                                                            <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
-                                                                <label
-                                                                    class="login2 pull-right pull-right-pro">RH</label>
-                                                            </div>
-                                                            <div class="col-lg-9 col-md-9 col-sm-9 col-xs-12">
-                                                                    <div class="form-select-list">
-                                                                        <select class="form-control custom-select-value"
-                                                                            name="account">
-                                                                            <option>A+</option>
-                                                                            <option>B+</option>
-    
-                                                                        </select>
-                                                                    </div>
+                                                                <div class="form-select-list">
+                                                                    <select class="form-control custom-select-value"
+                                                                        name="account">
+                                                                        <option>74659862</option>
+                                                                        <option>73569821</option>
+
+                                                                    </select>
                                                                 </div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="form-group-inner col-lg-6">
-                                                        <div class="row">
-                                                            <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
-                                                                <label
-                                                                    class="login2 pull-right pull-right-pro">Rol</label>
-                                                            </div>
-                                                            <div class="col-lg-9 col-md-9 col-sm-9 col-xs-12">
-                                                                <input type="TEXT" class="form-control" />
                                                             </div>
                                                         </div>
                                                     </div>
                                                 </div>
-                                                <div class="col-lg-12 ">
-                                                    <div class="form-group-inner col-lg-6">
+                                                
+                                                    <div class="form-group-inner col-lg-">
                                                         <div class="row">
                                                             <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
                                                                 <label
-                                                                    class="login2 pull-right pull-right-pro">Usuario</label>
+                                                                    class="login2 pull-right pull-right-pro">Codigo Puerta</label>
                                                             </div>
                                                             <div class="col-lg-9 col-md-9 col-sm-9 col-xs-12">
-                                                                <input type="TEXT" class="form-control" />
+                                                                <div class="form-select-list">
+                                                                    <select class="form-control custom-select-value"
+                                                                        name="account">
+                                                                        <option>60</option>
+                                                                        <option>70</option>
+                                                                        <option>80</option>
+                                                                        <option>90</option>
+
+                                                                    </select>
+                                                                </div>
                                                             </div>
                                                         </div>
                                                     </div>
-                                                    <div class="form-group-inner col-lg-6">
-                                                        <div class="row">
-                                                            <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
-                                                                <label
-                                                                    class="login2 pull-right pull-right-pro">Contraseña</label>
-                                                            </div>
-                                                            <div class="col-lg-9 col-md-9 col-sm-9 col-xs-12">
-                                                                <input type="password" class="form-control" />
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
+                                                    
+                                                
+                                                
+                                               
+                                               
+                                              
                                             </form>
                                         </div>
                                     </div>

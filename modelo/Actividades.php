@@ -8,6 +8,7 @@
  */
 
 require_once('db_abstract_class.php');
+require("../modelo/Usuario.php");
 
 class Actividades extends db_abstract_class
 {
@@ -63,6 +64,9 @@ class Actividades extends db_abstract_class
         }else{
             return NULL;
         }*/
+    }
+    public static function selectUsuario($isRequired=true, $id, $nombre, $class){
+        echo Usuario::selectUsuario($isRequired=true, $id, $nombre, $class);
     }
 
    public static function buscar($query)

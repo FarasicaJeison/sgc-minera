@@ -28,7 +28,7 @@
                                 <span class="mini-click-non">Anticipo</span></a>
                         </li>
                         <li>
-                            <a title="Landing Page" href="GestionarTransportedecarga.php" aria-expanded="false"><span
+                            <a title="Landing Page" href="GestionarTransporte.php" aria-expanded="false"><span
                                     class="educate-icon educate-event icon-wrap sub-icon-mg" aria-hidden="true"></span>
                                 <span class="mini-click-non">Transporte Coche</span></a>
                         </li>

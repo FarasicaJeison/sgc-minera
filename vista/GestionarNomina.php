@@ -131,7 +131,7 @@ require ("../modelo/Nomina.php") ?>
             <div class="modal-dialog" role="document">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h5 class="modal-title" id="exampleModalLabel">Agregar persona</h5>
+                        <h5 class="modal-title" id="exampleModalLabel">Agregar Nomina/h5>
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                             <span aria-hidden="true">&times;</span>
                         </button>
@@ -148,10 +148,17 @@ require ("../modelo/Nomina.php") ?>
                                                         <div class="row">
                                                             <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
                                                                 <label
-                                                                    class="login2 pull-right pull-right-pro">Nombres</label>
+                                                                    class="login2 pull-right pull-right-pro">Cod Nomina</label>
                                                             </div>
                                                             <div class="col-lg-9 col-md-9 col-sm-9 col-xs-12">
-                                                                <input type="text" class="form-control" />
+                                                                <div class="form-select-list">
+                                                                    <select class="form-control custom-select-value"
+                                                                        name="account">
+                                                                        <option>1</option>
+                                                                        <option>2</option>
+
+                                                                    </select>
+                                                                </div>
                                                             </div>
                                                         </div>
                                                     </div>
@@ -159,10 +166,17 @@ require ("../modelo/Nomina.php") ?>
                                                         <div class="row">
                                                             <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
                                                                 <label
-                                                                    class="login2 pull-right pull-right-pro">Apellidos</label>
+                                                                    class="login2 pull-right pull-right-pro">ide Usuario</label>
                                                             </div>
                                                             <div class="col-lg-9 col-md-9 col-sm-9 col-xs-12">
-                                                                <input type="text" class="form-control" />
+                                                                <div class="form-select-list">
+                                                                    <select class="form-control custom-select-value"
+                                                                        name="account">
+                                                                        <option>1058264879</option>
+                                                                        <option>1059632154</option>
+
+                                                                    </select>
+                                                                </div>
                                                             </div>
                                                         </div>
                                                     </div>
@@ -172,18 +186,25 @@ require ("../modelo/Nomina.php") ?>
                                                         <div class="row">
                                                             <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
                                                                 <label
-                                                                    class="login2 pull-right pull-right-pro">Direccion</label>
+                                                                    class="login2 pull-right pull-right-pro">Cod Anticipo</label>
                                                             </div>
                                                             <div class="col-lg-9 col-md-9 col-sm-9 col-xs-12">
-                                                                <input type="text" class="form-control" />
+                                                                <div class="form-select-list">
+                                                                    <select class="form-control custom-select-value"
+                                                                        name="account">
+                                                                        <option>1</option>
+                                                                        <option>2</option>
+
+                                                                    </select>
+                                                                </div>
                                                             </div>
                                                         </div>
                                                     </div>
                                                     <div class="form-group-inner col-lg-6">
                                                         <div class="row">
                                                             <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
-                                                                <label class="login2 pull-right pull-right-pro">Nombre
-                                                                    Familiar</label>
+                                                                <label class="login2 pull-right pull-right-pro">Fecha
+                                                                    Nomina</label>
                                                             </div>
                                                             <div class="col-lg-9 col-md-9 col-sm-9 col-xs-12">
                                                                 <input type="text" class="form-control" />
@@ -195,11 +216,18 @@ require ("../modelo/Nomina.php") ?>
                                                     <div class="form-group-inner col-lg-6">
                                                         <div class="row">
                                                             <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
-                                                                <label class="login2 pull-right pull-right-pro">Telefono
-                                                                    Familiar</label>
+                                                                <label class="login2 pull-right pull-right-pro">Cod 
+                                                                    Actividad</label>
                                                             </div>
                                                             <div class="col-lg-9 col-md-9 col-sm-9 col-xs-12">
-                                                                <input type="text" class="form-control" />
+                                                                <div class="form-select-list">
+                                                                    <select class="form-control custom-select-value"
+                                                                        name="account">
+                                                                        <option>1</option>
+                                                                        <option>2</option>
+
+                                                                    </select>
+                                                                </div>
                                                             </div>
                                                         </div>
                                                     </div>
@@ -207,7 +235,7 @@ require ("../modelo/Nomina.php") ?>
                                                         <div class="row">
                                                             <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
                                                                 <label
-                                                                    class="login2 pull-right pull-right-pro">Riesgos</label>
+                                                                    class="login2 pull-right pull-right-pro">Precio</label>
                                                             </div>
                                                             <div class="col-lg-9 col-md-9 col-sm-9 col-xs-12">
                                                                 <input type="email" class="form-control" />
@@ -220,14 +248,16 @@ require ("../modelo/Nomina.php") ?>
                                                         <div class="row">
                                                             <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
                                                                 <label
-                                                                    class="login2 pull-right pull-right-pro">Eps</label>
+                                                                    class="login2 pull-right pull-right-pro">Desde</label>
                                                             </div>
                                                             <div class="col-lg-9 col-md-9 col-sm-9 col-xs-12">
                                                                 <div class="form-select-list">
                                                                     <select class="form-control custom-select-value"
                                                                         name="account">
-                                                                        <option>Sanitas</option>
-                                                                        <option>Nueva eps</option>
+                                                                        <option>10</option>
+                                                                        <option>15</option>
+                                                                        <option>20</option>
+                                                                        <option>25</option>
 
                                                                     </select>
                                                                 </div>
@@ -238,69 +268,25 @@ require ("../modelo/Nomina.php") ?>
                                                         <div class="row">
                                                             <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
                                                                 <label
-                                                                    class="login2 pull-right pull-right-pro">Pension</label>
+                                                                    class="login2 pull-right pull-right-pro">Hasta</label>
                                                             </div>
                                                             <div class="col-lg-9 col-md-9 col-sm-9 col-xs-12">
-                                                                <input type="TEXT" class="form-control" />
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="col-lg-12 ">
-                                                    <div class="form-group-inner col-lg-6">
-                                                        <div class="row">
-                                                            <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
-                                                                <label
-                                                                    class="login2 pull-right pull-right-pro">RH</label>
-                                                            </div>
-                                                            <div class="col-lg-9 col-md-9 col-sm-9 col-xs-12">
-                                                                    <div class="form-select-list">
-                                                                        <select class="form-control custom-select-value"
-                                                                            name="account">
-                                                                            <option>A+</option>
-                                                                            <option>B+</option>
-    
-                                                                        </select>
-                                                                    </div>
+                                                                <div class="form-select-list">
+                                                                    <select class="form-control custom-select-value"
+                                                                        name="account">
+                                                                        <option>30</option>
+                                                                        <option>35</option>
+                                                                        <option>40</option>
+                                                                        <option>45</option>
+
+                                                                    </select>
                                                                 </div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="form-group-inner col-lg-6">
-                                                        <div class="row">
-                                                            <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
-                                                                <label
-                                                                    class="login2 pull-right pull-right-pro">Rol</label>
-                                                            </div>
-                                                            <div class="col-lg-9 col-md-9 col-sm-9 col-xs-12">
-                                                                <input type="TEXT" class="form-control" />
                                                             </div>
                                                         </div>
                                                     </div>
                                                 </div>
-                                                <div class="col-lg-12 ">
-                                                    <div class="form-group-inner col-lg-6">
-                                                        <div class="row">
-                                                            <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
-                                                                <label
-                                                                    class="login2 pull-right pull-right-pro">Usuario</label>
-                                                            </div>
-                                                            <div class="col-lg-9 col-md-9 col-sm-9 col-xs-12">
-                                                                <input type="TEXT" class="form-control" />
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="form-group-inner col-lg-6">
-                                                        <div class="row">
-                                                            <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
-                                                                <label
-                                                                    class="login2 pull-right pull-right-pro">Contraseña</label>
-                                                            </div>
-                                                            <div class="col-lg-9 col-md-9 col-sm-9 col-xs-12">
-                                                                <input type="password" class="form-control" />
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
+                                                
+                                                
                                             </form>
                                         </div>
                                     </div>

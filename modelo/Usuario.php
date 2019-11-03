@@ -10,18 +10,21 @@
 require_once('db_abstract_class.php');
 
 class Usuario extends db_abstract_class
-{
-    private $nomb_usua;
-    private $ape_usua;
+{   
+    private $ide_usua;
+    private $nombUsua;
+    private $apeUsua;
     private $direccion;
     private $telefono;
-    private $tel_familiar;
+    private $telFamiliar;
+    private $nomFamiliar;
     private $riesgos;
     private $eps;
     private $pension;
     private $rh;
     private $rol;
     private $usuario;
+    private $contrasena;
 
     /**
      * Especialidad constructor.
@@ -38,17 +41,20 @@ class Usuario extends db_abstract_class
                 $this->$campo = $valor;
             }
         }else {
-            $this->nomb_usua = "";
-            $this->ape_usua= "";
+
+            $this->nomUsua = "";
+            $this->apeUsua= "";
             $this->direccion = "";
             $this->telefono = "";
-            $this->tel_familiar = "";
+            $this->telFamiliar = "";
+            $this->nomFamiliar="";
             $this->riesgos = "";
             $this->eps = "";
             $this->pension = "";
             $this->rh = "";
             $this->rol = "";
             $this->usuario = "";
+            $this->contrasena = "";
 
         }
     }
@@ -71,6 +77,27 @@ class Usuario extends db_abstract_class
             return NULL;
         }*/
     }
+    static public function selectUsuario ($isRequired=true, $id, $nombre, $class){
+       
+        $arrayUsuarios = Usuario::getAll();
+       
+        $htmlSelect = '<select class="form-control custom-select-value">';
+        $htmlSelect .= "<option value=''>Seleccione</option> ";
+        if(count($arrayUsuarios)>0){
+            foreach ($arrayUsuarios as $usuario){
+                $htmlSelect .= "<option value='".$usuario->getIde_usua()."'>".$usuario->getNombUsua()." -- ".$usuario->getIde_usua()." "."</option>";
+            }
+            $htmlSelect .= "</select>";
+        }
+        else
+        {
+            $htmlSelect = '<select>';
+            $htmlSelect .= "<option value='nada'>Seleccione</option>";
+            $htmlSelect .= "</select>";
+        }
+        return $htmlSelect;
+    }
+
 
    public static function buscar($query)
     {
@@ -81,18 +108,18 @@ class Usuario extends db_abstract_class
 
         foreach ($getrows as $valor) {
             $Usuarios = new Usuario();
-            $Usuarios->nomb_usua = $valor['nomb_usua'];
-            $Usuarios->ape_usua = $valor['ape_usua'];
+            $Usuarios->ide_usua= $valor['ide_usua'];
+            $Usuarios->nombUsua = $valor['nombUsua'];
+            $Usuarios->apeUsua = $valor['apeUsua'];
             $Usuarios->direccion = $valor['direccion'];
             $Usuarios->telefono = $valor['telefono'];
-            $Usuarios->tel_familiar = $valor['tel_familiar'];
+            $Usuarios->telFamiliar = $valor['telFamiliar'];
             $Usuarios->riesgos = $valor['riesgos'];
             $Usuarios->eps = $valor['eps'];
             $Usuarios->pension = $valor['pension'];
             $Usuarios->rh = $valor['rh'];
             $Usuarios->rol = $valor['rol'];
             $Usuarios->usuario = $valor['usuario'];
-            
 
             array_push($arrayUsuarios, $Usuarios);
 
@@ -103,19 +130,29 @@ class Usuario extends db_abstract_class
 
      static function getAll()
     {
-        return Usuario::buscar("SELECT nomb_usua, ape_usua, direccion, telefono, riesgos, eps, pension, rh, rol, usuario, tel_familiar FROM usuario");
+        return Usuario::buscar("SELECT ide_usua,nombUsua, apeUsua, direccion, telefono, riesgos, eps, pension, rh, rol, usuario, telFamiliar FROM usuario order by 1 desc");
     }
 
     public function insertar()
     {
-       /* $this->insertRow("INSERT INTO mydb.despacho VALUES (NULL, ?, ?, ?, ?)", array(
-                $this->idTransporte,
-                $this->idPedidos,
-                $this->idClientes,
-                $this->idTipoArena,
+        $this->insertRow("INSERT INTO sgc_minera.usuario VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?)", array(
+            $this->ide_usua,
+            $this->nombUsua,
+            $this->apeUsua,
+            $this->direccion,
+            $this->telefono,
+            $this->telFamiliar,
+            $this->nomFamiliar,
+            $this->riesgos,
+            $this->eps,
+            $this->pension,
+            $this->rh,
+            $this->rol,
+            $this->usuario,
+            $this->contrasena,
             )
-        );
-        $this->Disconnect();*/
+        );  
+        $this->Disconnect();
     }
 
     public function editar()
@@ -140,22 +177,24 @@ class Usuario extends db_abstract_class
 
     
 
+    
+
     /**
-     * Get the value of telefono
+     * Get the value of apeUsua
      */ 
-    public function getTelefono()
+    public function getApeUsua()
     {
-        return $this->telefono;
+        return $this->apeUsua;
     }
 
     /**
-     * Set the value of telefono
+     * Set the value of apeUsua
      *
      * @return  self
      */ 
-    public function setTelefono($telefono)
+    public function setApeUsua($apeUsua)
     {
-        $this->telefono = $telefono;
+        $this->apeUsua = $apeUsua;
 
         return $this;
     }
@@ -181,61 +220,81 @@ class Usuario extends db_abstract_class
     }
 
     /**
-     * Get the value of ape_usua
+     * Get the value of telefono
      */ 
-    public function getApe_usua()
+    public function getTelefono()
     {
-        return $this->ape_usua;
+        return $this->telefono;
     }
 
     /**
-     * Set the value of ape_usua
+     * Set the value of telefono
      *
      * @return  self
      */ 
-    public function setApe_usua($ape_usua)
+    public function setTelefono($telefono)
     {
-        $this->ape_usua = $ape_usua;
+        $this->telefono = $telefono;
 
         return $this;
     }
 
     /**
-     * Get the value of nomb_usua
+     * Get the value of telFamiliar
      */ 
-    public function getNomb_usua()
+    public function getTelFamiliar()
     {
-        return $this->nomb_usua;
+        return $this->telFamiliar;
     }
 
     /**
-     * Set the value of nomb_usua
+     * Set the value of telFamiliar
      *
      * @return  self
      */ 
-    public function setNomb_usua($nomb_usua)
+    public function setTelFamiliar($telFamiliar)
     {
-        $this->nomb_usua = $nomb_usua;
+        $this->telFamiliar = $telFamiliar;
 
         return $this;
     }
 
     /**
-     * Get the value of tel_familiar
+     * Get the value of nomFamiliar
      */ 
-    public function getTel_familiar()
+    public function getNomFamiliar()
     {
-        return $this->tel_familiar;
+        return $this->nomFamiliar;
     }
 
     /**
-     * Set the value of tel_familiar
+     * Set the value of nomFamiliar
      *
      * @return  self
      */ 
-    public function setTel_familiar($tel_familiar)
+    public function setNomFamiliar($nomFamiliar)
     {
-        $this->tel_familiar = $tel_familiar;
+        $this->nomFamiliar = $nomFamiliar;
+
+        return $this;
+    }
+
+    /**
+     * Get the value of nombUsua
+     */ 
+    public function getNombUsua()
+    {
+        return $this->nombUsua;
+    }
+
+    /**
+     * Set the value of nombUsua
+     *
+     * @return  self
+     */ 
+    public function setNombUsua($nombUsua)
+    {
+        $this->nombUsua = $nombUsua;
 
         return $this;
     }
@@ -356,6 +415,46 @@ class Usuario extends db_abstract_class
     public function setUsuario($usuario)
     {
         $this->usuario = $usuario;
+
+        return $this;
+    }
+
+    /**
+     * Get the value of contrasena
+     */ 
+    public function getContrasena()
+    {
+        return $this->contrasena;
+    }
+
+    /**
+     * Set the value of contrasena
+     *
+     * @return  self
+     */ 
+    public function setContrasena($contrasena)
+    {
+        $this->contrasena = $contrasena;
+
+        return $this;
+    }
+
+    /**
+     * Get the value of ide_usua
+     */ 
+    public function getIde_usua()
+    {
+        return $this->ide_usua;
+    }
+
+    /**
+     * Set the value of ide_usua
+     *
+     * @return  self
+     */ 
+    public function setIde_usua($ide_usua)
+    {
+        $this->ide_usua = $ide_usua;
 
         return $this;
     }
