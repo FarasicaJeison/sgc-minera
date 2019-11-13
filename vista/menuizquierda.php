@@ -41,6 +41,11 @@
                                 <span class="mini-click-non"><font color="Teal" face="Times New Roman,arial"size=4>
                                     Puertas </font></span></a>
                         </li>
+                        <li>
+                            <a title="Landing Page" href="Gestionarpuertas.php" ><span
+                                    class="educate-icon educate-event icon-wrap sub-icon-mg" ></span>
+                                <span class="mini-click-non">Puertas</span></a>
+                        </li>
                     </ul>
                 </nav>
             </div>

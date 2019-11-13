@@ -13,34 +13,15 @@ class UsuarioController
     static function main($action)
     {
         if ($action == "registro") { //va a este menu 
-            UsuarioController::registro();
+            UsuarioController::crear();
         }else if($action=="ActivarUsuario"){
             UsuarioController::ActivarUsuario();
         }else if($action=="llenardatos"){
             UsuarioController::llenardatos();
         }
     }
-    static public function llenardatos(){
-        $llenarDatos = UsuarioController::buscarID($_GET["id"]);
-        
-    }
+    
 
-    static public function registro(){
-        if(!is_null($_POST['usuarioEditar'])){
-            UsuarioController::crear();// este lo lleva a la accion crear
-        }else{
-            UsuarioController::editarUsuario();
-        }
-    }
-    static public function Usuario($id)
-    {
-
-        $arrPerson = Arena::buscarForId($id);
-        $htmlInput = "";
-        // var_dump($arrPerson);
-        $htmlInput .= $arrPerson->getNombre();
-        return $htmlInput;
-    }
 
     static public function crear()
     {
@@ -62,7 +43,7 @@ class UsuarioController
             $arrayUsuarios['usuario'] = $_POST['usuario'];
             $arrayUsuarios['contrasena'] = $_POST['contrasena'];
             $Usuarios = new Usuario($arrayUsuarios);
-           
+
             $Usuarios->insertar();
             header("Location: ../vista/gestionarUsuario.php");
         } catch (Exception $e) {
@@ -88,23 +69,23 @@ class UsuarioController
             $arrayUsuarios['usuario'] = $_POST['usuario'];
             $arrayUsuarios['contrasena'] = $_POST['contrasena'];
             $Usuarios = new Usuario($arrayUsuarios);
-           
+
             $Usuarios->editar();
             header("Location: ../Vista/indexA.php?respuesta=correcto");
         } catch (Exception $e) {
             header("Location: ../Vista/editarArena.php?respuesta=error");
         }
-       return UsuarioController::buscarID($_GET["id"]);
+        return UsuarioController::buscarID($_GET["id"]);
     }
 
 
-    static public function ActivarUsuario()
+    static public function inactivarUsuario()
     {
-        
+
         try {
-           
+
             $ObjEspecialidad = Usuario::buscarForId($_GET['idUsuario']);
-            $ObjEspecialidad->setEstado(1);
+            $ObjEspecialidad->setEstado(0);
             $ObjEspecialidad->editar();
             header("Location: ../vista/gestionarUsuario.php");
         } catch (Exception $e) {
@@ -112,7 +93,7 @@ class UsuarioController
         }
     }
 
-   
+
 
     static public function buscarID($id)
     {

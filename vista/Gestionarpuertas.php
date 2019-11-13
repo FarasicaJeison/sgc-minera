@@ -1,5 +1,5 @@
 <?php
-require("../modelo/Transportedecarga.php") ?>
+require("../modelo/Puertas.php") ?>
 
 
 <!doctype html>
@@ -8,7 +8,7 @@ require("../modelo/Transportedecarga.php") ?>
 <head>
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <title>Transportedecarga</title>
+    <title>Gestionar Puertas</title>
     <?php require("head.php"); ?>
 </head>
 
@@ -68,7 +68,7 @@ require("../modelo/Transportedecarga.php") ?>
                             <div class="sparkline13-list">
                                 <div class="sparkline13-hd">
                                     <div class="main-sparkline13-hd ">
-                                        Gestionar Transporte
+                                        Gestionar Puertas
                                         <button type="button" class="btn btn-primary float-right" data-toggle="modal" data-target="#exampleModal">
                                             Nuevo
                                         </button>
@@ -83,8 +83,10 @@ require("../modelo/Transportedecarga.php") ?>
                                                 <tr>
 
 
-                                                    <th>Usuario</th>
-                                                    <th>Codigo puerta</th>
+                                                    <th>Codigo Puerta</th>
+                                                    <th>Fecha</th>
+                                                    <th>Precio</th>
+                                                    <th>Tramo</th>
                                                     <th>Acciones</th>
 
                                                 </tr>
@@ -92,17 +94,19 @@ require("../modelo/Transportedecarga.php") ?>
                                             <tbody>
 
                                                 <?php
-                                                $arrayTransportedecarga = Transportedecarga::getAll();
-                                                foreach ($arrayTransportedecarga as $Transportedecarga) {
+                                                $arrayPuertas = Puertas::getAll();
+                                                foreach ($arrayPuertas as $puertas) {
 
                                                     ?>
                                                     <tr>
 
-                                                        <td><?php echo $Transportedecarga->getNombUsua(), "--" . $Transportedecarga->getIde_usua(); ?></td>
-                                                        <td><?php echo $Transportedecarga->getCod_puer(); ?></td>
+                                                        <td><?php echo $puertas->getCod_puer(); ?></td>
+                                                        <td><?php echo $puertas->getFecha_creacion(); ?></td>
+                                                        <td><?php echo $puertas->getPrecio_puer(); ?></td>
+                                                        <td><?php echo $puertas->getTramo(); ?></td>
                                                         <td>
-                                                            <a href="editarTransporteCoche.php?idTransporte=<?php echo $Transportedecarga->getcod_trans(); ?>" title="Eliminar" class="btn btn-primary btn-circle btn-sm"> <span class="fas fa-pencil-alt " style='color:white'></span></a>
-                                                            <a href="../controlador/transporteController.php?action=inactivarTransporte&idtransporte=<?php echo $Transportedecarga->getcod_trans(); ?>" title="Eliminar" class="btn btn-danger btn-circle btn-sm"> <span class="fas fa-trash" style='color:white'></span></a>
+                                                            <a href="editarpuerta.php?idpuerta=<?php echo $puertas->getCod_puer(); ?>" title="Eliminar" class="btn btn-primary btn-circle btn-sm"> <span class="fas fa-pencil-alt " style='color:white'></span></a>
+                                                            <a href="../controlador/puertasController.php?action=inactivarPuertas&idPuerta=<?php echo $puertas->getCod_puer(); ?>" title="Eliminar" class="btn btn-danger btn-circle btn-sm"> <span class="fas fa-trash" style='color:white'></span></a>
                                                         </td>
 
                                                     </tr>
@@ -119,10 +123,11 @@ require("../modelo/Transportedecarga.php") ?>
         </div>
         <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
             <div class="modal-dialog" role="document">
-                <div class="modal-content">
-                    <form method="post" action="../controlador/transporteController.php?action=crear">
+                <form method="post" action="../controlador/puertasController.php?action=crear">
+
+                    <div class="modal-content">
                         <div class="modal-header">
-                            <h5 class="modal-title" id="exampleModalLabel">Agregar Transporte Carga</h5>
+                            <h5 class="modal-title" id="exampleModalLabel">Agregar Puerta</h5>
                             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                 <span aria-hidden="true">&times;</span>
                             </button>
@@ -134,45 +139,28 @@ require("../modelo/Transportedecarga.php") ?>
                                         <div class="col-lg-12 ">
                                             <div class="all-form-element-inner">
 
-                                                <div class="col-lg-12 ">
-                                                    <div class="form-group-inner col-lg-6">
-                                                        <div class="row">
 
+                                                <div class="form-group-inner col-lg-12">
+                                                    <div class="row">
+                                                        <div class="col-lg-2 col-md-3 col-sm-3 col-xs-12">
+                                                            <label class="login2 pull-right pull-right-pro">Precio</label>
                                                         </div>
-                                                    </div>
-                                                    <div class="form-group-inner col-lg-12">
-                                                        <div class="row">
-                                                            <div class="col-lg-2 col-md-3 col-sm-3 col-xs-12">
-                                                                <label class="login2 pull-right pull-right-pro">Usuario</label>
-                                                            </div>
-                                                            <div class="col-lg-10 col-md-9 col-sm-9 col-xs-12">
-                                                                <div class="form-select-list">
-                                                                    <?php Transportedecarga::selectUsuario(true, "new-todo", "new-todo", "form-control"); ?>
-                                                                </div>
-                                                                <br>
-                                                            </div>
+                                                        <div class="col-lg-10 col-md-9 col-sm-9 col-xs-12">
+                                                            <input id="precio" name="precio" type="text" class="form-control" />
                                                         </div>
                                                     </div>
                                                 </div>
 
-                                                <div class="all-form-element-inner">
-                                                    <div class="col-lg-12 ">
-                                                        <div class="form-group-inner col-lg-12">
-                                                            <div class="row">
-                                                                <div class="col-lg-2 col-md-3 col-sm-3 col-xs-12">
-                                                                    <label class="login2 pull-right pull-right-pro">Puerta Inicial</label>
-                                                                </div>
-                                                                <div class="col-lg-10 col-md-9 col-sm-9 col-xs-12">
-                                                                    <div class="form-select-list">
-                                                                        <?php Transportedecarga::selectPuerta(true, "new-todo", "new-todo", "form-control"); ?>
-                                                                    </div>
-                                                                    <br>
-                                                                </div>
-                                                            </div>
+
+                                                <div class="form-group-inner col-lg-12">
+                                                    <div class="row">
+                                                        <div class="col-lg-2 col-md-3 col-sm-3 col-xs-12">
+                                                            <label class="login2 pull-right pull-right-pro">Tramo</label>
+                                                        </div>
+                                                        <div class="col-lg-10 col-md-9 col-sm-9 col-xs-12">
+                                                            <input id="tramo" name="tramo" type="text" class="form-control" />
                                                         </div>
                                                     </div>
-                                                    <div class="form-group-inner"></div>
-                                                    <br>
                                                 </div>
                                             </div>
                                         </div>
@@ -181,10 +169,10 @@ require("../modelo/Transportedecarga.php") ?>
                             </div>
                         </div>
                         <div class="modal-footer">
-                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+                            <button type="submit" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
                             <button type="submit" class="btn btn-primary">Agregar</button>
                         </div>
-                </div>
+                    </div>
                 </form>
             </div>
         </div>

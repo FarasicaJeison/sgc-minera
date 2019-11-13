@@ -60,8 +60,31 @@ class Usuario extends db_abstract_class
         }
     }
 
+    public static function Login($User, $Password){
+        echo "entro";
+        $arrUsuarios = array();
+        $tmp = new Usuario();
+        $getTempUser = $tmp->getRows("SELECT * FROM usuario WHERE usuario = '$User'");
+        if(count($getTempUser) >= 1){
+            $getrows = $tmp->getRows("SELECT * FROM usuario WHERE usuario = '$User' AND contrasena = '$Password' AND rol='Admin'");
+            if(count($getrows) >= 1){
+                foreach ($getrows as $valor) {
+                    return $valor;
+                }
+            }else{
+                return "Password Incorrecto";
+            }
+        }else{
+            return "No existe el usuario";
+        }
+
+        $tmp->Disconnect();
+        return $arrUsuarios;
+    }
+
     public static function buscarForId($id)
-    {
+    {   
+        
         $Usuarios = new Usuario();
         if ($id > 0){
             $getrow = $Usuarios->getRow("SELECT * FROM usuario WHERE ide_usua =?", array($id));

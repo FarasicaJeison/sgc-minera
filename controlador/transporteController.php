@@ -1,51 +1,47 @@
 <?php
-require_once('../modelo/Actividades.php');
+require_once('../modelo/Transportedecarga.php');
 
 if (!empty($_GET['action'])) {
-    ActividadesController::main($_GET['action']);
+    transporteController::main($_GET['action']);
 } else {
     echo "No se encontro ninguna accion...";
 }
 
-class ActividadesController
+class transporteController
 {
 
     static function main($action)
     {
         if ($action == "crear") {
-            ActividadesController::crear();
-        }else if($action=="inactivarActividad"){
-            ActividadesController::inactivarActividad();
+            transporteController::crear();
+        }else if($action=="inactivarTransporte"){
+            transporteController::inactivarTransporte();
         }
     }
-    static public function inactivarActividad()
+    static public function inactivarTransporte()
     {
         
         try {
-           
-            $ObjEspecialidad = Actividades::buscarForId($_GET['idActividiad']);
+          
+            $ObjEspecialidad = Transportedecarga::buscarForId($_GET['idtransporte']);
             $ObjEspecialidad->setEstado(0);
             $ObjEspecialidad->editar();
-            header("Location: ../vista/GestionarACtividades.php");
+            header("Location: ../vista/GestionarTransporte.php");
         } catch (Exception $e) {
-            header("Location: ../vista/gestionarPedidos.php?respuest=error");
+           header("Location: ../vista/GestionarTransporte.php?respuest=error");
         }
     }
+
     static public function crear()
     {
 
         try {
-            $arrayActividades = array();
-            $arrayActividades['Cod_act'] = "";
-            $arrayActividades['fecha'] = "";
-            $arrayActividades['ide_usua'] = $_POST['usuario'];
-            $arrayActividades['actividad'] = $_POST['actividad'];
-            $arrayActividades['pago'] = $_POST['pago'];
-            $arrayActividades['desde'] = $_POST['puertaInicial'];
-            $arrayActividades['hasta'] = $_POST['puertaFinal'];
-            $actividad = new Actividades($arrayActividades);
+            $arrayTransporte = array();
+            $arrayTransporte['usuario'] = $_POST['usuario'];
+            $arrayTransporte['puertaInicial'] = $_POST['puertaInicial'];
+            $actividad = new Transportedecarga($arrayTransporte);
             $actividad->insertar();
-            header("Location: ../vista/GestionarACtividades.php");
+            header("Location: ../vista/GestionarTransporte.php");
         } catch (Exception $e) {
             echo $e;
         }
@@ -54,11 +50,10 @@ class ActividadesController
     static public function editar()
     {
         try {
-            $arrayEspecialidad = array();
-            $arrayEspecialidad['Nombre'] = $_POST['Nombres'];
-            $arrayEspecialidad['Valor'] = $_POST['Valor'];
-            $arrayEspecialidad['idTipoArena'] = $_POST['idTipoArena'];
-            $especial = new Arena($arrayEspecialidad);
+            $arrayTransporte = array();
+            $arrayTransporte['usuario'] = $_POST['usuario'];
+            $arrayTransporte['puertaInicial'] = $_POST['puertaInicial'];
+            $especial = new Transportedecarga($arrayTransporte);
             //var_dump($arrayEspecialidad);
             $especial->editar();
             header("Location: ../Vista/indexA.php?respuesta=correcto");

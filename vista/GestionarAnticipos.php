@@ -1,5 +1,5 @@
 <?php
-require ("../modelo/Anticipos.php") ?>
+require("../modelo/Anticipos.php") ?>
 
 
 <!doctype html>
@@ -9,7 +9,7 @@ require ("../modelo/Anticipos.php") ?>
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
     <title>Anticipos</title>
-    <?php require("head.php");?>
+    <?php require("head.php"); ?>
 </head>
 
 <body>
@@ -18,7 +18,7 @@ require ("../modelo/Anticipos.php") ?>
 	<![endif]-->
     <!-- Start Left menu area -->
     <div class="left-sidebar-pro">
-    <?php require("menuizquierda.php");?>
+        <?php require("menuizquierda.php"); ?>
     </div>
     <!-- End Left menu area -->
     <!-- Start Welcome area -->
@@ -35,7 +35,7 @@ require ("../modelo/Anticipos.php") ?>
         <div class="header-advance-area">
 
             <!-- Mobile Menu start -->
-            <?php require("menuSuperior.php");?>
+            <?php require("menuSuperior.php"); ?>
             <!-- Mobile Menu end -->
             <div class="breadcome-area">
                 <div class="container-fluid">
@@ -44,13 +44,7 @@ require ("../modelo/Anticipos.php") ?>
                             <div class="breadcome-list">
                                 <div class="row">
                                     <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
-                                        <div class="breadcome-heading">
-                                            <form role="search" class="sr-input-func">
-                                                <input type="text" placeholder="Search..."
-                                                    class="search-int form-control">
-                                                <a href="#"><i class="fa fa-search"></i></a>
-                                            </form>
-                                        </div>
+
                                     </div>
 
                                 </div>
@@ -63,7 +57,7 @@ require ("../modelo/Anticipos.php") ?>
 
 
 
-        
+
         <div class="courses-area mg-b-15">
             <div class="data-table-area mg-b-15">
                 <div class="container-fluid">
@@ -72,11 +66,11 @@ require ("../modelo/Anticipos.php") ?>
                             <div class="sparkline13-list">
                                 <div class="sparkline13-hd">
                                     <div class="main-sparkline13-hd ">
-                                        
-                                        <button type="button" class="btn btn-primary float-right" data-toggle="modal"
-                                            data-target="#exampleModal">
+                                        Gestionar Anticipos
+                                        <button type="button" class="btn btn-primary float-right" data-toggle="modal" data-target="#exampleModal">
                                             Nuevo
                                         </button>
+                                        <br><br>
                                     </div>
                                 </div>
                                 <div class="sparkline13-graph">
@@ -85,31 +79,34 @@ require ("../modelo/Anticipos.php") ?>
                                         <table id="table" data-toggle="table" data-pagination="true" data-search="true">
                                             <thead>
                                                 <tr>
-                                                    
-                                                    <th>Cod_anti</th>
-                                                    <th>ide_usua</th>
-                                                    <th>Motivo_Anti</th>
-                                                    <th>Precio_Anti</th>
-                                                    <th>Fecha_Anti</th>
-                                                                                                       
+
+
+                                                    <th>Usuario</th>
+
+                                                    <th>Precio Anticipo</th>
+                                                    <th>Fecha Anticipo</th>
+                                                    <th>Acciones</th>
+
                                                 </tr>
                                             </thead>
                                             <tbody>
 
-                                            <?php
+                                                <?php
                                                 $arrayAnticipos = Anticipos::getAll();
-                                                foreach ($arrayAnticipos as $Anticipos){
-                                            ?>
-                                        <tr>
-                                            <td><?php echo $Anticipos->getCod_anti();?></td>
-                                            <td><?php echo $Anticipos->getide_usua();?></td>
-                                            <td><?php echo $Anticipos->getMotivo_anti();?></td>
-                                            <td><?php echo $Anticipos->getPrecio_anti();?></td>
-                                            <td><?php echo $Anticipos->getFecha_anti();?></td>
-                                             
+                                                foreach ($arrayAnticipos as $Anticipos) {
+                                                    ?>
+                                                    <tr>
 
-                                        </tr>
-                                    <?php } ?>
+                                                        <td><?php echo $Anticipos->getide_usua(); ?></td>
+
+                                                        <td><?php echo $Anticipos->getPrecio_anti(); ?></td>
+                                                        <td><?php echo $Anticipos->getFecha_anti(); ?></td>
+                                                        <td>
+                                                        <a href="editarAnticipo.php?idAnticipo=<?php echo $Anticipos->getCod_anti(); ?>"  title="Actualizar" class="btn btn-primary btn-circle btn-sm"> <span class="fas fa-pencil-alt " style='color:white'></span></a>
+                                                         </td>
+
+                                                    </tr>
+                                                <?php } ?>
                                             </tbody>
                                         </table>
                                     </div>
@@ -120,8 +117,7 @@ require ("../modelo/Anticipos.php") ?>
                 </div>
             </div>
         </div>
-        <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-            aria-hidden="true">
+        <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
             <div class="modal-dialog" role="document">
                 <div class="modal-content">
                 <form action="#"><!--aca tienes que colocar la action y el metodo post como en Usuarios
@@ -154,6 +150,7 @@ require ("../modelo/Anticipos.php") ?>
                                                                 </div>
                                                                 <br>
                                                             </div>
+                                                            <br>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -179,6 +176,10 @@ require ("../modelo/Anticipos.php") ?>
                                 </div>
                             </div>
                         </div>
+                        <div class="modal-footer">
+                            <button type="submit" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+                            <button type="submit" class="btn btn-primary">Agregar</button>
+                        </div>
                     </div>
                     <div class="modal-footer"><!--crear input y colocarle nombre-->
                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
@@ -194,8 +195,7 @@ require ("../modelo/Anticipos.php") ?>
                 <div class="row">
                     <div class="col-lg-12">
                         <div class="footer-copy-right">
-                            <p>Copyright © 2018. All rights reserved. Template by <a
-                                    href="https://colorlib.com/wp/templates/">Colorlib</a></p>
+                            <p>Copyright © 2018. All rights reserved. Template by <a href="https://colorlib.com/wp/templates/">Colorlib</a></p>
                         </div>
                     </div>
                 </div>
@@ -203,7 +203,7 @@ require ("../modelo/Anticipos.php") ?>
         </div>
     </div>
 
-    <?php require("footer.php");?>
+    <?php require("footer.php"); ?>
 </body>
 
 </html>
