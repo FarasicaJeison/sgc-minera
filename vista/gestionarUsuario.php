@@ -61,8 +61,8 @@ require("../modelo/Usuario.php");
                             <div class="sparkline13-list">
                                 <div class="sparkline13-hd">
                                     <div class="main-sparkline13-hd ">
-                                    <u><b><font color="Teal" face="Times New Roman,arial"size=5 >
-                                    Datos Empleados</font></b></u>
+                                    <b><font color="Gray" face="Times New Roman" size=5 >
+                                    Datos Empleados</font></b>
                                                               
                                     <p> </p>
 
@@ -77,7 +77,7 @@ require("../modelo/Usuario.php");
             </div>
                                     
                                     <p> </p>
-                                        <button type="button" class="btn btn-primary float-left" data-toggle="modal" data-target="#exampleModal">
+                                        <button type="button" class="btn btn-primary float-right" data-toggle="modal" data-target="#exampleModal">
                                             Nuevo
                                         </button>
                                         <br>  <br>
