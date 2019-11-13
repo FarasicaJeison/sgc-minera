@@ -162,13 +162,13 @@ require("../modelo/Actividades.php") ?>
                                                 <div class="form-group-inner"></div>
                                                 <br>
                                             </div>
-                                            <div class="col-lg-12 ">
+                                            <div class="col-lg-12">
                                                 <div class="form-group-inner col-lg-6">
                                                     <div class="row">
-                                                        <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
+                                                        <div class="col-lg-4 col-md-3 col-sm-3 col-xs-12">
                                                             <label class="login2 pull-right pull-right-pro">Actividad</label>
                                                         </div>
-                                                        <div class="col-lg-9 col-md-9 col-sm-9 col-xs-12">
+                                                        <div class="col-lg-8 col-md-9 col-sm-9 col-xs-12">
                                                             <div class="form-select-list">
                                                                 <select class="form-control custom-select-value" name="actividad" required>
                                                                     <option value="">Seleccione</option>
@@ -181,11 +181,11 @@ require("../modelo/Actividades.php") ?>
                                                 </div>
                                                 <div class="form-group-inner col-lg-6">
                                                     <div class="row">
-                                                        <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
+                                                        <div class="col-lg-2 col-md-3 col-sm-3 col-xs-12">
                                                             <label class="login2 pull-right pull-right-pro">Pago
                                                             </label>
                                                         </div>
-                                                        <div class="col-lg-9 col-md-9 col-sm-9 col-xs-12">
+                                                        <div class="col-lg-10 col-md-9 col-sm-9 col-xs-12">
                                                             <input type="text" class="form-control" name="pago" required>
                                                         </div>
                                                     </div>
