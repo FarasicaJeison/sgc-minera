@@ -69,7 +69,7 @@ require("../modelo/Puertas.php") ?>
                                 <div class="sparkline13-hd">
                                     <div class="main-sparkline13-hd ">
                                     <b><font color="Gray" face="Times New Roman" size=5 >
-                                    Puertas</font></b>
+                                    Gestionar Puertas</font></b>
                                                               
                                     <p> </p>
 
@@ -134,7 +134,7 @@ require("../modelo/Puertas.php") ?>
                         <div class="modal-header">
                             <h5 class="modal-title" id="exampleModalLabel">Agregar Puerta</h5>
                             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                <span aria-hidden="true">&times;</span>
+                                <span aria-hidden="true"></span>
                             </button>
                         </div>
                         <div class="modal-body">

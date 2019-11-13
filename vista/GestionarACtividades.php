@@ -135,7 +135,7 @@ require("../modelo/Actividades.php") ?>
                         <div class="modal-header">
                             <h5 class="modal-title" id="exampleModalLabel">Agregar Actividad</h5>
                             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                <span aria-hidden="true">&times;</span>
+                                <span aria-hidden="true"></span>
                             </button>
                         </div>
                         <div class="modal-body">
@@ -172,8 +172,20 @@ require("../modelo/Actividades.php") ?>
                                                             <div class="form-select-list">
                                                                 <select class="form-control custom-select-value" name="actividad" required>
                                                                     <option value="">Seleccione</option>
-                                                                    <option value="picador">picador</option>
-                                                                    <option value="embasador">embasador</option>
+                                                                    <option value="Picada">Picada</option>
+                                                                    <option value="Embasada">Embasada</option>
+                                                                    <option value="Malacateada">Malacateada</option>
+                                                                    <option value="Arrumo">Arrumo</option>
+                                                                    <option value="Puerta">Puerta</option>
+                                                                    <option value="Cargue Volqueta">Cargue Volqueta</option>
+                                                                    <option value="Laja">Laja</option>
+                                                                    <option value="Ministra">Ministra</option>
+                                                                    <option value="Rieles">Rieles</option>
+                                                                    <option value="Tramos">Tramos</option>
+                                                                    <option value="Palancas">Palancas</option>
+                                                                    <option value="Tapas">Tapas</option>
+                                                                    <option value="Descargo">Descargo</option>
+                                                                    <option value="Tacos">Tacos</option>
                                                                 </select>
                                                             </div>
                                                         </div>
@@ -201,14 +213,14 @@ require("../modelo/Actividades.php") ?>
                                                                 </div>
                                                                 <div class="col-lg-10 col-md-9 col-sm-9 col-xs-12">
                                                                     <div class="form-select-list">
-                                                                        <?php Actividades::selectPuerta(true, "new-todo", "new-todo", "form-control"); ?>
+                                                                        <?php Actividades::selectPuerta(true,  "new-todo", "new-todo", "form-control"); ?> 
                                                                     </div>
                                                                     <br>
                                                                 </div>
                                                             </div>
                                                         </div>
                                                     </div>
-                                                    <div class="form-group-inner"></div>
+                                                    <div class="form-group-inner"></div> 
                                                     <br>
                                                 </div>
                                                 <div class="all-form-element-inner">

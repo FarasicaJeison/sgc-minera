@@ -35,7 +35,7 @@ class UsuarioController
             $arrayUsuarios['telefono'] = $_POST['telefono'];
             $arrayUsuarios['telFamiliar'] = $_POST['telFamiliar'];
             $arrayUsuarios['nomFamiliar'] = $_POST['nomFamiliar'];
-            $arrayUsuarios['riesgos'] = $_POST['riesgos'];
+            
             $arrayUsuarios['eps'] = $_POST['eps'];
             $arrayUsuarios['pension'] = $_POST['pension'];
             $arrayUsuarios['rh'] = $_POST['rh'];

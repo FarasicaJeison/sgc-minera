@@ -67,7 +67,11 @@ require("../modelo/Anticipos.php");
                             <div class="sparkline13-list">
                                 <div class="sparkline13-hd">
                                     <div class="main-sparkline13-hd ">
-                                        Gestionar Anticipos
+                                    <b><font color="Gray" face="Times New Roman" size=5 >
+                                    Gestionar Anticipos</font></b>
+                                                              
+                                    <p> </p>
+                                        
                                         <button type="button" class="btn btn-primary float-right" data-toggle="modal" data-target="#exampleModal">
                                             Nuevo
                                         </button>
@@ -125,7 +129,7 @@ require("../modelo/Anticipos.php");
                     <div class="modal-header">
                         <h5 class="modal-title" id="exampleModalLabel">Agregar Anticipos</h5>
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
+                            <span aria-hidden="true"></span>
                         </button>
                     </div>
                     <div class="modal-body">

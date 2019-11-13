@@ -59,7 +59,7 @@ require ("../modelo/Nomina.php") ?>
         
         <div class="main-sparkline13-hd ">
         &nbsp;  &nbsp; &nbsp; &nbsp; &nbsp; <b><font color="Gray" face="Times New Roman" size=5 >
-                Nomina</font></b>
+                Gestionar Nomina</font></b>
                 <p> </p>
         <div class="breadcome-area">
 
@@ -137,9 +137,9 @@ require ("../modelo/Nomina.php") ?>
             <div class="modal-dialog" role="document">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h5 class="modal-title" id="exampleModalLabel">Agregar Nomina/h5>
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
+                        <h5 class="modal-title" id="exampleModalLabel">Agregar Nomina <h5>
+                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true"></span>
                         </button>
                     </div>
                     <div class="modal-body">

@@ -178,7 +178,7 @@ class Usuario extends db_abstract_class
             $this->telefono,
             $this->telFamiliar,
             $this->nomFamiliar,
-            $this->riesgos,
+            $this->riesgos="Positiva Compañia de Seguros S.A.",
             $this->eps,
             $this->pension,
             $this->rh,

@@ -155,7 +155,7 @@ require("../modelo/Usuario.php");
                         <div class="modal-header">
                             <h5 class="modal-title" id="exampleModalLabel">Agregar persona</h5>
                             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                <span aria-hidden="true">&times;</span>
+                                <span aria-hidden="true"></span>
                             </button>
                         </div>
                         <div class="modal-body">
@@ -233,27 +233,18 @@ require("../modelo/Usuario.php");
                                                     </div>
                                                 </div>
                                                 <div class="col-lg-12">
-                                                    <div class="form-group-inner col-lg-6">
+                                                    <div class="form-group-inner col-lg-12">
                                                         <div class="row">
-                                                            <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
+                                                            <div class="col-lg-2 col-md-3 col-sm-3 col-xs-12">
                                                                 <label class="login2 pull-right pull-right-pro">Telefono
                                                                     Familiar</label>
                                                             </div>
-                                                            <div class="col-lg-9 col-md-9 col-sm-9 col-xs-12">
+                                                            <div class="col-lg-10 col-md-9 col-sm-9 col-xs-12">
                                                                 <input name="telFamiliar" id="telFamiliar" type="text" class="form-control" />
                                                             </div>
                                                         </div>
                                                     </div>
-                                                    <div class="form-group-inner col-lg-6">
-                                                        <div class="row">
-                                                            <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
-                                                                <label class="login2 pull-right pull-right-pro">Riesgos</label>
-                                                            </div>
-                                                            <div class="col-lg-9 col-md-9 col-sm-9 col-xs-12">
-                                                                <input name="riesgos" id="riesgos" type="text" class="form-control" />
-                                                            </div>
-                                                        </div>
-                                                    </div>
+                                                    
                                                 </div>
                                                 <div class="col-lg-12">
                                                     <div class="form-group-inner col-lg-6">
@@ -266,6 +257,12 @@ require("../modelo/Usuario.php");
                                                                     <select name="eps" id="eps" class="form-control custom-select-value" >
                                                                         <option>Sanitas</option>
                                                                         <option>Nueva eps</option>
+                                                                        <option>Medimas</option>
+                                                                        <option>Coomeva</option>
+                                                                        <option>Eps Familiar</option>
+                                                                        <option>Comparta</option>
+                                                                        <option>Famisanar</option>
+                                                                        
 
                                                                     </select>
                                                                 </div>
@@ -278,7 +275,15 @@ require("../modelo/Usuario.php");
                                                                 <label class="login2 pull-right pull-right-pro">Pension</label>
                                                             </div>
                                                             <div class="col-lg-9 col-md-9 col-sm-9 col-xs-12">
-                                                                <input id="pension" name="pension" type="TEXT" class="form-control" />
+                                                                <div class="form-select-list">
+                                                                    <select name="eps" id="eps" class="form-control custom-select-value" >
+                                                                        <option>Colpensiones</option>
+                                                                        <option>Porvenir</option>
+                                                                        
+                                                                        
+
+                                                                    </select>
+                                                                </div>
                                                             </div>
                                                         </div>
                                                     </div>
@@ -293,7 +298,13 @@ require("../modelo/Usuario.php");
                                                                 <div class="form-select-list">
                                                                     <select name="rh" id="rh" class="form-control custom-select-value" name="account">
                                                                         <option>A+</option>
+                                                                        <option>A-</option>
                                                                         <option>B+</option>
+                                                                        <option>B-</option>
+                                                                        <option>O+</option>
+                                                                        <option>O-</option>
+                                                                        <option>AB+</option>
+                                                                        <option>AB-</option>
 
                                                                     </select>
                                                                 </div>
@@ -364,7 +375,6 @@ require("../modelo/Usuario.php");
     &nbsp;
     <p> </p>
     &nbsp;
-    
 
     <div class="footer-copyright-area">
         <div class="container-fluid">
