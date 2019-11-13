@@ -1,5 +1,6 @@
 <?php
-require("../modelo/Anticipos.php") ?>
+require("../modelo/Anticipos.php"); 
+?>
 
 
 <!doctype html>
@@ -97,12 +98,12 @@ require("../modelo/Anticipos.php") ?>
                                                     ?>
                                                     <tr>
 
-                                                        <td><?php echo $Anticipos->getide_usua(); ?></td>
+                                                        <td><?php echo $Anticipos->getide_usua()."--".$Anticipos->getNombUsua(); ?></td>
 
                                                         <td><?php echo $Anticipos->getPrecio_anti(); ?></td>
                                                         <td><?php echo $Anticipos->getFecha_anti(); ?></td>
                                                         <td>
-                                                        <a href="editarAnticipo.php?idAnticipo=<?php echo $Anticipos->getCod_anti(); ?>"  title="Actualizar" class="btn btn-primary btn-circle btn-sm"> <span class="fas fa-pencil-alt " style='color:white'></span></a>
+                                                        <a href="editarAnticipo.php?idAnticipo=<?php echo $Anticipos->getcod_anti(); ?>"  title="Actualizar" class="btn btn-primary btn-circle btn-sm"> <span class="fas fa-pencil-alt " style='color:white'></span></a>
                                                          </td>
 
                                                     </tr>
@@ -120,8 +121,7 @@ require("../modelo/Anticipos.php") ?>
         <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
             <div class="modal-dialog" role="document">
                 <div class="modal-content">
-                <form action="#"><!--aca tienes que colocar la action y el metodo post como en Usuarios
-                 pero con direccion a anticiposcontroller-->
+                <form method="post" action="../controlador/anticiposController.php?action=crear">
                     <div class="modal-header">
                         <h5 class="modal-title" id="exampleModalLabel">Agregar Anticipos</h5>
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
@@ -176,14 +176,11 @@ require("../modelo/Anticipos.php") ?>
                                 </div>
                             </div>
                         </div>
-                        <div class="modal-footer">
-                            <button type="submit" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
-                            <button type="submit" class="btn btn-primary">Agregar</button>
-                        </div>
+                       
                     </div>
                     <div class="modal-footer"><!--crear input y colocarle nombre-->
                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
-                        <button type="button" class="btn btn-primary">Agregar</button>
+                        <button type="submit" class="btn btn-primary">Agregar</button>
                     </div>
                 </div>
                 </form>

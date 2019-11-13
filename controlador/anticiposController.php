@@ -1,60 +1,44 @@
 <?php
-require_once('../modelo/Usuario.php');
+require("../modelo/Anticipos.php");
 
 if (!empty($_GET['action'])) {
-    UsuarioController::main($_GET['action']);
+    anticiposController::main($_GET['action']);
 } else {
     echo "No se encontro ninguna accion...";
 }
 
-class UsuarioController //cambiar nombre a anticipos
+class anticiposController //cambiar nombre a anticipos
 {
 
     static function main($action)
     {
-        if ($action == "registro") { //va a este menu 
-            UsuarioController::registro();
+        if ($action == "crear") { //va a este menu 
+            anticiposController::crear();
         }else if($action=="ActivarUsuario"){
-            UsuarioController::ActivarUsuario();
+            anticiposController::ActivarUsuario();
         }else if($action=="llenardatos"){
-            UsuarioController::llenardatos();
+            anticiposController::llenardatos();
         }
     }
     static public function llenardatos(){
-        $llenarDatos = UsuarioController::buscarID($_GET["id"]);
+        $llenarDatos = anticiposController::buscarID($_GET["id"]);
         
-    }
-
-    static public function registro(){
-        if(!is_null($_POST['usuarioEditar'])){//colocar nombre del input que esta al lado de boton agregar
-            UsuarioController::crear();// este lo lleva a la accion crear
-        }else{
-            UsuarioController::editarUsuario();
-        }
-    }
-    static public function Usuario($id)
-    {
-
-        $arrPerson = Arena::buscarForId($id);
-        $htmlInput = "";
-        // var_dump($arrPerson);
-        $htmlInput .= $arrPerson->getNombre();
-        return $htmlInput;
     }
 
     static public function crear()
     {
-
+     
         try {
+         
             $arrayUsuarios = array();
             $arrayUsuarios['ide_usua'] = $_POST['usuario'];//nombre del input de la vista
-            $arrayUsuarios['nombUsua'] = $_POST['precioAnticipo'];
+            $arrayUsuarios['precioAnticipo'] = $_POST['precioAnticipo'];
            
             
-            $Usuarios = new Usuario($arrayUsuarios);//lnombre del modelo en este caso es anticipos
+            $Usuarios = new Anticipos($arrayUsuarios);//lnombre del modelo en este caso es anticipos
            
             $Usuarios->insertar();
-            header("Location: ../vista/gestionarUsuario.php");
+            header("Location: ../vista/GestionarAnticipos.php");
         } catch (Exception $e) {
             echo $e;
         }

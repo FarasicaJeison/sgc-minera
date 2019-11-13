@@ -123,8 +123,8 @@ class Usuario extends db_abstract_class
         }
         else
         {
-            $htmlSelect = '<select>';
-            $htmlSelect .= "<option value='nada'>Seleccione</option>";
+            $htmlSelect = '<select class="form-control custom-select-value" >';
+            $htmlSelect .= "<option value='nada' >Seleccione</option>";
             $htmlSelect .= "</select>";
         }
         return $htmlSelect;

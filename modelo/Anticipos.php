@@ -11,6 +11,7 @@ require_once('db_abstract_class.php');
 require("../modelo/Usuario.php");
 
 
+
 class Anticipos extends db_abstract_class
 {
     private $cod_anti;
@@ -18,6 +19,7 @@ class Anticipos extends db_abstract_class
     private $motivo_anti;
     private $precio_anti;
     private $fecha_anti;
+    private $nombUsua;
        
     
 
@@ -81,7 +83,7 @@ class Anticipos extends db_abstract_class
             $Anticipos = new Anticipos();
             $Anticipos->cod_anti = $valor['cod_anti'];
             $Anticipos->ide_usua = $valor['ide_usua'];
-            $Anticipos->motivo_anti = $valor['motivo_anti'];
+            $Anticipos->nombUsua = $valor['nombUsua'];
             $Anticipos->precio_anti = $valor['precio_anti'];
             $Anticipos->fecha_anti = $valor['fecha_anti'];
             
@@ -95,17 +97,18 @@ class Anticipos extends db_abstract_class
      static function getAll()
     {
         
-        return Anticipos::buscar("SELECT cod_anti, ide_usua, precio_anti, fecha_anti FROM anticipos");
+        return Anticipos::buscar("SELECT u.nombUsua,cod_anti, a.ide_usua, precio_anti, fecha_anti FROM anticipos a join usuario u on u.ide_usua=a.ide_usua");
     }
 
     public function insertar()  
     {
-        // echo "lorena";
-        //ecambiar nombre a la tabla que se le hara el registro
-       /* $this->insertRow("INSERT INTO mydb.despacho VALUES (NULL, ?, ?, ?)", array(
-                $this->idPedidos,
-                $this->idClientes,
-                $this->idTipoArena,
+        echo "jeiison modelo";
+        $time = time();
+        $this->insertRow("INSERT INTO sgc_minera.anticipos VALUES (NULL, ?, ?, ?,?)", array(
+                $this->ide_usua,
+                $this->precioAnticipo,
+                $this->fecha_anti=date("Y-m-d ", $time),
+                $this->estado=1,
 
                 //colocar nombres de la base de datos
             )
@@ -116,7 +119,7 @@ class Anticipos extends db_abstract_class
     public function editar()
     {
 
-      /*  $this->updateRow("UPDATE mydb.clientes SET Nombres = ?, Apellidos = ?, TipoDoc = ?, Cedula = ?, Telefono = ?, Contraseña = ? WHERE idClientes = ?", array(
+        $this->updateRow("UPDATE mydb.clientes SET Nombres = ?, Apellidos = ?, TipoDoc = ?, Cedula = ?, Telefono = ?, Contraseña = ? WHERE idClientes = ?", array(
             $this->Nombres,
             $this->Apellidos,
             $this->TipoDoc,
@@ -125,7 +128,7 @@ class Anticipos extends db_abstract_class
             $this->Contraseña,
             $this->idClientes,
         ));
-        $this->Disconnect();*/
+        $this->Disconnect();
     }
 
     protected function eliminar($id)
@@ -233,6 +236,26 @@ class Anticipos extends db_abstract_class
     public function setFecha_anti($fecha_anti)
     {
         $this->fecha_anti = $fecha_anti;
+
+        return $this;
+    }
+
+    /**
+     * Get the value of nombUsua
+     */ 
+    public function getNombUsua()
+    {
+        return $this->nombUsua;
+    }
+
+    /**
+     * Set the value of nombUsua
+     *
+     * @return  self
+     */ 
+    public function setNombUsua($nombUsua)
+    {
+        $this->nombUsua = $nombUsua;
 
         return $this;
     }
