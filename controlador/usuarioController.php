@@ -14,8 +14,8 @@ class UsuarioController
     {
         if ($action == "registro") { //va a este menu 
             UsuarioController::crear();
-        }else if($action=="ActivarUsuario"){
-            UsuarioController::ActivarUsuario();
+        }else if($action=="inactivarUsuario"){
+            UsuarioController::inactivarUsuario();
         }else if($action=="llenardatos"){
             UsuarioController::llenardatos();
         }
