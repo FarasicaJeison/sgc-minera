@@ -8,6 +8,7 @@
  */
 
 require_once('db_abstract_class.php');
+require("../modelo/Usuario.php");
 
 class Anticipos extends db_abstract_class
 {
@@ -42,24 +43,28 @@ class Anticipos extends db_abstract_class
                       
         }
     }
+    public static function selectUsuario($isRequired=true, $id, $nombre, $class){
+        echo Usuario::selectUsuario($isRequired=true, $id, $nombre, $class);
+    }
 
     public static function buscarForId($id)
     {
-        /*$Especial = new Clientes();
+       
+        $Anticipos = new Anticipos();
         if ($id > 0){
-            $getrow = $Especial->getRow("SELECT * FROM clientes WHERE idClientes =?", array($id));
-            $Especial->idClientes = $getrow['idClientes'];
-            $Especial->Nombres = $getrow['Nombres'];
-            $Especial->Apellidos = $getrow['Apellidos'];
-            $Especial->TipoDoc = $getrow['TipoDoc'];
-            $Especial->Cedula = $getrow['Cedula'];
-            $Especial->Telefono = $getrow['Telefono'];
-            $Especial->Contraseña = $getrow['Contraseña'];
-            $Especial->Disconnect();
-            return $Especial;
+            $getrow = $Anticipos->getRow("SELECT * FROM anticipos WHERE cod_anti =?", array($id));
+            $Anticipos = new Anticipos();
+            $Anticipos->cod_anti = $getrow['cod_anti'];
+            $Anticipos->ide_usua = $getrow['ide_usua'];
+            
+            $Anticipos->precio_anti = $getrow['precio_anti'];
+            $Anticipos->fecha_anti = $getrow['fecha_anti'];
+          
+            $Anticipos->Disconnect();
+            return $Anticipos;
         }else{
             return NULL;
-        }*/
+        }
     }
 
    public static function buscar($query)
@@ -87,19 +92,21 @@ class Anticipos extends db_abstract_class
      static function getAll()
     {
         
-        return Anticipos::buscar("SELECT cod_anti, ide_usua, motivo_anti, precio_anti, fecha_anti FROM anticipos");
+        return Anticipos::buscar("SELECT cod_anti, ide_usua, precio_anti, fecha_anti FROM anticipos");
     }
 
     public function insertar()
     {
-       /* $this->insertRow("INSERT INTO mydb.despacho VALUES (NULL, ?, ?, ?, ?)", array(
-                $this->idTransporte,
-                $this->idPedidos,
-                $this->idClientes,
-                $this->idTipoArena,
+        $time = time();
+        $this->insertRow("INSERT INTO sgc_minera.anticipos VALUES (NULL, ?, ?, ?, ?)", array(
+                $this->ide_usua,
+                $this->precioAnticipo,
+                $this->fecha_anti=date("Y-m-d ", $time),
+                $this->estado,
+              
             )
         );
-        $this->Disconnect();*/
+        $this->Disconnect();
     }
 
     public function editar()

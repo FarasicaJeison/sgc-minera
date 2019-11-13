@@ -1,5 +1,5 @@
 <?php
-require("../modelo/Anticipos.php") ?>
+require("../modelo/Puertas.php") ?>
 
 
 <!doctype html>
@@ -8,7 +8,7 @@ require("../modelo/Anticipos.php") ?>
 <head>
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <title>Anticipos</title>
+    <title>Gestionar Puertas</title>
     <?php require("head.php"); ?>
 </head>
 
@@ -44,7 +44,9 @@ require("../modelo/Anticipos.php") ?>
                             <div class="breadcome-list">
                                 <div class="row">
                                     <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                                        <div class="breadcome-heading">
 
+                                        </div>
                                     </div>
 
                                 </div>
@@ -66,7 +68,7 @@ require("../modelo/Anticipos.php") ?>
                             <div class="sparkline13-list">
                                 <div class="sparkline13-hd">
                                     <div class="main-sparkline13-hd ">
-                                        Gestionar Anticipos
+                                        Gestionar Puertas
                                         <button type="button" class="btn btn-primary float-right" data-toggle="modal" data-target="#exampleModal">
                                             Nuevo
                                         </button>
@@ -81,10 +83,10 @@ require("../modelo/Anticipos.php") ?>
                                                 <tr>
 
 
-                                                    <th>Usuario</th>
-
-                                                    <th>Precio Anticipo</th>
-                                                    <th>Fecha Anticipo</th>
+                                                    <th>Codigo Puerta</th>
+                                                    <th>Fecha</th>
+                                                    <th>Precio</th>
+                                                    <th>Tramo</th>
                                                     <th>Acciones</th>
 
                                                 </tr>
@@ -92,18 +94,20 @@ require("../modelo/Anticipos.php") ?>
                                             <tbody>
 
                                                 <?php
-                                                $arrayAnticipos = Anticipos::getAll();
-                                                foreach ($arrayAnticipos as $Anticipos) {
+                                                $arrayPuertas = Puertas::getAll();
+                                                foreach ($arrayPuertas as $puertas) {
+
                                                     ?>
                                                     <tr>
 
-                                                        <td><?php echo $Anticipos->getide_usua(); ?></td>
-
-                                                        <td><?php echo $Anticipos->getPrecio_anti(); ?></td>
-                                                        <td><?php echo $Anticipos->getFecha_anti(); ?></td>
+                                                        <td><?php echo $puertas->getCod_puer(); ?></td>
+                                                        <td><?php echo $puertas->getFecha_creacion(); ?></td>
+                                                        <td><?php echo $puertas->getPrecio_puer(); ?></td>
+                                                        <td><?php echo $puertas->getTramo(); ?></td>
                                                         <td>
-                                                        <a href="editarAnticipo.php?idAnticipo=<?php echo $Anticipos->getCod_anti(); ?>"  title="Actualizar" class="btn btn-primary btn-circle btn-sm"> <span class="fas fa-pencil-alt " style='color:white'></span></a>
-                                                         </td>
+                                                            <a href="editarpuerta.php?idpuerta=<?php echo $puertas->getCod_puer(); ?>" title="Eliminar" class="btn btn-primary btn-circle btn-sm"> <span class="fas fa-pencil-alt " style='color:white'></span></a>
+                                                            <a href="../controlador/puertasController.php?action=inactivarPuertas&idPuerta=<?php echo $puertas->getCod_puer(); ?>" title="Eliminar" class="btn btn-danger btn-circle btn-sm"> <span class="fas fa-trash" style='color:white'></span></a>
+                                                        </td>
 
                                                     </tr>
                                                 <?php } ?>
@@ -119,10 +123,11 @@ require("../modelo/Anticipos.php") ?>
         </div>
         <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
             <div class="modal-dialog" role="document">
-                <form method="post" action="../controlador/anticiposController.php?action=crear">
+                <form method="post" action="../controlador/puertasController.php?action=crear">
+
                     <div class="modal-content">
                         <div class="modal-header">
-                            <h5 class="modal-title" id="exampleModalLabel">Agregar Anticipos</h5>
+                            <h5 class="modal-title" id="exampleModalLabel">Agregar Puerta</h5>
                             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                 <span aria-hidden="true">&times;</span>
                             </button>
@@ -134,28 +139,26 @@ require("../modelo/Anticipos.php") ?>
                                         <div class="col-lg-12 ">
                                             <div class="all-form-element-inner">
 
+
                                                 <div class="form-group-inner col-lg-12">
                                                     <div class="row">
                                                         <div class="col-lg-2 col-md-3 col-sm-3 col-xs-12">
-                                                            <label class="login2 pull-right pull-right-pro">Usuario</label>
+                                                            <label class="login2 pull-right pull-right-pro">Precio</label>
                                                         </div>
                                                         <div class="col-lg-10 col-md-9 col-sm-9 col-xs-12">
-                                                            <div class="form-select-list">
-                                                                <?php Anticipos::selectUsuario(true, "new-todo", "new-todo", "form-control"); ?>
-                                                            </div>
-                                                            <br>
+                                                            <input id="precio" name="precio" type="text" class="form-control" />
                                                         </div>
                                                     </div>
                                                 </div>
-                                                <br><br>
-                                                <div class="form-group-inner col-lg-12 ">
+
+
+                                                <div class="form-group-inner col-lg-12">
                                                     <div class="row">
                                                         <div class="col-lg-2 col-md-3 col-sm-3 col-xs-12">
-                                                            <label class="login2 pull-right pull-right-pro">Precio
-                                                                Anticipo</label>
+                                                            <label class="login2 pull-right pull-right-pro">Tramo</label>
                                                         </div>
                                                         <div class="col-lg-10 col-md-9 col-sm-9 col-xs-12">
-                                                            <input type="text" class="form-control" name="precioAnticipo" />
+                                                            <input id="tramo" name="tramo" type="text" class="form-control" />
                                                         </div>
                                                     </div>
                                                 </div>

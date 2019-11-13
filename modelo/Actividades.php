@@ -8,7 +8,8 @@
  */
 
 require_once('db_abstract_class.php');
-require("../modelo/Usuario.php");
+
+require("../modelo/Puertas.php");
 
 class Actividades extends db_abstract_class
 {
@@ -19,6 +20,8 @@ class Actividades extends db_abstract_class
     private $fecha;
     private $desde;
     private $hasta;
+    private $estado;
+    private $nombUsua;
     
 
     /**
@@ -49,26 +52,32 @@ class Actividades extends db_abstract_class
 
     public static function buscarForId($id)
     {
-        /*$Especial = new Clientes();
+        $actividades = new actividades();
         if ($id > 0){
-            $getrow = $Especial->getRow("SELECT * FROM clientes WHERE idClientes =?", array($id));
-            $Especial->idClientes = $getrow['idClientes'];
-            $Especial->Nombres = $getrow['Nombres'];
-            $Especial->Apellidos = $getrow['Apellidos'];
-            $Especial->TipoDoc = $getrow['TipoDoc'];
-            $Especial->Cedula = $getrow['Cedula'];
-            $Especial->Telefono = $getrow['Telefono'];
-            $Especial->Contraseña = $getrow['Contraseña'];
-            $Especial->Disconnect();
-            return $Especial;
+           
+            $getrow = $actividades->getRow("SELECT * FROM actividades WHERE cod_act =?", array($id));
+            $actividades->cod_act = $id;
+            $actividades->ide_usua = $getrow['ide_usua'];
+            $actividades->actividad = $getrow['actividad'];
+            $actividades->pago = $getrow['pago'];
+            $actividades->fecha = $getrow['fecha'];
+            $actividades->desde = $getrow['desde'];
+            $actividades->hasta = $getrow['hasta'];
+            $actividades->Disconnect();
+            return $actividades;
         }else{
             return NULL;
-        }*/
+        }
     }
     public static function selectUsuario($isRequired=true, $id, $nombre, $class){
         echo Usuario::selectUsuario($isRequired=true, $id, $nombre, $class);
     }
-
+    public static function selectPuerta($isRequired=true, $id, $nombre, $class){
+       echo Puertas::selectPuerta($isRequired=true, $id, $nombre, $class);
+    }
+    public static function selectPuertafinal($isRequired=true, $id, $nombre, $class){
+        echo Puertas::selectPuertafinal($isRequired=true, $id, $nombre, $class);
+     }
    public static function buscar($query)
     {
        
@@ -79,12 +88,14 @@ class Actividades extends db_abstract_class
         foreach ($getrows as $valor) {
             $Actividades = new Actividades();
             $Actividades->cod_act = $valor['cod_act'];
+            $Actividades->nombUsua = $valor['nombUsua'];
             $Actividades->ide_usua = $valor['ide_usua'];
             $Actividades->actividad = $valor['actividad'];
             $Actividades->pago = $valor['pago'];
             $Actividades->fecha = $valor['fecha'];
             $Actividades->desde = $valor['desde'];
             $Actividades->hasta = $valor['hasta'];
+            $Actividades->estado = $valor['estado'];
             
 
             array_push($arrayActividades, $Actividades);
@@ -96,19 +107,21 @@ class Actividades extends db_abstract_class
 
      static function getAll()
     {
-        return Actividades::buscar("SELECT cod_act, ide_usua, actividad, pago, fecha, desde, hasta FROM actividades");
+        return Actividades::buscar("SELECT cod_act,nombUsua ,u.ide_usua, actividad, pago, fecha, desde, hasta, a.estado FROM actividades a join usuario u on u.ide_usua=a.ide_usua where a.estado=1 order by cod_act desc");
     }
 
     public function insertar()
     {
-        $this->insertRow("INSERT INTO sgc_minera.actividades VALUES (NULL, ?, ?, ?, ?, ?, ?)", array(
+        $time = time();
+        $this->insertRow("INSERT INTO sgc_minera.actividades VALUES (NULL, ?, ?, ?, ?, ?, ?, ?)", array(
               
                 $this->ide_usua,
                 $this->actividad,
                 $this->pago,
-                $this->fecha,
+                $this->fecha=date("Y-m-d ", $time),
                 $this->desde,
                 $this->hasta,
+                $this->estado=1,
             )
         );
         $this->Disconnect();
@@ -116,17 +129,22 @@ class Actividades extends db_abstract_class
 
     public function editar()
     {
-
-      /*  $this->updateRow("UPDATE mydb.clientes SET Nombres = ?, Apellidos = ?, TipoDoc = ?, Cedula = ?, Telefono = ?, Contraseña = ? WHERE idClientes = ?", array(
-            $this->Nombres,
-            $this->Apellidos,
-            $this->TipoDoc,
-            $this->Cedula,
-            $this->Telefono,
-            $this->Contraseña,
-            $this->idClientes,
+       
+        $time = time();
+        $this->updateRow("UPDATE sgc_minera.actividades SET ide_usua = ?, actividad = ?,
+         pago = ?, fecha = ?, desde = ?, hasta = ?, estado = ?
+         WHERE cod_act = ?", array(
+                $this->ide_usua,
+                $this->actividad,
+                $this->pago,
+                $this->fecha=date("Y-m-d ", $time),
+                $this->desde,
+                $this->hasta,
+                $this->estado,
+                $this->cod_act,
+              
         ));
-        $this->Disconnect();*/
+        $this->Disconnect();
     }
 
     protected function eliminar($id)
@@ -273,6 +291,46 @@ class Actividades extends db_abstract_class
     public function setHasta($hasta)
     {
         $this->hasta = $hasta;
+
+        return $this;
+    }
+
+    /**
+     * Get the value of estado
+     */ 
+    public function getEstado()
+    {
+        return $this->estado;
+    }
+
+    /**
+     * Set the value of estado
+     *
+     * @return  self
+     */ 
+    public function setEstado($estado)
+    {
+        $this->estado = $estado;
+
+        return $this;
+    }
+
+    /**
+     * Get the value of nombUsua
+     */ 
+    public function getNombUsua()
+    {
+        return $this->nombUsua;
+    }
+
+    /**
+     * Set the value of nombUsua
+     *
+     * @return  self
+     */ 
+    public function setNombUsua($nombUsua)
+    {
+        $this->nombUsua = $nombUsua;
 
         return $this;
     }

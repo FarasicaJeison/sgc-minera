@@ -13,34 +13,52 @@ class UsuarioController
     static function main($action)
     {
         if ($action == "registro") {
-            UsuarioController::registro();
-        }else if($action=="ActivarUsuario"){
-            UsuarioController::ActivarUsuario();
-        }else if($action=="llenardatos"){
-            UsuarioController::llenardatos();
-        }
-    }
-    static public function llenardatos(){
-        $llenarDatos = UsuarioController::buscarID($_GET["id"]);
-        
-    }
-
-    static public function registro(){
-        if(!is_null($_POST['usuarioEditar'])){
             UsuarioController::crear();
-        }else{
-            UsuarioController::editarUsuario();
+        } else if ($action == "inactivarUsuario") {
+            UsuarioController::inactivarUsuario();
+        } else if ($action == "buscarID") {
+            UsuarioController::buscarID($_GET['idUsuario']);
+        }else if ($action == "Login") {
+            UsuarioController::Login();
         }
     }
-    static public function Usuario($id)
-    {
+    public function Login()
+    {  
+        echo "jeiison entro";
+        try {
+         
+            $User = $_POST['usuario'];
+            $Password = $_POST['contrasena'];
 
-        $arrPerson = Arena::buscarForId($id);
-        $htmlInput = "";
-        // var_dump($arrPerson);
-        $htmlInput .= $arrPerson->getNombre();
-        return $htmlInput;
+            if (!empty($User) && !empty($Password)) {
+                $respuesta = Usuario::Login($User, $Password);
+                if (is_array($respuesta)) {
+                    $_SESSION['ide_usua'] = $respuesta['ide_usua'];
+                    $_SESSION['nombUsua'] = $respuesta['nombUsua'];
+                    $_SESSION['apeUsua'] = $respuesta['apeUsua'];
+                    echo TRUE;
+                } else if ($respuesta == "Password Incorrecto") {
+                    echo "<div class='ui-state-error ui-corner-all' style='margin-top: 20px; padding: 0 .7em;'>";
+                    echo "<p><span class='ui-icon ui-icon-alert' style='float: left; margin-right: .3em;'></span>";
+                    echo "<strong>Error!</strong> La Contraseña No Coincide Con El Usuario</p>";
+                    echo "</div>";
+                } else if ($respuesta == "No existe el usuario") {
+                    echo "<div class='ui-state-error ui-corner-all' style='margin-top: 20px; padding: 0 .7em;'>";
+                    echo "<p><span class='ui-icon ui-icon-alert' style='float: left; margin-right: .3em;'></span>";
+                    echo "<strong>Error!</strong> No Existe Un Usuario Con Estos Datos</p>";
+                    echo "</div>";
+                }
+            } else {
+                echo "<div class='ui-state-error ui-corner-all' style='margin-top: 20px; padding: 0 .7em;'>";
+                echo "<p><span class='ui-icon ui-icon-alert' style='float: left; margin-right: .3em;'></span>";
+                echo "<strong>Error!</strong> Datos Vacios</p>";
+                echo "</div>";
+            }
+        } catch (Exception $e) {
+            header("Location: ../vista/index.php?respuesta=error");
+        }
     }
+
 
     static public function crear()
     {
@@ -62,7 +80,7 @@ class UsuarioController
             $arrayUsuarios['usuario'] = $_POST['usuario'];
             $arrayUsuarios['contrasena'] = $_POST['contrasena'];
             $Usuarios = new Usuario($arrayUsuarios);
-           
+
             $Usuarios->insertar();
             header("Location: ../vista/gestionarUsuario.php");
         } catch (Exception $e) {
@@ -88,23 +106,23 @@ class UsuarioController
             $arrayUsuarios['usuario'] = $_POST['usuario'];
             $arrayUsuarios['contrasena'] = $_POST['contrasena'];
             $Usuarios = new Usuario($arrayUsuarios);
-           
+
             $Usuarios->editar();
             header("Location: ../Vista/indexA.php?respuesta=correcto");
         } catch (Exception $e) {
             header("Location: ../Vista/editarArena.php?respuesta=error");
         }
-       return UsuarioController::buscarID($_GET["id"]);
+        return UsuarioController::buscarID($_GET["id"]);
     }
 
 
-    static public function ActivarUsuario()
+    static public function inactivarUsuario()
     {
-        
+
         try {
-           
+
             $ObjEspecialidad = Usuario::buscarForId($_GET['idUsuario']);
-            $ObjEspecialidad->setEstado(1);
+            $ObjEspecialidad->setEstado(0);
             $ObjEspecialidad->editar();
             header("Location: ../vista/gestionarUsuario.php");
         } catch (Exception $e) {
@@ -112,7 +130,7 @@ class UsuarioController
         }
     }
 
-   
+
 
     static public function buscarID($id)
     {

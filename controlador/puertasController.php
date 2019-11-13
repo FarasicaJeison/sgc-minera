@@ -1,51 +1,48 @@
 <?php
-require_once('../modelo/Actividades.php');
+require_once('../modelo/Puertas.php');
 
 if (!empty($_GET['action'])) {
-    ActividadesController::main($_GET['action']);
+   
+    puertasController::main($_GET['action']);
 } else {
     echo "No se encontro ninguna accion...";
 }
 
-class ActividadesController
+class puertasController
 {
 
     static function main($action)
     {
         if ($action == "crear") {
-            ActividadesController::crear();
-        }else if($action=="inactivarActividad"){
-            ActividadesController::inactivarActividad();
+           
+            puertasController::crear();
+        }else if($action == 'inactivarPuertas'){
+            puertasController::inactivarPuertas();
         }
     }
-    static public function inactivarActividad()
+
+    static public function inactivarPuertas()
     {
-        
         try {
            
-            $ObjEspecialidad = Actividades::buscarForId($_GET['idActividiad']);
+            $ObjEspecialidad = puertas::buscarForId($_GET['idPuerta']);
             $ObjEspecialidad->setEstado(0);
             $ObjEspecialidad->editar();
-            header("Location: ../vista/GestionarACtividades.php");
+            header("Location: ../vista/Gestionarpuertas.php");
         } catch (Exception $e) {
             header("Location: ../vista/gestionarPedidos.php?respuest=error");
         }
     }
+
     static public function crear()
     {
-
         try {
-            $arrayActividades = array();
-            $arrayActividades['Cod_act'] = "";
-            $arrayActividades['fecha'] = "";
-            $arrayActividades['ide_usua'] = $_POST['usuario'];
-            $arrayActividades['actividad'] = $_POST['actividad'];
-            $arrayActividades['pago'] = $_POST['pago'];
-            $arrayActividades['desde'] = $_POST['puertaInicial'];
-            $arrayActividades['hasta'] = $_POST['puertaFinal'];
-            $actividad = new Actividades($arrayActividades);
-            $actividad->insertar();
-            header("Location: ../vista/GestionarACtividades.php");
+            $arrayPuertas = array();
+            $arrayPuertas['precio'] = $_POST['precio'];
+            $arrayPuertas['tramo'] = $_POST['tramo'];
+            $puertas = new puertas($arrayPuertas);
+            $puertas->insertar();
+            header("Location: ../vista/Gestionarpuertas.php");
         } catch (Exception $e) {
             echo $e;
         }
@@ -58,7 +55,7 @@ class ActividadesController
             $arrayEspecialidad['Nombre'] = $_POST['Nombres'];
             $arrayEspecialidad['Valor'] = $_POST['Valor'];
             $arrayEspecialidad['idTipoArena'] = $_POST['idTipoArena'];
-            $especial = new Arena($arrayEspecialidad);
+            $especial = new puertas($arrayEspecialidad);
             //var_dump($arrayEspecialidad);
             $especial->editar();
             header("Location: ../Vista/indexA.php?respuesta=correcto");

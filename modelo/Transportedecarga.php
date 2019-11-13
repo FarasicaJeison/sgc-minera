@@ -9,11 +9,15 @@
 
 require_once('db_abstract_class.php');
 
+require("../modelo/Puertas.php");
+
 class Transportedecarga extends db_abstract_class
 {
     private $cod_trans;
     private $ide_usua;
     private $cod_puer;
+    private $nombUsua;
+    private $estado;
       
 
     /**
@@ -34,27 +38,27 @@ class Transportedecarga extends db_abstract_class
             $this->cod_trans = "";
             $this->ide_usua = "";
             $this->cod_puer = "";
+            $this->nombUsua = "";
+            $this->estado = "";
                                 
         }
     }
 
     public static function buscarForId($id)
-    {
-        /*$Especial = new Clientes();
+    {   
+        $Transportedecarga = new Transportedecarga();
         if ($id > 0){
-            $getrow = $Especial->getRow("SELECT * FROM clientes WHERE idClientes =?", array($id));
-            $Especial->idClientes = $getrow['idClientes'];
-            $Especial->Nombres = $getrow['Nombres'];
-            $Especial->Apellidos = $getrow['Apellidos'];
-            $Especial->TipoDoc = $getrow['TipoDoc'];
-            $Especial->Cedula = $getrow['Cedula'];
-            $Especial->Telefono = $getrow['Telefono'];
-            $Especial->Contraseña = $getrow['Contraseña'];
-            $Especial->Disconnect();
-            return $Especial;
+            $getrow = $Transportedecarga->getRow("SELECT * FROM transportedecarga WHERE cod_trans =?", array($id));
+            
+            $Transportedecarga->cod_trans = $getrow['cod_trans'];
+            $Transportedecarga->ide_usua = $getrow['ide_usua'];
+            $Transportedecarga->cod_puer = $getrow['cod_puer'];
+            $Transportedecarga->estado = $getrow['estado'];
+            $Transportedecarga->Disconnect();
+            return $Transportedecarga;
         }else{
             return NULL;
-        }*/
+        }
     }
 
    public static function buscar($query)
@@ -70,46 +74,55 @@ class Transportedecarga extends db_abstract_class
             $Transportedecarga->cod_trans = $valor['cod_trans'];
             $Transportedecarga->ide_usua = $valor['ide_usua'];
             $Transportedecarga->cod_puer = $valor['cod_puer'];
+            $Transportedecarga->nombUsua = $valor['nombUsua'];
                        
             array_push($arrayTransportedecarga, $Transportedecarga);
                    
         }
         $tmp->Disconnect();
-        
-        return $arrayTransportedecarga;
+       
+       return $arrayTransportedecarga;
     }
+
+    public static function selectUsuario($isRequired=true, $id, $nombre, $class){
+        echo Usuario::selectUsuario($isRequired=true, $id, $nombre, $class);
+    }
+
+    public static function selectPuerta($isRequired=true, $id, $nombre, $class){
+        echo Puertas::selectPuerta($isRequired=true, $id, $nombre, $class);
+     }
 
      static function getAll()
     {
         
-        return Transportedecarga::buscar("SELECT cod_trans, ide_usua, cod_puer FROM transportedecarga");
+        return Transportedecarga::buscar("SELECT nombUsua, cod_trans, tc.ide_usua, cod_puer, tc.estado FROM transportedecarga tc join usuario u on u.ide_usua=tc.ide_usua where tc.estado=1 order by cod_trans desc");
     }
 
     public function insertar()
     {
-       /* $this->insertRow("INSERT INTO mydb.despacho VALUES (NULL, ?, ?, ?, ?)", array(
-                $this->idTransporte,
-                $this->idPedidos,
-                $this->idClientes,
-                $this->idTipoArena,
+        $this->insertRow("INSERT INTO sgc_minera.transportedecarga VALUES (NULL, ?, ?, ?)", array(
+                $this->usuario,
+                $this->puertaInicial,
+                $this->estado=1,
+                
             )
         );
-        $this->Disconnect();*/
+        $this->Disconnect();
     }
 
     public function editar()
     {
 
-      /*  $this->updateRow("UPDATE mydb.clientes SET Nombres = ?, Apellidos = ?, TipoDoc = ?, Cedula = ?, Telefono = ?, Contraseña = ? WHERE idClientes = ?", array(
-            $this->Nombres,
-            $this->Apellidos,
-            $this->TipoDoc,
-            $this->Cedula,
-            $this->Telefono,
-            $this->Contraseña,
-            $this->idClientes,
+       $this->updateRow("UPDATE sgc_minera.transportedecarga SET ide_usua = ?, 
+       cod_puer = ?, estado = ?
+       
+        WHERE cod_trans = ?", array(
+            $this->usuario,
+            $this->puertaInicial,
+            $this->estado,
+            $this->cod_trans,
         ));
-        $this->Disconnect();*/
+        $this->Disconnect();
     }
 
     protected function eliminar($id)
@@ -117,25 +130,7 @@ class Transportedecarga extends db_abstract_class
       /*  return Clientes::buscar("delete from clientes where idCliente=?");*/
     }
 
-    /**
-     * Get the value of cod_trans
-     */ 
-    public function getCod_trans()
-    {
-        return $this->cod_trans;
-    }
-
-    /**
-     * Set the value of cod_trans
-     *
-     * @return  self
-     */ 
-    public function setCod_trans($cod_trans)
-    {
-        $this->cod_trans = $cod_trans;
-
-        return $this;
-    }
+    
 
     /**
      * Get the value of ide_usua
@@ -173,6 +168,66 @@ class Transportedecarga extends db_abstract_class
     public function setCod_puer($cod_puer)
     {
         $this->cod_puer = $cod_puer;
+
+        return $this;
+    }
+
+    /**
+     * Get the value of nombUsua
+     */ 
+    public function getNombUsua()
+    {
+        return $this->nombUsua;
+    }
+
+    /**
+     * Set the value of nombUsua
+     *
+     * @return  self
+     */ 
+    public function setNombUsua($nombUsua)
+    {
+        $this->nombUsua = $nombUsua;
+
+        return $this;
+    }
+
+    /**
+     * Get the value of cod_trans
+     */ 
+    public function getCod_trans()
+    {
+        return $this->cod_trans;
+    }
+
+    /**
+     * Set the value of cod_trans
+     *
+     * @return  self
+     */ 
+    public function setCod_trans($cod_trans)
+    {
+        $this->cod_trans = $cod_trans;
+
+        return $this;
+    }
+
+    /**
+     * Get the value of estado
+     */ 
+    public function getEstado()
+    {
+        return $this->estado;
+    }
+
+    /**
+     * Set the value of estado
+     *
+     * @return  self
+     */ 
+    public function setEstado($estado)
+    {
+        $this->estado = $estado;
 
         return $this;
     }
