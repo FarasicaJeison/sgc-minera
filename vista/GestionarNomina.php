@@ -45,11 +45,7 @@ require ("../modelo/Nomina.php") ?>
                                 <div class="row">
                                     <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
                                         <div class="breadcome-heading">
-                                            <form role="search" class="sr-input-func">
-                                                <input type="text" placeholder="Search..."
-                                                    class="search-int form-control">
-                                                <a href="#"><i class="fa fa-search"></i></a>
-                                            </form>
+                                            
                                         </div>
                                     </div>
 
@@ -60,7 +56,12 @@ require ("../modelo/Nomina.php") ?>
                 </div>
             </div>
         </div>
-
+        
+        <div class="main-sparkline13-hd ">
+        &nbsp;  &nbsp; &nbsp; &nbsp; &nbsp; <b><font color="Gray" face="Times New Roman" size=5 >
+                Nomina</font></b>
+                <p> </p>
+        <div class="breadcome-area">
 
 
         
@@ -79,6 +80,11 @@ require ("../modelo/Nomina.php") ?>
                                         </button>
                                     </div>
                                 </div>
+                                
+                                &nbsp;
+                                <p> </p>
+                                
+
                                 <div class="sparkline13-graph">
                                     <div class="datatable-dashv1-list custom-datatable-overright">
 
@@ -301,6 +307,13 @@ require ("../modelo/Nomina.php") ?>
                 </div>
             </div>
         </div>
+        &nbsp;
+    <p> </p>
+    &nbsp;
+
+    &nbsp;
+    <p> </p>
+    &nbsp;
         <div class="footer-copyright-area">
             <div class="container-fluid">
                 <div class="row">

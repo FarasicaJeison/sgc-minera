@@ -59,10 +59,15 @@ require("../modelo/Usuario.php");
                     <div class="row">
                         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                             <div class="sparkline13-list">
+
+                            &nbsp;
+                            <p> </p>
+                            &nbsp;
+
                                 <div class="sparkline13-hd">
                                     <div class="main-sparkline13-hd ">
-                                    <u><b><font color="Teal" face="Times New Roman,arial"size=5 >
-                                    Datos Empleados</font></b></u>
+                                    <b><font color="Gray" face="Times New Roman" size=5 >
+                                    Datos Empleados</font></b>
                                                               
                                     <p> </p>
 
@@ -77,7 +82,7 @@ require("../modelo/Usuario.php");
             </div>
                                     
                                     <p> </p>
-                                        <button type="button" class="btn btn-primary float-left" data-toggle="modal" data-target="#exampleModal">
+                                        <button type="button" class="btn btn-primary float-right" data-toggle="modal" data-target="#exampleModal">
                                             Nuevo
                                         </button>
                                         <br>  <br>
@@ -351,6 +356,16 @@ require("../modelo/Usuario.php");
         </div>
     </div>
     </div>
+
+    &nbsp;
+    <p> </p>
+    &nbsp;
+
+    &nbsp;
+    <p> </p>
+    &nbsp;
+    
+
     <div class="footer-copyright-area">
         <div class="container-fluid">
             <div class="row">
