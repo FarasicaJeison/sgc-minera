@@ -8,6 +8,8 @@
  */
 
 require_once('db_abstract_class.php');
+require("../modelo/Usuario.php");
+
 
 class Anticipos extends db_abstract_class
 {
@@ -41,6 +43,10 @@ class Anticipos extends db_abstract_class
             $this->fecha_anti = "";
                       
         }
+    }
+
+    public static function selectUsuario($isRequired=true, $id, $nombre, $class){
+        echo Usuario::selectUsuario($isRequired=true, $id, $nombre, $class);
     }
 
     public static function buscarForId($id)
@@ -92,11 +98,14 @@ class Anticipos extends db_abstract_class
 
     public function insertar()
     {
-       /* $this->insertRow("INSERT INTO mydb.despacho VALUES (NULL, ?, ?, ?, ?)", array(
-                $this->idTransporte,
+        // echo "lorena";
+        //ecambiar nombre a la tabla que se le hara el registro
+       /* $this->insertRow("INSERT INTO mydb.despacho VALUES (NULL, ?, ?, ?)", array(
                 $this->idPedidos,
                 $this->idClientes,
                 $this->idTipoArena,
+
+                //colocar nombres de la base de datos
             )
         );
         $this->Disconnect();*/

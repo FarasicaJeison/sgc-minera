@@ -142,7 +142,7 @@ class Usuario extends db_abstract_class
 
      static function getAll()
     {
-        return Usuario::buscar("SELECT ide_usua,nombUsua, apeUsua, direccion, telefono, riesgos, eps, pension, rh, rol, usuario, telFamiliar FROM usuario order by 1 desc");
+        return Usuario::buscar("SELECT contrasena, estado, ide_usua,nombUsua, apeUsua, direccion, telefono, riesgos, eps, pension, rh, rol, usuario, telFamiliar FROM usuario order by 1 desc");
     }
 
     public function insertar()

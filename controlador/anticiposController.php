@@ -7,7 +7,7 @@ if (!empty($_GET['action'])) {
     echo "No se encontro ninguna accion...";
 }
 
-class UsuarioController
+class UsuarioController //cambiar nombre a anticipos
 {
 
     static function main($action)
@@ -26,7 +26,7 @@ class UsuarioController
     }
 
     static public function registro(){
-        if(!is_null($_POST['usuarioEditar'])){
+        if(!is_null($_POST['usuarioEditar'])){//colocar nombre del input que esta al lado de boton agregar
             UsuarioController::crear();// este lo lleva a la accion crear
         }else{
             UsuarioController::editarUsuario();
@@ -47,21 +47,11 @@ class UsuarioController
 
         try {
             $arrayUsuarios = array();
-            $arrayUsuarios['ide_usua'] = $_POST['documento'];
-            $arrayUsuarios['nombUsua'] = $_POST['nombUsua'];
-            $arrayUsuarios['apeUsua'] = $_POST['apeUsua'];
-            $arrayUsuarios['direccion'] = $_POST['direccion'];
-            $arrayUsuarios['telefono'] = $_POST['telefono'];
-            $arrayUsuarios['telFamiliar'] = $_POST['telFamiliar'];
-            $arrayUsuarios['nomFamiliar'] = $_POST['nomFamiliar'];
-            $arrayUsuarios['riesgos'] = $_POST['riesgos'];
-            $arrayUsuarios['eps'] = $_POST['eps'];
-            $arrayUsuarios['pension'] = $_POST['pension'];
-            $arrayUsuarios['rh'] = $_POST['rh'];
-            $arrayUsuarios['rol'] = $_POST['rol'];
-            $arrayUsuarios['usuario'] = $_POST['usuario'];
-            $arrayUsuarios['contrasena'] = $_POST['contrasena'];
-            $Usuarios = new Usuario($arrayUsuarios);
+            $arrayUsuarios['ide_usua'] = $_POST['usuario'];//nombre del input de la vista
+            $arrayUsuarios['nombUsua'] = $_POST['precioAnticipo'];
+           
+            
+            $Usuarios = new Usuario($arrayUsuarios);//lnombre del modelo en este caso es anticipos
            
             $Usuarios->insertar();
             header("Location: ../vista/gestionarUsuario.php");

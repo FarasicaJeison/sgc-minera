@@ -44,27 +44,14 @@ require("../modelo/Usuario.php");
                 <div class="container-fluid">
                     <div class="row">
                         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                            <div class="breadcome-list">
-                                <div class="row">
-                                    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
-                                        <div class="breadcome-heading">
-                                            <form role="search" class="sr-input-func">
-                                                <input type="text" placeholder="Search..." class="search-int form-control">
-                                                <a href="#"><i class="fa fa-search"></i></a>
-                                            </form>
-                                        </div>
-                                    </div>
-
-                                </div>
-                            </div>
+                            
                         </div>
                     </div>
                 </div>
             </div>
         </div>
 
-
-
+        <p> </p>
 
         <div class="courses-area mg-b-15">
             <div class="data-table-area mg-b-15">
@@ -74,8 +61,23 @@ require("../modelo/Usuario.php");
                             <div class="sparkline13-list">
                                 <div class="sparkline13-hd">
                                     <div class="main-sparkline13-hd ">
-                                        Datos Empleados
-                                        <button type="button" class="btn btn-primary float-right" data-toggle="modal" data-target="#exampleModal">
+                                    <u><b><font color="Teal" face="Times New Roman,arial"size=5 >
+                                    Datos Empleados</font></b></u>
+                                                              
+                                    <p> </p>
+
+                                    <div class="breadcome-area">
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                            
+                        </div>
+                    </div>
+                </div>
+            </div>
+                                    
+                                    <p> </p>
+                                        <button type="button" class="btn btn-primary float-left" data-toggle="modal" data-target="#exampleModal">
                                             Nuevo
                                         </button>
                                         <br>  <br>
@@ -169,7 +171,7 @@ require("../modelo/Usuario.php");
                                                                 <label class="login2 pull-right pull-right-pro">Documento</label>
                                                             </div>
                                                             <div class="col-lg-9 col-md-9 col-sm-9 col-xs-12">
-                                                                <input id="documento" name="documento" value="<?php echo $dataUsuario->getIde_usua()?>" type="text" class="form-control" value=""/>
+                                                                <input id="documento" name="documento" type="text" class="form-control" value=""/>
                                                             </div>
                                                         </div>
                                                     </div>
