@@ -59,6 +59,11 @@ require("../modelo/Usuario.php");
                     <div class="row">
                         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                             <div class="sparkline13-list">
+
+                            &nbsp;
+                            <p> </p>
+                            &nbsp;
+
                                 <div class="sparkline13-hd">
                                     <div class="main-sparkline13-hd ">
                                     <b><font color="Gray" face="Times New Roman" size=5 >
@@ -351,6 +356,16 @@ require("../modelo/Usuario.php");
         </div>
     </div>
     </div>
+
+    &nbsp;
+    <p> </p>
+    &nbsp;
+
+    &nbsp;
+    <p> </p>
+    &nbsp;
+    
+
     <div class="footer-copyright-area">
         <div class="container-fluid">
             <div class="row">

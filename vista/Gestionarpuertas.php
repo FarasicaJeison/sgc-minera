@@ -68,7 +68,12 @@ require("../modelo/Puertas.php") ?>
                             <div class="sparkline13-list">
                                 <div class="sparkline13-hd">
                                     <div class="main-sparkline13-hd ">
-                                        Gestionar Puertas
+                                    <b><font color="Gray" face="Times New Roman" size=5 >
+                                    Puertas</font></b>
+                                                              
+                                    <p> </p>
+
+                                       
                                         <button type="button" class="btn btn-primary float-right" data-toggle="modal" data-target="#exampleModal">
                                             Nuevo
                                         </button>
@@ -176,6 +181,13 @@ require("../modelo/Puertas.php") ?>
                 </form>
             </div>
         </div>
+        &nbsp;
+    <p> </p>
+    &nbsp;
+
+    &nbsp;
+    <p> </p>
+    &nbsp;
         <div class="footer-copyright-area">
             <div class="container-fluid">
                 <div class="row">

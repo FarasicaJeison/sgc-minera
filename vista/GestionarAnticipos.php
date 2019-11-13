@@ -190,6 +190,13 @@ require("../modelo/Anticipos.php") ?>
 
             </div>
         </div>
+        &nbsp;
+    <p> </p>
+    &nbsp;
+
+    &nbsp;
+    <p> </p>
+    &nbsp;
         <div class="footer-copyright-area">
             <div class="container-fluid">
                 <div class="row">

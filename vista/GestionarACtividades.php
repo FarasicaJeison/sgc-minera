@@ -66,7 +66,11 @@ require("../modelo/Actividades.php") ?>
                             <div class="sparkline13-list">
                                 <div class="sparkline13-hd">
                                     <div class="main-sparkline13-hd ">
-                                        Gestionar Actividades
+                                    <b><font color="Gray" face="Times New Roman" size=5 >
+                                    Gestionar Actividades</font></b>
+                                                              
+                                    <p> </p>
+                                        
                                         <button type="button" class="btn btn-primary float-right" data-toggle="modal" data-target="#exampleModal">
                                             Nuevo
                                         </button>
@@ -241,6 +245,13 @@ require("../modelo/Actividades.php") ?>
             </div>
         </div>
     </div>
+    &nbsp;
+    <p> </p>
+    &nbsp;
+
+    &nbsp;
+    <p> </p>
+    &nbsp;
     <div class="footer-copyright-area">
         <div class="container-fluid">
             <div class="row">
