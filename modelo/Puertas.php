@@ -47,13 +47,13 @@ class Puertas extends db_abstract_class
         $htmlSelect .= "<option value=''>Seleccione</option> ";
         if(count($arrayPuertas)>0){
             foreach ($arrayPuertas as $Puertas){
-                $htmlSelect .= "<option value='".$Puertas->getcod_puer()."'>".$Puertas->getCod_puer()." -- ".$Puertas->getCod_puer()." "."</option>";
+                $htmlSelect .= "<option value='".$Puertas->getcod_puer()."'>".$Puertas->getCod_puer()."</option>";
             }
             $htmlSelect .= "</select>";
         }
         else
         {
-            $htmlSelect = '<select>';
+            $htmlSelect = '<select class="form-control custom-select-value">';
             $htmlSelect .= "<option value='nada' class='form-control custom-select-value'>Seleccione</option>";
             $htmlSelect .= "</select>";
         }
@@ -68,13 +68,13 @@ class Puertas extends db_abstract_class
         $htmlSelect .= "<option value=''>Seleccione</option> ";
         if(count($arrayPuertas)>0){
             foreach ($arrayPuertas as $Puertas){
-                $htmlSelect .= "<option value='".$Puertas->getcod_puer()."'>".$Puertas->getCod_puer()." -- ".$Puertas->getCod_puer()." "."</option>";
+                $htmlSelect .= "<option value='".$Puertas->getcod_puer()."'>".$Puertas->getCod_puer()."</option>";
             }
             $htmlSelect .= "</select>";
         }
         else
         {
-            $htmlSelect = '<select>';
+            $htmlSelect = '<select class="form-control custom-select-value">';
             $htmlSelect .= "<option value='nada' class='form-control custom-select-value'>Seleccione</option>";
             $htmlSelect .= "</select>";
         }
