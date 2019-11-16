@@ -95,14 +95,15 @@ class Usuario extends db_abstract_class
             $Usuarios->direccion = $getrow['direccion'];
             $Usuarios->telefono = $getrow['telefono'];
             $Usuarios->telFamiliar = $getrow['telFamiliar'];
+            $Usuarios->nomFamiliar = $getrow['nomFamiliar'];
             $Usuarios->riesgos = $getrow['riesgos'];
             $Usuarios->eps = $getrow['eps'];
             $Usuarios->pension = $getrow['pension'];
             $Usuarios->rh = $getrow['rh'];
             $Usuarios->rol = $getrow['rol'];
             $Usuarios->usuario = $getrow['usuario'];
-            $Usuarios->usuario = $getrow['contrasena'];
-            $Usuarios->usuario = $getrow['estado'];
+            $Usuarios->contrasena = $getrow['contrasena'];
+            $Usuarios->estado = $getrow['estado'];
             $Usuarios->Disconnect();
             return $Usuarios;
         }else{
@@ -113,7 +114,7 @@ class Usuario extends db_abstract_class
        
         $arrayUsuarios = Usuario::getAll();
        
-        $htmlSelect = '<select name="usuario" class="form-control custom-select-value" >';
+        $htmlSelect = '<select name="usuario" class="form-control custom-select-value" required>';
         $htmlSelect .= "<option value=''>Seleccione</option> ";
         if(count($arrayUsuarios)>0){
             foreach ($arrayUsuarios as $usuario){
@@ -193,30 +194,31 @@ class Usuario extends db_abstract_class
 
     public function editar()
     {
-
-       $this->updateRow("UPDATE sgc_minera.usuario SET nombUsua = ?, apeUsua = ?, direccion = ?, telefono = ?, 
-       telFamiliar = ?, nomFamiliar = ?,
-       riesgos = ?, eps = ?, pension = ?, rh = ?, rol = ?, usuario = ?, 
-       contrasena=?, estado=?
+       $this->updateRow("UPDATE sgc_minera.usuario SET nombUsua = ?, apeUsua = ?, 
+       direccion = ?, telefono = ?, 
+       telFamiliar = ?, nomFamiliar = ?, riesgos = ?,
+       eps = ?, pension = ?, rh = ?, 
+       rol = ?, usuario = ?, contrasena=?, 
+       estado=?
        
        WHERE ide_usua = ?", array(
-       
-        $this->nombUsua,
-        $this->apeUsua,
-        $this->direccion,
-        $this->telefono,
-        $this->telFamiliar,
-        $this->nomFamiliar,
-        $this->riesgos,
-        $this->eps,
-        $this->pension,
-        $this->rh,
-        $this->rol,
-        $this->usuario,
-        $this->contrasena,
-        $this->estado,
-        $this->ide_usua,
-        ));
+            $this->nombUsua,
+            $this->apeUsua,
+            $this->direccion,
+            $this->telefono,
+            $this->telFamiliar,
+            $this->nomFamiliar,
+            $this->riesgos="Positiva",
+            $this->eps,
+            $this->pension,
+            $this->rh,
+            $this->rol,
+            $this->usuario,
+            $this->contrasena,
+            $this->estado,
+            $this->ide_usua,
+        )
+        );
         $this->Disconnect();
     }
 

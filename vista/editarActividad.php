@@ -67,7 +67,7 @@ require("../modelo/Actividades.php");
        
         <div class="content">
                         
-                <form method="post" action="../controlador/usuarioController.php?action=registro">
+                <form method="post" action="../controlador/actividadesController.php?action=editar">
                     <div class="content">
                        
                         <div class="body">
@@ -84,7 +84,7 @@ require("../modelo/Actividades.php");
                                                             </div>
                                                             <div class="col-lg-10 col-md-9 col-sm-9 col-xs-12">
                                                                 <div class="form-select-list">
-                                                                    <?php Actividades::selectUsuario(true, "new-todo", "new-todo", "form-control"); ?>
+                                                                    <?php Actividades::selectUsuario(true, "new-todo", "new-todo", "form-control");?>
                                                                 </div>
                                                                 <br>
                                                             </div>
@@ -168,6 +168,8 @@ require("../modelo/Actividades.php");
                                 </div>
                         </div>
                         <div class="form-group">
+                            <input type="text" class="form-control hidden" name="idactividad" value="<?php echo $dataActividades->getCod_act(); ?>" >
+                            <input type="text" class="form-control hidden" name="estado" value="<?php echo $dataActividades->getEstado(); ?>" >
                             <button type="submit" class="btn btn-primary float-right">Agregar</button>
                             <button type="submit" class="btn btn-secondary float-right" data-dismiss="modal">Cancelar</button>
                             

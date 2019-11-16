@@ -27,7 +27,7 @@ session_start();
                                         <a href="#" data-toggle="dropdown" role="button" aria-expanded="false" class="nav-link dropdown-toggle">
 
                                             <span class="admin-name">
-                                                <font color="White" face="Times New Roman,arial" size=4> <?php echo $_SESSION['ide_usua']; ?>
+                                                <font color="White" face="Times New Roman,arial" size=4> <?php echo $_SESSION['nombUsua']; ?>
                                                 </font>
                                             </span>
 

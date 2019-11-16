@@ -63,6 +63,7 @@ class Actividades extends db_abstract_class
             $actividades->fecha = $getrow['fecha'];
             $actividades->desde = $getrow['desde'];
             $actividades->hasta = $getrow['hasta'];
+            $actividades->estado = $getrow['estado'];
             $actividades->Disconnect();
             return $actividades;
         }else{

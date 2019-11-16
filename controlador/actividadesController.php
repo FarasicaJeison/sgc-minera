@@ -16,6 +16,8 @@ class ActividadesController
             ActividadesController::crear();
         }else if($action=="inactivarActividad"){
             ActividadesController::inactivarActividad();
+        }else if($action=="editar"){
+            ActividadesController::editar();
         }
     }
     static public function inactivarActividad()
@@ -36,8 +38,7 @@ class ActividadesController
 
         try {
             $arrayActividades = array();
-            $arrayActividades['Cod_act'] = "";
-            $arrayActividades['fecha'] = "";
+            
             $arrayActividades['ide_usua'] = $_POST['usuario'];
             $arrayActividades['actividad'] = $_POST['actividad'];
             $arrayActividades['pago'] = $_POST['pago'];
@@ -54,14 +55,18 @@ class ActividadesController
     static public function editar()
     {
         try {
-            $arrayEspecialidad = array();
-            $arrayEspecialidad['Nombre'] = $_POST['Nombres'];
-            $arrayEspecialidad['Valor'] = $_POST['Valor'];
-            $arrayEspecialidad['idTipoArena'] = $_POST['idTipoArena'];
-            $especial = new Arena($arrayEspecialidad);
+            $arrayActividades = array();
+            $arrayActividades['cod_act']=$_POST['idactividad'];
+            $arrayActividades['ide_usua'] = $_POST['usuario'];
+            $arrayActividades['actividad'] = $_POST['actividad'];
+            $arrayActividades['pago'] = $_POST['pago'];
+            $arrayActividades['desde'] = $_POST['puertaInicial'];
+            $arrayActividades['hasta'] = $_POST['puertaFinal'];
+            $arrayActividades['estado'] = $_POST['estado'];
+            $actividad = new Actividades($arrayActividades);
             //var_dump($arrayEspecialidad);
-            $especial->editar();
-            header("Location: ../Vista/indexA.php?respuesta=correcto");
+            $actividad->editar();
+            header("Location: ../vista/GestionarACtividades.php");
         } catch (Exception $e) {
             header("Location: ../Vista/editarArena.php?respuesta=error");
         }

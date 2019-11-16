@@ -23,6 +23,8 @@ class UsuarioController
             UsuarioController::Login();
         }else if($action == "CerrarSession"){
             UsuarioController::CerrarSession();
+        }else if($action == "editar"){
+            UsuarioController::editar();
         }
     }
 
@@ -92,7 +94,7 @@ class UsuarioController
         }
     }
 
-    static public function editarUsuario()
+    static public function editar()
     {
         try {
             $arrayUsuarios['ide_usua'] = $_POST['documento'];
@@ -109,14 +111,16 @@ class UsuarioController
             $arrayUsuarios['rol'] = $_POST['rol'];
             $arrayUsuarios['usuario'] = $_POST['usuario'];
             $arrayUsuarios['contrasena'] = $_POST['contrasena'];
+            $arrayUsuarios['estado'] = $_POST['estado'];
             $Usuarios = new Usuario($arrayUsuarios);
-
+            
             $Usuarios->editar();
-            header("Location: ../Vista/indexA.php?respuesta=correcto");
+            header("Location: ../vista/gestionarUsuario.php");
         } catch (Exception $e) {
-            header("Location: ../Vista/editarArena.php?respuesta=error");
+            echo $e;
+            //header("Location: ../Vista/editarArena.php?respuesta=errorr");
         }
-        return UsuarioController::buscarID($_GET["id"]);
+       
     }
 
 

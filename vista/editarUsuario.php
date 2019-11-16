@@ -67,7 +67,7 @@ require("../modelo/Usuario.php");
        
         <div class="content">
                         
-                <form method="post" action="../controlador/usuarioController.php?action=registro">
+                <form method="post" action="../controlador/usuarioController.php?action=editar">
                     <div class="content">
                        
                         <div class="body">
@@ -107,7 +107,7 @@ require("../modelo/Usuario.php");
                                                                 <label class="login2 pull-right pull-right-pro">Apellidos</label>
                                                             </div>
                                                             <div class="col-lg-9 col-md-9 col-sm-9 col-xs-12">
-                                                                <input id="apeUsua" name="apeUsua" type="text" class="form-control" />
+                                                                <input id="apeUsua" name="apeUsua" type="text" class="form-control" value="<?php echo $DataUsuarios->getApeUsua(); ?>"/>
                                                             </div>
                                                         </div>
                                                     </div>
@@ -117,7 +117,7 @@ require("../modelo/Usuario.php");
                                                                 <label class="login2 pull-right pull-right-pro">Telefono</label>
                                                             </div>
                                                             <div class="col-lg-9 col-md-9 col-sm-9 col-xs-12">
-                                                                <input id="telefono" name="telefono" type="text" class="form-control" />
+                                                                <input id="telefono" name="telefono" type="text" class="form-control" value="<?php echo $DataUsuarios->getTelefono(); ?>" />
                                                             </div>
                                                         </div>
                                                     </div>
@@ -129,7 +129,7 @@ require("../modelo/Usuario.php");
                                                                 <label class="login2 pull-right pull-right-pro">Direccion</label>
                                                             </div>
                                                             <div class="col-lg-9 col-md-9 col-sm-9 col-xs-12">
-                                                                <input name="direccion" type="text" class="form-control" />
+                                                                <input name="direccion" type="text" class="form-control" value="<?php echo $DataUsuarios->getDireccion(); ?>"/>
                                                             </div>
                                                         </div>
                                                     </div>
@@ -139,32 +139,23 @@ require("../modelo/Usuario.php");
                                                                 <label class="login2 pull-right pull-right-pro">Nombre Familiar</label>
                                                             </div>
                                                             <div class="col-lg-9 col-md-9 col-sm-9 col-xs-12">
-                                                                <input id="nomFamiliar" name="nomFamiliar" type="text" class="form-control" />
+                                                                <input id="nomFamiliar" name="nomFamiliar" type="text" class="form-control" value="<?php echo $DataUsuarios->getNomFamiliar(); ?>" />
                                                             </div>
                                                         </div>
                                                     </div>
                                                 </div>
                                                 <div class="col-lg-12">
-                                                    <div class="form-group-inner col-lg-6">
+                                                    <div class="form-group-inner col-lg-12">
                                                         <div class="row">
                                                             <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
                                                                 <label class="login2 pull-right pull-right-pro">Telefono Familiar</label>
                                                             </div>
                                                             <div class="col-lg-9 col-md-9 col-sm-9 col-xs-12">
-                                                                <input name="telFamiliar" id="telFamiliar" type="text" class="form-control" />
+                                                                <input name="telFamiliar" id="telFamiliar" type="text" class="form-control" value="<?php echo $DataUsuarios->getTelFamiliar(); ?>"/>
                                                             </div>
                                                         </div>
                                                     </div>
-                                                    <div class="form-group-inner col-lg-6">
-                                                        <div class="row">
-                                                            <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
-                                                                <label class="login2 pull-right pull-right-pro">Riesgos</label>
-                                                            </div>
-                                                            <div class="col-lg-9 col-md-9 col-sm-9 col-xs-12">
-                                                                <input name="riesgos" id="riesgos" type="text" class="form-control" />
-                                                            </div>
-                                                        </div>
-                                                    </div>
+                                                    
                                                 </div>
                                                 <div class="col-lg-12">
                                                     <div class="form-group-inner col-lg-6">
@@ -174,7 +165,7 @@ require("../modelo/Usuario.php");
                                                             </div>
                                                             <div class="col-lg-9 col-md-9 col-sm-9 col-xs-12">
                                                                 <div class="form-select-list">
-                                                                    <select name="eps" id="eps" class="form-control custom-select-value" >
+                                                                    <select name="eps" id="eps" class="form-control custom-select-value" value="<?php echo $DataUsuarios->getEps(); ?>" >
                                                                         <option>Sanitas</option>
                                                                         <option>Nueva eps</option>
 
@@ -189,7 +180,7 @@ require("../modelo/Usuario.php");
                                                                 <label class="login2 pull-right pull-right-pro">Pension</label>
                                                             </div>
                                                             <div class="col-lg-9 col-md-9 col-sm-9 col-xs-12">
-                                                                <input id="pension" name="pension" type="TEXT" class="form-control" />
+                                                                <input id="pension" name="pension" type="TEXT" class="form-control" value="<?php echo $DataUsuarios->getPension(); ?>"/>
                                                             </div>
                                                         </div>
                                                     </div>
@@ -202,9 +193,10 @@ require("../modelo/Usuario.php");
                                                             </div>
                                                             <div class="col-lg-9 col-md-9 col-sm-9 col-xs-12">
                                                                 <div class="form-select-list">
-                                                                    <select name="rh" id="rh" class="form-control custom-select-value" name="account">
-                                                                        <option>A+</option>
-                                                                        <option>B+</option>
+                                                                    <select name="rh" id="rh" class="form-control custom-select-value" name="account" value="<?php echo $DataUsuarios->getRh(); ?>">
+                                                                    <option value="B+">B+</option>
+                                                                    <option value="A+">A+</option>
+                                                                       
 
                                                                     </select>
                                                                 </div>
@@ -218,7 +210,7 @@ require("../modelo/Usuario.php");
                                                             </div>
                                                             <div class="col-lg-9 col-md-9 col-sm-9 col-xs-12">
                                                                 <div class="form-select-list">
-                                                                    <select name="rol" id="rol" class="form-control custom-select-value" onchange="esconderMostrar(this)" >
+                                                                    <select name="rol" id="rol" class="form-control custom-select-value" onchange="esconderMostrar(this)" value="<?php echo $DataUsuarios->getRol(); ?>">
                                                                     <option value="Admin">Admin</option>
                                                                     <option value="Empleado">Empleado</option>
                                                                     </select>
@@ -235,7 +227,7 @@ require("../modelo/Usuario.php");
                                                                 <label class="login2 pull-right pull-right-pro">Usuario</label>
                                                             </div>
                                                             <div class="col-lg-9 col-md-9 col-sm-9 col-xs-12">
-                                                                <input name="usuario" id="usuario" type="TEXT" class="form-control" />
+                                                                <input name="usuario" id="usuario" type="TEXT" class="form-control" value="<?php echo $DataUsuarios->getUsuario(); ?>"/>
                                                             </div>
                                                         </div>
                                                     </div>
@@ -245,7 +237,7 @@ require("../modelo/Usuario.php");
                                                                 <label class="login2 pull-right pull-right-pro">Contraseña</label>
                                                             </div>
                                                             <div class="col-lg-9 col-md-9 col-sm-9 col-xs-12">
-                                                                <input name="contrasena" id="contrasena" type="password" class="form-control" />
+                                                                <input name="contrasena" id="contrasena" type="password" class="form-control" value="<?php echo $DataUsuarios->getContrasena(); ?>"/>
                                                             </div>
                                                         </div>
                                                     </div>
@@ -258,6 +250,7 @@ require("../modelo/Usuario.php");
                             </div>
                         </div>
                         <div class="form-group">
+                        <input name="estado" id="estado" type="text" class="form-control hidden" value="<?php echo $DataUsuarios->getEstado(); ?>"/>
                             <button type="submit" class="btn btn-primary float-right">Agregar</button>
                             <button type="submit" class="btn btn-secondary float-right" data-dismiss="modal">Cancelar</button>
                             

@@ -118,7 +118,7 @@ require("../modelo/Usuario.php");
                                                 </tr>
                                             </thead>
                                             <tbody>
-                                                <?php echo $_SESSION['ide_usua']; ?>
+                                              
                                                 <?php
                                                 $arrayUsuarios = Usuario::getAll();
                                                 foreach ($arrayUsuarios as $Usuarios) {
