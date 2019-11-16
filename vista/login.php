@@ -1,9 +1,6 @@
 <?php
 session_start();
-if (!empty($_SESSION['nombUsua'])){
-    header("Location: gestionarUsuario.php");
 
-}
 ?>
 
 <!doctype html>
@@ -12,7 +9,7 @@ if (!empty($_SESSION['nombUsua'])){
 <head>
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <title>Login | Kiaalap - Kiaalap Admin Template</title>
+    <title>Login </title>
     <?php require("head.php"); ?>
 </head>
 
@@ -30,7 +27,7 @@ if (!empty($_SESSION['nombUsua'])){
 			<div class="content-error">
 				<div class="hpanel">
                     <div class="panel-body">
-                        <form id="frmLoginn" name="frmLoginn" method="post">
+                        <form method="post" action="../controlador/usuarioController.php?action=Login">
                             <div class="form-group">
                                 <label class="control-label" for="username">Usuario</label>
                                 <input type="text" placeholder="example@gmail.com" title="Please enter you username"  name="usuario" id="usuario" class="form-control">
@@ -46,8 +43,8 @@ if (!empty($_SESSION['nombUsua'])){
 										
                                 
                             </div>
-                            <input  id="btnEnviar" name="btnEnviar" type="submit" class="btn btn-success btn-block loginbtn"></input>
-                            
+                            <button type="submit" class="btn btn-secondary">Cancelar</button>
+                            <button type="submit" class="btn btn-primary">Agregar</button>
                            
                         </form>
                     </div>

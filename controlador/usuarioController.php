@@ -1,4 +1,5 @@
 <?php
+session_start();
 require_once('../modelo/Usuario.php');
 
 if (!empty($_GET['action'])) {
@@ -18,6 +19,46 @@ class UsuarioController
             UsuarioController::inactivarUsuario();
         }else if($action=="llenardatos"){
             UsuarioController::llenardatos();
+        }else if($action=="Login"){
+            UsuarioController::Login();
+        }else if($action == "CerrarSession"){
+            UsuarioController::CerrarSession();
+        }
+    }
+
+    public function CerrarSession (){
+      
+        session_destroy();
+        header("Location: ../vista/login.php");
+    }
+
+
+    public function Login (){
+       
+        try {
+
+            $User = $_POST['usuario'];
+            $Password = $_POST['contrasena'];
+
+            if(!empty($User) && !empty($Password)){
+                $respuesta = Usuario::Login($User, $Password);
+                if (is_array($respuesta)) {
+                    $_SESSION['ide_usua'] = $respuesta['ide_usua'];
+                   
+                   // $_SESSION['TipoUsuario'] = $respuesta['Tipo'];
+                    $_SESSION['nombUsua'] = $respuesta['nombUsua'];
+                    header("Location: ../vista/gestionarUsuario.php");
+                }else if($respuesta == "Password Incorrecto"){
+                   echo "incorrecta";
+                    
+                }else if($respuesta == "No existe el usuario"){
+                    echo "usuario no existe";
+                }
+            }else{
+                echo "datos vacios";
+            }
+        } catch (Exception $e) {
+           header("Location: ../vista/index.php?respuesta=error");
         }
     }
     

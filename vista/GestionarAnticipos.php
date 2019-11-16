@@ -1,4 +1,9 @@
 <?php
+session_start();
+if (empty( $_SESSION['ide_usua'])){
+    
+    header("Location: login.php");
+}
 require("../modelo/Anticipos.php"); 
 ?>
 

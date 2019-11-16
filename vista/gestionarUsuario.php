@@ -1,7 +1,12 @@
 <?php
+session_start();
+if (empty($_SESSION['ide_usua'])) {
+
+    header("Location: login.php");
+}
+
 require("../modelo/Usuario.php");
 ?>
-
 
 
 
@@ -44,7 +49,7 @@ require("../modelo/Usuario.php");
                 <div class="container-fluid">
                     <div class="row">
                         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                            
+
                         </div>
                     </div>
                 </div>
@@ -60,32 +65,34 @@ require("../modelo/Usuario.php");
                         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                             <div class="sparkline13-list">
 
-                            &nbsp;
-                            <p> </p>
-                            &nbsp;
+                                &nbsp;
+                                <p> </p>
+                                &nbsp;
 
                                 <div class="sparkline13-hd">
                                     <div class="main-sparkline13-hd ">
-                                    <b><font color="Gray" face="Times New Roman" size=5 >
-                                    Datos Empleados</font></b>
-                                                              
-                                    <p> </p>
+                                        <b>
+                                            <font color="Gray" face="Times New Roman" size=5>
+                                                Datos Empleados</font>
+                                        </b>
 
-                                    <div class="breadcome-area">
-                <div class="container-fluid">
-                    <div class="row">
-                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                            
-                        </div>
-                    </div>
-                </div>
-            </div>
-                                    
-                                    <p> </p>
+                                        <p> </p>
+
+                                        <div class="breadcome-area">
+                                            <div class="container-fluid">
+                                                <div class="row">
+                                                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <p> </p>
                                         <button type="button" class="btn btn-primary float-right" data-toggle="modal" data-target="#exampleModal">
                                             Nuevo
                                         </button>
-                                        <br>  <br>
+                                        <br> <br>
                                     </div>
                                 </div>
                                 <div class="sparkline13-graph">
@@ -97,42 +104,44 @@ require("../modelo/Usuario.php");
                                                     <th>Documento</th>
                                                     <th>Nombre</th>
                                                     <th>Apellido</th>
-                                                    
+
                                                     <th>Celular</th>
                                                     <th>Telefono Familiar</th>
                                                     <th>Riesgos</th>
                                                     <th>Eps</th>
                                                     <th>Pension</th>
                                                     <th>Rh</th>
-                                                   
+
                                                     <th>Usuario</th>
                                                     <th>Acciones</th>
 
                                                 </tr>
                                             </thead>
                                             <tbody>
-
+                                                <?php echo $_SESSION['ide_usua']; ?>
                                                 <?php
                                                 $arrayUsuarios = Usuario::getAll();
                                                 foreach ($arrayUsuarios as $Usuarios) {
                                                     ?>
                                                     <tr>
+
+
                                                         <td><?php echo $Usuarios->getIde_usua(); ?></td>
                                                         <td><?php echo $Usuarios->getNombUsua(); ?></td>
                                                         <td><?php echo $Usuarios->getApeUsua(); ?></td>
-                                                       
+
                                                         <td><?php echo $Usuarios->getTelefono(); ?></td>
                                                         <td><?php echo $Usuarios->getTelFamiliar(); ?></td>
                                                         <td><?php echo $Usuarios->getRiesgos(); ?></td>
                                                         <td><?php echo $Usuarios->getEps(); ?></td>
                                                         <td><?php echo $Usuarios->getPension(); ?></td>
                                                         <td><?php echo $Usuarios->getRh(); ?></td>
-                                                      
+
                                                         <td><?php echo $Usuarios->getUsuario(); ?></td>
                                                         <td>
-                                                        <a href="editarUsuario.php?idUsuario=<?php echo $Usuarios->getIde_usua(); ?>"  title="Eliminar" class="btn btn-primary btn-circle btn-sm"> <span class="fas fa-pencil-alt " style='color:white'></span></a>
-                                                        <a href="../controlador/usuarioController.php?action=inactivarUsuario&idUsuario=<?php echo $Usuarios->getIde_usua(); ?>"  title="Eliminar" class="btn btn-danger btn-circle btn-sm"> <span class="fas fa-trash" style='color:white'></span></a>
-                                                         </td>
+                                                            <a href="editarUsuario.php?idUsuario=<?php echo $Usuarios->getIde_usua(); ?>" title="Eliminar" class="btn btn-primary btn-circle btn-sm"> <span class="fas fa-pencil-alt " style='color:white'></span></a>
+                                                            <a href="../controlador/usuarioController.php?action=inactivarUsuario&idUsuario=<?php echo $Usuarios->getIde_usua(); ?>" title="Eliminar" class="btn btn-danger btn-circle btn-sm"> <span class="fas fa-trash" style='color:white'></span></a>
+                                                        </td>
 
 
                                                     </tr>
@@ -147,7 +156,7 @@ require("../modelo/Usuario.php");
                 </div>
             </div>
         </div>
-       
+
         <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
             <div class="modal-dialog modal-lg" role="document">
                 <form method="post" action="../controlador/usuarioController.php?action=registro">
@@ -164,14 +173,14 @@ require("../modelo/Usuario.php");
                                     <div class="row">
                                         <div class="col-lg-12 ">
                                             <div class="all-form-element-inner">
-                                            <div class="col-lg-12 ">
+                                                <div class="col-lg-12 ">
                                                     <div class="form-group-inner col-lg-6">
                                                         <div class="row">
                                                             <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
                                                                 <label class="login2 pull-right pull-right-pro">Documento</label>
                                                             </div>
                                                             <div class="col-lg-9 col-md-9 col-sm-9 col-xs-12">
-                                                                <input id="documento" name="documento" type="text" class="form-control" value=""/>
+                                                                <input id="documento" name="documento" type="text" class="form-control" value="" />
                                                             </div>
                                                         </div>
                                                     </div>
@@ -181,14 +190,14 @@ require("../modelo/Usuario.php");
                                                                 <label class="login2 pull-right pull-right-pro">Nombres</label>
                                                             </div>
                                                             <div class="col-lg-9 col-md-9 col-sm-9 col-xs-12">
-                                                                <input id="nombUsua" name="nombUsua"  type="text" class="form-control" />
+                                                                <input id="nombUsua" name="nombUsua" type="text" class="form-control" />
                                                             </div>
                                                         </div>
                                                     </div>
-                                                    
+
                                                 </div>
                                                 <div class="col-lg-12 ">
-                                                   
+
                                                     <div class="form-group-inner col-lg-6">
                                                         <div class="row">
                                                             <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
@@ -244,7 +253,7 @@ require("../modelo/Usuario.php");
                                                             </div>
                                                         </div>
                                                     </div>
-                                                    
+
                                                 </div>
                                                 <div class="col-lg-12">
                                                     <div class="form-group-inner col-lg-6">
@@ -254,7 +263,7 @@ require("../modelo/Usuario.php");
                                                             </div>
                                                             <div class="col-lg-9 col-md-9 col-sm-9 col-xs-12">
                                                                 <div class="form-select-list">
-                                                                    <select name="eps" id="eps" class="form-control custom-select-value" >
+                                                                    <select name="eps" id="eps" class="form-control custom-select-value">
                                                                         <option>Sanitas</option>
                                                                         <option>Nueva eps</option>
                                                                         <option>Medimas</option>
@@ -262,7 +271,7 @@ require("../modelo/Usuario.php");
                                                                         <option>Eps Familiar</option>
                                                                         <option>Comparta</option>
                                                                         <option>Famisanar</option>
-                                                                        
+
 
                                                                     </select>
                                                                 </div>
@@ -276,11 +285,11 @@ require("../modelo/Usuario.php");
                                                             </div>
                                                             <div class="col-lg-9 col-md-9 col-sm-9 col-xs-12">
                                                                 <div class="form-select-list">
-                                                                    <select name="eps" id="eps" class="form-control custom-select-value" >
+                                                                    <select name="pension" id="pension" class="form-control custom-select-value">
                                                                         <option>Colpensiones</option>
                                                                         <option>Porvenir</option>
-                                                                        
-                                                                        
+
+
 
                                                                     </select>
                                                                 </div>
@@ -318,9 +327,9 @@ require("../modelo/Usuario.php");
                                                             </div>
                                                             <div class="col-lg-9 col-md-9 col-sm-9 col-xs-12">
                                                                 <div class="form-select-list">
-                                                                    <select name="rol" id="rol" class="form-control custom-select-value" onchange="esconderMostrar(this)" >
-                                                                    <option value="Admin">Admin</option>
-                                                                    <option value="Empleado">Empleado</option>
+                                                                    <select name="rol" id="rol" class="form-control custom-select-value" onchange="esconderMostrar(this)">
+                                                                        <option value="Admin">Admin</option>
+                                                                        <option value="Empleado">Empleado</option>
                                                                     </select>
                                                                 </div>
                                                             </div>
@@ -358,7 +367,7 @@ require("../modelo/Usuario.php");
                             </div>
                         </div>
                         <div class="modal-footer">
-                           
+
                             <button type="submit" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
                             <button type="submit" class="btn btn-primary">Agregar</button>
                         </div>
@@ -392,18 +401,18 @@ require("../modelo/Usuario.php");
     <?php require("footer.php"); ?>
 </body>
 <script>
-function esconderMostrar(valor){
-    var camposContraseñaUsuario= document.getElementById("camposUsuCon");
-    var camposContraseñaUsuarios=$("#rol").val(); 
-   
-    if(camposContraseñaUsuarios=='Empleado'){
-       camposContraseñaUsuario.style.display = 'none';
-    }else{
-        camposContraseñaUsuario.style.display = 'block';
+    function esconderMostrar(valor) {
+        var camposContraseñaUsuario = document.getElementById("camposUsuCon");
+        var camposContraseñaUsuarios = $("#rol").val();
+
+        if (camposContraseñaUsuarios == 'Empleado') {
+            camposContraseñaUsuario.style.display = 'none';
+        } else {
+            camposContraseñaUsuario.style.display = 'block';
+
+        }
 
     }
-    
-}
-
 </script>
+
 </html>

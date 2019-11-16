@@ -61,7 +61,7 @@ class Usuario extends db_abstract_class
     }
 
     public static function Login($User, $Password){
-        echo "entro";
+       
         $arrUsuarios = array();
         $tmp = new Usuario();
         $getTempUser = $tmp->getRows("SELECT * FROM usuario WHERE usuario = '$User'");
@@ -178,7 +178,7 @@ class Usuario extends db_abstract_class
             $this->telefono,
             $this->telFamiliar,
             $this->nomFamiliar,
-            $this->riesgos="Positiva Compañia de Seguros S.A.",
+            $this->riesgos="Positiva",
             $this->eps,
             $this->pension,
             $this->rh,
