@@ -67,7 +67,7 @@ require("../modelo/Anticipos.php");
        
         <div class="content">
                         
-                <form method="post" action="../controlador/usuarioController.php?action=registro">
+                <form method="post" action="../controlador/anticiposController.php?action=editar">
                     <div class="content">
                        
                         <div class="body">
@@ -108,6 +108,8 @@ require("../modelo/Anticipos.php");
                             </div>
                         </div>
                         <div class="form-group">
+                        <input type="text" class="form-control hidden" name="ideanticipo" value="<?php echo $DataAnticipo->getCod_anti(); ?>"/>
+
                             <button type="submit" class="btn btn-primary float-right">Agregar</button>
                             <button type="submit" class="btn btn-secondary float-right" data-dismiss="modal">Cancelar</button>
                             

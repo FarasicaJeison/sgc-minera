@@ -18,6 +18,8 @@ class anticiposController //cambiar nombre a anticipos
             anticiposController::ActivarUsuario();
         }else if($action=="llenardatos"){
             anticiposController::llenardatos();
+        }else if($action=="editar"){
+            anticiposController::editar();
         }
     }
     static public function llenardatos(){
@@ -44,31 +46,20 @@ class anticiposController //cambiar nombre a anticipos
         }
     }
 
-    static public function editarUsuario()
+    static public function editar()
     {
         try {
-            $arrayUsuarios['ide_usua'] = $_POST['documento'];
-            $arrayUsuarios['nombUsua'] = $_POST['nombUsua'];
-            $arrayUsuarios['apeUsua'] = $_POST['apeUsua'];
-            $arrayUsuarios['direccion'] = $_POST['direccion'];
-            $arrayUsuarios['telefono'] = $_POST['telefono'];
-            $arrayUsuarios['telFamiliar'] = $_POST['telFamiliar'];
-            $arrayUsuarios['nomFamiliar'] = $_POST['nomFamiliar'];
-            $arrayUsuarios['riesgos'] = $_POST['riesgos'];
-            $arrayUsuarios['eps'] = $_POST['eps'];
-            $arrayUsuarios['pension'] = $_POST['pension'];
-            $arrayUsuarios['rh'] = $_POST['rh'];
-            $arrayUsuarios['rol'] = $_POST['rol'];
-            $arrayUsuarios['usuario'] = $_POST['usuario'];
-            $arrayUsuarios['contrasena'] = $_POST['contrasena'];
-            $Usuarios = new Usuario($arrayUsuarios);
+            $arrayUsuarios['ide_usua'] = $_POST['usuario'];
+            $arrayUsuarios['precio_anti'] = $_POST['precioAnticipo'];
+            $arrayUsuarios['cod_anti'] = $_POST["ideanticipo"];
+            $Usuarios = new Anticipos($arrayUsuarios);
            
             $Usuarios->editar();
-            header("Location: ../Vista/indexA.php?respuesta=correcto");
+            header("Location: ../vista/GestionarAnticipos.php");
         } catch (Exception $e) {
             header("Location: ../Vista/editarArena.php?respuesta=error");
         }
-       return UsuarioController::buscarID($_GET["id"]);
+      // return UsuarioController::buscarID($_GET["id"]);
     }
 
 

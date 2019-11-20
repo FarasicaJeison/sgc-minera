@@ -102,7 +102,7 @@ class Anticipos extends db_abstract_class
 
     public function insertar()  
     {
-        echo "jeiison modelo";
+        
         $time = time();
         $this->insertRow("INSERT INTO sgc_minera.anticipos VALUES (NULL, ?, ?, ?,?)", array(
                 $this->ide_usua,
@@ -118,15 +118,16 @@ class Anticipos extends db_abstract_class
 
     public function editar()
     {
+        $time = time();
+        $this->updateRow("UPDATE sgc_minera.anticipos SET precio_anti = ?, 
+        fecha_anti = ?, estado = ?, ide_usua=?
+          WHERE cod_anti = ?", array(
+           $this->precio_anti,
+           $this->fecha_anti=date("Y-m-d ", $time),
+           $this->estado,
+           $this->ide_usua,
+           $this->cod_anti,
 
-        $this->updateRow("UPDATE mydb.clientes SET Nombres = ?, Apellidos = ?, TipoDoc = ?, Cedula = ?, Telefono = ?, Contraseña = ? WHERE idClientes = ?", array(
-            $this->Nombres,
-            $this->Apellidos,
-            $this->TipoDoc,
-            $this->Cedula,
-            $this->Telefono,
-            $this->Contraseña,
-            $this->idClientes,
         ));
         $this->Disconnect();
     }

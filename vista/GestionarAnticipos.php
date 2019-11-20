@@ -1,10 +1,10 @@
 <?php
 session_start();
-if (empty( $_SESSION['ide_usua'])){
-    
+if (empty($_SESSION['ide_usua'])) {
+
     header("Location: login.php");
 }
-require("../modelo/Anticipos.php"); 
+require("../modelo/Anticipos.php");
 ?>
 
 
@@ -72,11 +72,13 @@ require("../modelo/Anticipos.php");
                             <div class="sparkline13-list">
                                 <div class="sparkline13-hd">
                                     <div class="main-sparkline13-hd ">
-                                    <b><font color="Gray" face="Times New Roman" size=5 >
-                                    Gestionar Anticipos</font></b>
-                                                              
-                                    <p> </p>
-                                        
+                                        <b>
+                                            <font color="Gray" face="Times New Roman" size=5>
+                                                Gestionar Anticipos</font>
+                                        </b>
+
+                                        <p> </p>
+
                                         <button type="button" class="btn btn-primary float-right" data-toggle="modal" data-target="#exampleModal">
                                             Nuevo
                                         </button>
@@ -107,13 +109,13 @@ require("../modelo/Anticipos.php");
                                                     ?>
                                                     <tr>
 
-                                                        <td><?php echo $Anticipos->getide_usua()."--".$Anticipos->getNombUsua(); ?></td>
+                                                        <td><?php echo $Anticipos->getide_usua() . "--" . $Anticipos->getNombUsua(); ?></td>
 
                                                         <td><?php echo $Anticipos->getPrecio_anti(); ?></td>
                                                         <td><?php echo $Anticipos->getFecha_anti(); ?></td>
                                                         <td>
-                                                        <a href="editarAnticipo.php?idAnticipo=<?php echo $Anticipos->getcod_anti(); ?>"  title="Actualizar" class="btn btn-primary btn-circle btn-sm"> <span class="fas fa-pencil-alt " style='color:white'></span></a>
-                                                         </td>
+                                                            <a href="editarAnticipo.php?idAnticipo=<?php echo $Anticipos->getcod_anti(); ?>" title="Actualizar" class="btn btn-primary btn-circle btn-sm"> <span class="fas fa-pencil-alt " style='color:white'></span></a>
+                                                        </td>
 
                                                     </tr>
                                                 <?php } ?>
@@ -130,28 +132,26 @@ require("../modelo/Anticipos.php");
         <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
             <div class="modal-dialog" role="document">
                 <div class="modal-content">
-                <form method="post" action="../controlador/anticiposController.php?action=crear">
-                    <div class="modal-header">
-                        <h5 class="modal-title" id="exampleModalLabel">Agregar Anticipos</h5>
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true"></span>
-                        </button>
-                    </div>
-                    <div class="modal-body">
-                        <div class="sparkline12-graph">
-                            <div class="basic-login-form-ad">
-                                <div class="row">
-                                    <div class="col-lg-12 ">
-                                        <div class="all-form-element-inner">
-                                           
+                    <form method="post" action="../controlador/anticiposController.php?action=crear">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLabel">Agregar Anticipos</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true"></span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            <div class="sparkline12-graph">
+                                <div class="basic-login-form-ad">
+                                    <div class="row">
+                                        <div class="col-lg-12 ">
+                                            <div class="all-form-element-inner">
+
                                                 <div class="col-lg-12 ">
-                                                   
+
                                                     <div class="form-group-inner col-lg-12">
                                                         <div class="row">
                                                             <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
-                                                                <label
-                                                                    class="login2 pull-right pull-right-pro">ide
-                                                                     Uusario </label>
+                                                                <label class="login2 pull-right pull-right-pro"> Usario </label>
                                                             </div>
                                                             <div class="col-lg-9 col-md-9 col-sm-9 col-xs-12">
                                                                 <div class="form-select-list">
@@ -164,7 +164,7 @@ require("../modelo/Anticipos.php");
                                                     </div>
                                                 </div>
                                                 <div class="col-lg-12 ">
-                                                    
+
                                                     <div class="form-group-inner col-lg-12">
                                                         <div class="row">
                                                             <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
@@ -176,33 +176,34 @@ require("../modelo/Anticipos.php");
                                                         </div>
                                                     </div>
                                                 </div>
-                                                
-                                                
-                                                
-                                               
+
+
+
+
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
+
                         </div>
-                       
-                    </div>
-                    <div class="modal-footer"><!--crear input y colocarle nombre-->
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
-                        <button type="submit" class="btn btn-primary">Agregar</button>
-                    </div>
+                        <div class="modal-footer">
+                            <!--crear input y colocarle nombre-->
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+                            <button type="submit" class="btn btn-primary">Agregar</button>
+                        </div>
                 </div>
                 </form>
 
             </div>
         </div>
         &nbsp;
-    <p> </p>
-    &nbsp;
+        <p> </p>
+        &nbsp;
 
-    &nbsp;
-    <p> </p>
-    &nbsp;
+        &nbsp;
+        <p> </p>
+        &nbsp;
         <div class="footer-copyright-area">
             <div class="container-fluid">
                 <div class="row">
