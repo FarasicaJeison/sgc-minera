@@ -180,7 +180,7 @@ require("../modelo/Usuario.php");
                                                                 <label class="login2 pull-right pull-right-pro">Documento</label>
                                                             </div>
                                                             <div class="col-lg-9 col-md-9 col-sm-9 col-xs-12">
-                                                                <input id="documento" name="documento" type="text" class="form-control" value="" />
+                                                                <input id="documento" name="documento" type="text" class="form-control" value="" required/>
                                                             </div>
                                                         </div>
                                                     </div>
@@ -190,7 +190,7 @@ require("../modelo/Usuario.php");
                                                                 <label class="login2 pull-right pull-right-pro">Nombres</label>
                                                             </div>
                                                             <div class="col-lg-9 col-md-9 col-sm-9 col-xs-12">
-                                                                <input id="nombUsua" name="nombUsua" type="text" class="form-control" />
+                                                                <input id="nombUsua" name="nombUsua" type="text" class="form-control" required/>
                                                             </div>
                                                         </div>
                                                     </div>
@@ -204,7 +204,7 @@ require("../modelo/Usuario.php");
                                                                 <label class="login2 pull-right pull-right-pro">Apellidos</label>
                                                             </div>
                                                             <div class="col-lg-9 col-md-9 col-sm-9 col-xs-12">
-                                                                <input id="apeUsua" name="apeUsua" type="text" class="form-control" />
+                                                                <input id="apeUsua" name="apeUsua" type="text" class="form-control" required/>
                                                             </div>
                                                         </div>
                                                     </div>
@@ -214,7 +214,7 @@ require("../modelo/Usuario.php");
                                                                 <label class="login2 pull-right pull-right-pro">Telefono</label>
                                                             </div>
                                                             <div class="col-lg-9 col-md-9 col-sm-9 col-xs-12">
-                                                                <input id="telefono" name="telefono" type="text" class="form-control" />
+                                                                <input id="telefono" name="telefono" type="number" class="form-control" required/>
                                                             </div>
                                                         </div>
                                                     </div>
@@ -226,7 +226,7 @@ require("../modelo/Usuario.php");
                                                                 <label class="login2 pull-right pull-right-pro">Direccion</label>
                                                             </div>
                                                             <div class="col-lg-9 col-md-9 col-sm-9 col-xs-12">
-                                                                <input name="direccion" type="text" class="form-control" />
+                                                                <input name="direccion" type="text" class="form-control" required/>
                                                             </div>
                                                         </div>
                                                     </div>
@@ -236,7 +236,7 @@ require("../modelo/Usuario.php");
                                                                 <label class="login2 pull-right pull-right-pro">Nombre Familiar</label>
                                                             </div>
                                                             <div class="col-lg-9 col-md-9 col-sm-9 col-xs-12">
-                                                                <input id="nomFamiliar" name="nomFamiliar" type="text" class="form-control" />
+                                                                <input id="nomFamiliar" name="nomFamiliar" type="text" class="form-control" required/>
                                                             </div>
                                                         </div>
                                                     </div>
@@ -249,7 +249,7 @@ require("../modelo/Usuario.php");
                                                                     Familiar</label>
                                                             </div>
                                                             <div class="col-lg-10 col-md-9 col-sm-9 col-xs-12">
-                                                                <input name="telFamiliar" id="telFamiliar" type="text" class="form-control" />
+                                                                <input name="telFamiliar" id="telFamiliar" type="number" class="form-control" required/>
                                                             </div>
                                                         </div>
                                                     </div>
@@ -263,7 +263,7 @@ require("../modelo/Usuario.php");
                                                             </div>
                                                             <div class="col-lg-9 col-md-9 col-sm-9 col-xs-12">
                                                                 <div class="form-select-list">
-                                                                    <select name="eps" id="eps" class="form-control custom-select-value">
+                                                                    <select name="eps" id="eps" class="form-control custom-select-value" required>
                                                                         <option>Sanitas</option>
                                                                         <option>Nueva eps</option>
                                                                         <option>Medimas</option>
@@ -285,7 +285,7 @@ require("../modelo/Usuario.php");
                                                             </div>
                                                             <div class="col-lg-9 col-md-9 col-sm-9 col-xs-12">
                                                                 <div class="form-select-list">
-                                                                    <select name="pension" id="pension" class="form-control custom-select-value">
+                                                                    <select name="pension" id="pension" class="form-control custom-select-value" required>
                                                                         <option>Colpensiones</option>
                                                                         <option>Porvenir</option>
 
@@ -305,7 +305,7 @@ require("../modelo/Usuario.php");
                                                             </div>
                                                             <div class="col-lg-9 col-md-9 col-sm-9 col-xs-12">
                                                                 <div class="form-select-list">
-                                                                    <select name="rh" id="rh" class="form-control custom-select-value" name="account">
+                                                                    <select name="rh" id="rh" class="form-control custom-select-value" name="account" required>
                                                                         <option>A+</option>
                                                                         <option>A-</option>
                                                                         <option>B+</option>

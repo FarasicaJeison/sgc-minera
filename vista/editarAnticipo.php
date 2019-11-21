@@ -110,7 +110,7 @@ require("../modelo/Anticipos.php");
                         <div class="form-group">
                         <input type="text" class="form-control hidden" name="ideanticipo" value="<?php echo $DataAnticipo->getCod_anti(); ?>"/>
 
-                            <button type="submit" class="btn btn-primary float-right">Agregar</button>
+                            <button type="submit" class="btn btn-primary float-right" onclick="alert('a')">Agregar</button>
                             <button type="submit" class="btn btn-secondary float-right" data-dismiss="modal">Cancelar</button>
                             
                         </div>
@@ -135,16 +135,15 @@ require("../modelo/Anticipos.php");
     <?php require("footer.php"); ?>
 </body>
 <script>
-function esconderMostrar(valor){
-    var camposContraseñaUsuario= document.getElementById("camposUsuCon");
-    var camposContraseñaUsuarios=$("#rol").val(); 
-   
-    if(camposContraseñaUsuarios=='Empleado'){
-       camposContraseñaUsuario.style.display = 'none';
-    }else{
-        camposContraseñaUsuario.style.display = 'block';
+function alert(){
+    alert("jeiison");
+    
 
-    }
+    
+    
+    
+    
+    
     
 }
 

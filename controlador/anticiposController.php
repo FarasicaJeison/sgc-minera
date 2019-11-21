@@ -55,7 +55,7 @@ class anticiposController //cambiar nombre a anticipos
             $Usuarios = new Anticipos($arrayUsuarios);
            
             $Usuarios->editar();
-            header("Location: ../vista/GestionarAnticipos.php");
+          //  header("Location: ../vista/GestionarAnticipos.php");
         } catch (Exception $e) {
             header("Location: ../Vista/editarArena.php?respuesta=error");
         }

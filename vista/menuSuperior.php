@@ -34,7 +34,7 @@ session_start();
 
 
                                         </a>
-                                        <div class="pull-right">
+                                        <div class="right">
                                             <a href="../controlador/usuarioController.php?action=CerrarSession" class="btn btn-default btn-flat" style="border-color: #00a1dc">Cerrar Sesión</a>
 
                                         </div>

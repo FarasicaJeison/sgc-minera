@@ -112,6 +112,7 @@ class UsuarioController
             $arrayUsuarios['usuario'] = $_POST['usuario'];
             $arrayUsuarios['contrasena'] = $_POST['contrasena'];
             $arrayUsuarios['estado'] = $_POST['estado'];
+            $arrayUsuarios['documentowhere'] = $_POST['documentowhere'];
             $Usuarios = new Usuario($arrayUsuarios);
             
             $Usuarios->editar();

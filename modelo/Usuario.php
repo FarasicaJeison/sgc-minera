@@ -10,7 +10,7 @@
 require_once('db_abstract_class.php');
 
 class Usuario extends db_abstract_class
-{   
+{
     private $ide_usua;
     private $nombUsua;
     private $apeUsua;
@@ -26,6 +26,7 @@ class Usuario extends db_abstract_class
     private $usuario;
     private $contrasena;
     private $estado;
+    private $documentowhere;
 
     /**
      * Especialidad constructor.
@@ -35,20 +36,20 @@ class Usuario extends db_abstract_class
      */
     public function __construct($Usuario_data = array())
     {
-        
+
         parent::__construct(); //Llama al contructor padre "la clase conexion" para conectarme a la BD
-        if(count($Usuario_data)>1){ //
-            foreach ($Usuario_data as $campo => $valor){
+        if (count($Usuario_data) > 1) { //
+            foreach ($Usuario_data as $campo => $valor) {
                 $this->$campo = $valor;
             }
-        }else {
+        } else {
 
             $this->nomUsua = "";
-            $this->apeUsua= "";
+            $this->apeUsua = "";
             $this->direccion = "";
             $this->telefono = "";
             $this->telFamiliar = "";
-            $this->nomFamiliar="";
+            $this->nomFamiliar = "";
             $this->riesgos = "";
             $this->eps = "";
             $this->pension = "";
@@ -56,25 +57,25 @@ class Usuario extends db_abstract_class
             $this->rol = "";
             $this->usuario = "";
             $this->contrasena = "";
-
         }
     }
 
-    public static function Login($User, $Password){
-       
+    public static function Login($User, $Password)
+    {
+
         $arrUsuarios = array();
         $tmp = new Usuario();
         $getTempUser = $tmp->getRows("SELECT * FROM usuario WHERE usuario = '$User'");
-        if(count($getTempUser) >= 1){
+        if (count($getTempUser) >= 1) {
             $getrows = $tmp->getRows("SELECT * FROM usuario WHERE usuario = '$User' AND contrasena = '$Password' AND rol='Admin'");
-            if(count($getrows) >= 1){
+            if (count($getrows) >= 1) {
                 foreach ($getrows as $valor) {
                     return $valor;
                 }
-            }else{
+            } else {
                 return "Password Incorrecto";
             }
-        }else{
+        } else {
             return "No existe el usuario";
         }
 
@@ -83,13 +84,13 @@ class Usuario extends db_abstract_class
     }
 
     public static function buscarForId($id)
-    {   
-        
+    {
+
         $Usuarios = new Usuario();
-        if ($id > 0){
+        if ($id > 0) {
             $getrow = $Usuarios->getRow("SELECT * FROM usuario WHERE ide_usua =?", array($id));
             $Usuarios = new Usuario();
-            $Usuarios->ide_usua= $getrow['ide_usua'];
+            $Usuarios->ide_usua = $getrow['ide_usua'];
             $Usuarios->nombUsua = $getrow['nombUsua'];
             $Usuarios->apeUsua = $getrow['apeUsua'];
             $Usuarios->direccion = $getrow['direccion'];
@@ -106,24 +107,23 @@ class Usuario extends db_abstract_class
             $Usuarios->estado = $getrow['estado'];
             $Usuarios->Disconnect();
             return $Usuarios;
-        }else{
+        } else {
             return NULL;
         }
     }
-    static public function selectUsuario ($isRequired=true, $id, $nombre, $class){
-       
+    static public function selectUsuario($isRequired = true, $id, $nombre, $class)
+    {
+
         $arrayUsuarios = Usuario::getAll();
-       
+
         $htmlSelect = '<select name="usuario" class="form-control custom-select-value" required>';
-        $htmlSelect .= "<option value=''>Seleccione</option> ";
-        if(count($arrayUsuarios)>0){
-            foreach ($arrayUsuarios as $usuario){
-                $htmlSelect .= "<option value='".$usuario->getIde_usua()."'>".$usuario->getNombUsua()." -- ".$usuario->getIde_usua()." "."</option>";
+        $htmlSelect .= "<option value=''>Seleccione</option>";
+        if (count($arrayUsuarios) > 0) {
+            foreach ($arrayUsuarios as $usuario) {
+                $htmlSelect .= "<option value='" . $usuario->getIde_usua() . "'>" . $usuario->getNombUsua() . " -- " . $usuario->getIde_usua() . " " . "</option>";
             }
             $htmlSelect .= "</select>";
-        }
-        else
-        {
+        } else {
             $htmlSelect = '<select class="form-control custom-select-value" >';
             $htmlSelect .= "<option value='nada' >Seleccione</option>";
             $htmlSelect .= "</select>";
@@ -132,16 +132,16 @@ class Usuario extends db_abstract_class
     }
 
 
-   public static function buscar($query)
+    public static function buscar($query)
     {
-       
+
         $arrayUsuarios = array();
         $tmp = new Usuario();
         $getrows = $tmp->getRows($query);
 
         foreach ($getrows as $valor) {
             $Usuarios = new Usuario();
-            $Usuarios->ide_usua= $valor['ide_usua'];
+            $Usuarios->ide_usua = $valor['ide_usua'];
             $Usuarios->nombUsua = $valor['nombUsua'];
             $Usuarios->apeUsua = $valor['apeUsua'];
             $Usuarios->direccion = $valor['direccion'];
@@ -158,82 +158,85 @@ class Usuario extends db_abstract_class
 
 
             array_push($arrayUsuarios, $Usuarios);
-
         }
         $tmp->Disconnect();
         return $arrayUsuarios;
     }
 
-     static function getAll()
+    static function getAll()
     {
         return Usuario::buscar("SELECT contrasena, estado, ide_usua,nombUsua, apeUsua, direccion, telefono, riesgos, eps, pension, rh, rol, usuario, telFamiliar FROM usuario where estado=1 order by 1 desc");
     }
 
     public function insertar()
     {
-        $this->insertRow("INSERT INTO sgc_minera.usuario VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)", array(
-            $this->ide_usua,
-            $this->nombUsua,
-            $this->apeUsua,
-            $this->direccion,
-            $this->telefono,
-            $this->telFamiliar,
-            $this->nomFamiliar,
-            $this->riesgos="Positiva",
-            $this->eps,
-            $this->pension,
-            $this->rh,
-            $this->rol,
-            $this->usuario,
-            $this->contrasena,
-            $this->estado=1,
+        $this->insertRow(
+            "INSERT INTO sgc_minera.usuario VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)",
+            array(
+                $this->ide_usua,
+                $this->nombUsua,
+                $this->apeUsua,
+                $this->direccion,
+                $this->telefono,
+                $this->telFamiliar,
+                $this->nomFamiliar,
+                $this->riesgos = "Positiva",
+                $this->eps,
+                $this->pension,
+                $this->rh,
+                $this->rol,
+                $this->usuario,
+                $this->contrasena,
+                $this->estado = 1,
             )
-        );  
+        );
         $this->Disconnect();
     }
 
     public function editar()
     {
-       $this->updateRow("UPDATE sgc_minera.usuario SET nombUsua = ?, apeUsua = ?, 
+        $this->updateRow(
+            "UPDATE sgc_minera.usuario SET ide_usua=?,nombUsua = ?, apeUsua = ?, 
        direccion = ?, telefono = ?, 
        telFamiliar = ?, nomFamiliar = ?, riesgos = ?,
        eps = ?, pension = ?, rh = ?, 
        rol = ?, usuario = ?, contrasena=?, 
        estado=?
        
-       WHERE ide_usua = ?", array(
-            $this->nombUsua,
-            $this->apeUsua,
-            $this->direccion,
-            $this->telefono,
-            $this->telFamiliar,
-            $this->nomFamiliar,
-            $this->riesgos="Positiva",
-            $this->eps,
-            $this->pension,
-            $this->rh,
-            $this->rol,
-            $this->usuario,
-            $this->contrasena,
-            $this->estado,
-            $this->ide_usua,
-        )
+       WHERE ide_usua = ?",
+            array(
+                $this->ide_usua,
+                $this->nombUsua,
+                $this->apeUsua,
+                $this->direccion,
+                $this->telefono,
+                $this->telFamiliar,
+                $this->nomFamiliar,
+                $this->riesgos = "Positiva",
+                $this->eps,
+                $this->pension,
+                $this->rh,
+                $this->rol,
+                $this->usuario,
+                $this->contrasena,
+                $this->estado,
+                $this->documentowhere,
+            )
         );
         $this->Disconnect();
     }
 
     protected function eliminar($id)
     {
-      /*  return Clientes::buscar("delete from clientes where idCliente=?");*/
-    }
+        /*  return Clientes::buscar("delete from clientes where idCliente=?");*/ }
 
-    
 
-    
+
+
 
     /**
      * Get the value of apeUsua
-     */ 
+     */
     public function getApeUsua()
     {
         return $this->apeUsua;
@@ -243,7 +246,7 @@ class Usuario extends db_abstract_class
      * Set the value of apeUsua
      *
      * @return  self
-     */ 
+     */
     public function setApeUsua($apeUsua)
     {
         $this->apeUsua = $apeUsua;
@@ -253,7 +256,7 @@ class Usuario extends db_abstract_class
 
     /**
      * Get the value of direccion
-     */ 
+     */
     public function getDireccion()
     {
         return $this->direccion;
@@ -263,7 +266,7 @@ class Usuario extends db_abstract_class
      * Set the value of direccion
      *
      * @return  self
-     */ 
+     */
     public function setDireccion($direccion)
     {
         $this->direccion = $direccion;
@@ -273,7 +276,7 @@ class Usuario extends db_abstract_class
 
     /**
      * Get the value of telefono
-     */ 
+     */
     public function getTelefono()
     {
         return $this->telefono;
@@ -283,7 +286,7 @@ class Usuario extends db_abstract_class
      * Set the value of telefono
      *
      * @return  self
-     */ 
+     */
     public function setTelefono($telefono)
     {
         $this->telefono = $telefono;
@@ -293,7 +296,7 @@ class Usuario extends db_abstract_class
 
     /**
      * Get the value of telFamiliar
-     */ 
+     */
     public function getTelFamiliar()
     {
         return $this->telFamiliar;
@@ -303,7 +306,7 @@ class Usuario extends db_abstract_class
      * Set the value of telFamiliar
      *
      * @return  self
-     */ 
+     */
     public function setTelFamiliar($telFamiliar)
     {
         $this->telFamiliar = $telFamiliar;
@@ -313,7 +316,7 @@ class Usuario extends db_abstract_class
 
     /**
      * Get the value of nomFamiliar
-     */ 
+     */
     public function getNomFamiliar()
     {
         return $this->nomFamiliar;
@@ -323,7 +326,7 @@ class Usuario extends db_abstract_class
      * Set the value of nomFamiliar
      *
      * @return  self
-     */ 
+     */
     public function setNomFamiliar($nomFamiliar)
     {
         $this->nomFamiliar = $nomFamiliar;
@@ -333,7 +336,7 @@ class Usuario extends db_abstract_class
 
     /**
      * Get the value of nombUsua
-     */ 
+     */
     public function getNombUsua()
     {
         return $this->nombUsua;
@@ -343,7 +346,7 @@ class Usuario extends db_abstract_class
      * Set the value of nombUsua
      *
      * @return  self
-     */ 
+     */
     public function setNombUsua($nombUsua)
     {
         $this->nombUsua = $nombUsua;
@@ -353,7 +356,7 @@ class Usuario extends db_abstract_class
 
     /**
      * Get the value of riesgos
-     */ 
+     */
     public function getRiesgos()
     {
         return $this->riesgos;
@@ -363,7 +366,7 @@ class Usuario extends db_abstract_class
      * Set the value of riesgos
      *
      * @return  self
-     */ 
+     */
     public function setRiesgos($riesgos)
     {
         $this->riesgos = $riesgos;
@@ -373,7 +376,7 @@ class Usuario extends db_abstract_class
 
     /**
      * Get the value of eps
-     */ 
+     */
     public function getEps()
     {
         return $this->eps;
@@ -383,7 +386,7 @@ class Usuario extends db_abstract_class
      * Set the value of eps
      *
      * @return  self
-     */ 
+     */
     public function setEps($eps)
     {
         $this->eps = $eps;
@@ -393,7 +396,7 @@ class Usuario extends db_abstract_class
 
     /**
      * Get the value of pension
-     */ 
+     */
     public function getPension()
     {
         return $this->pension;
@@ -403,7 +406,7 @@ class Usuario extends db_abstract_class
      * Set the value of pension
      *
      * @return  self
-     */ 
+     */
     public function setPension($pension)
     {
         $this->pension = $pension;
@@ -413,7 +416,7 @@ class Usuario extends db_abstract_class
 
     /**
      * Get the value of rh
-     */ 
+     */
     public function getRh()
     {
         return $this->rh;
@@ -423,7 +426,7 @@ class Usuario extends db_abstract_class
      * Set the value of rh
      *
      * @return  self
-     */ 
+     */
     public function setRh($rh)
     {
         $this->rh = $rh;
@@ -433,7 +436,7 @@ class Usuario extends db_abstract_class
 
     /**
      * Get the value of rol
-     */ 
+     */
     public function getRol()
     {
         return $this->rol;
@@ -443,7 +446,7 @@ class Usuario extends db_abstract_class
      * Set the value of rol
      *
      * @return  self
-     */ 
+     */
     public function setRol($rol)
     {
         $this->rol = $rol;
@@ -453,7 +456,7 @@ class Usuario extends db_abstract_class
 
     /**
      * Get the value of usuario
-     */ 
+     */
     public function getUsuario()
     {
         return $this->usuario;
@@ -463,7 +466,7 @@ class Usuario extends db_abstract_class
      * Set the value of usuario
      *
      * @return  self
-     */ 
+     */
     public function setUsuario($usuario)
     {
         $this->usuario = $usuario;
@@ -473,7 +476,7 @@ class Usuario extends db_abstract_class
 
     /**
      * Get the value of contrasena
-     */ 
+     */
     public function getContrasena()
     {
         return $this->contrasena;
@@ -483,7 +486,7 @@ class Usuario extends db_abstract_class
      * Set the value of contrasena
      *
      * @return  self
-     */ 
+     */
     public function setContrasena($contrasena)
     {
         $this->contrasena = $contrasena;
@@ -493,7 +496,7 @@ class Usuario extends db_abstract_class
 
     /**
      * Get the value of ide_usua
-     */ 
+     */
     public function getIde_usua()
     {
         return $this->ide_usua;
@@ -503,7 +506,7 @@ class Usuario extends db_abstract_class
      * Set the value of ide_usua
      *
      * @return  self
-     */ 
+     */
     public function setIde_usua($ide_usua)
     {
         $this->ide_usua = $ide_usua;
@@ -513,7 +516,7 @@ class Usuario extends db_abstract_class
 
     /**
      * Get the value of estado
-     */ 
+     */
     public function getEstado()
     {
         return $this->estado;
@@ -523,10 +526,30 @@ class Usuario extends db_abstract_class
      * Set the value of estado
      *
      * @return  self
-     */ 
+     */
     public function setEstado($estado)
     {
         $this->estado = $estado;
+
+        return $this;
+    }
+
+    /**
+     * Get the value of documentowhere
+     */ 
+    public function getDocumentowhere()
+    {
+        return $this->documentowhere;
+    }
+
+    /**
+     * Set the value of documentowhere
+     *
+     * @return  self
+     */ 
+    public function setDocumentowhere($documentowhere)
+    {
+        $this->documentowhere = $documentowhere;
 
         return $this;
     }
