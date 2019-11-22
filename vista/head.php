@@ -82,4 +82,8 @@
     <!-- Custom styles for this template-->
     <link href="css/sb-admin-2.min.css" rel="stylesheet">
 
+    <link rel="stylesheet" href="js/docsupport/style.css">
+  <link rel="stylesheet" href="js/docsupport/prism.css">
+  <link rel="stylesheet" href="js/chosen.css">
+
     

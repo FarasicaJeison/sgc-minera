@@ -114,7 +114,7 @@ require("../modelo/Nomina.php") ?>
                                                         foreach ($arrayNomina as $Nomina) {
                                                             ?>
                                                             <tr>
-                                                               
+
                                                                 <td><?php echo $Nomina->getNomUsua(); ?></td>
                                                                 <td><?php echo $Nomina->getPrecio(); ?></td>
                                                                 <td><?php echo $Nomina->getDesde(); ?></td>
@@ -135,7 +135,7 @@ require("../modelo/Nomina.php") ?>
                 </div>
                 <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                     <div class="modal-dialog" role="document">
-                        <form method="post" action="../controlador/nominaController.php?action=crear">
+                        <form onsubmit="guardarNomina(event)">
                             <div class="modal-content">
                                 <div class="modal-header">
                                     <h5 class="modal-title" id="exampleModalLabel">Agregar Nomina <h5>
@@ -158,8 +158,10 @@ require("../modelo/Nomina.php") ?>
                                                                         <label class="login2 pull-right pull-right-pro">Usuario</label>
                                                                     </div>
                                                                     <div class="col-lg-9 col-md-9 col-sm-9 col-xs-12">
-                                                                        <div class="form-select-list">
-                                                                            <?php Nomina::selectUsuario(true, "new-todo", "new-todo", "form-control"); ?>
+                                                                        <div class="form-select-list chosen-select">
+                                                                            
+                                                                                <?php Nomina::selectUsuario(true, "new-todo", "new-todo", "form-control"); ?>
+                                                                            
                                                                         </div>
                                                                     </div>
                                                                 </div>
@@ -175,7 +177,7 @@ require("../modelo/Nomina.php") ?>
                                                                     </div>
                                                                     <div class="col-lg-9 col-md-9 col-sm-9 col-xs-12">
                                                                         <div class="form-select-list">
-                                                                            <input name="inicio" type='date' class="form-control" />
+                                                                            <input name="inicio" id="inicio" type='date' class="form-control" />
                                                                         </div>
                                                                     </div>
                                                                 </div>
@@ -191,7 +193,7 @@ require("../modelo/Nomina.php") ?>
                                                                         <label class="login2 pull-right pull-right-pro">Fecha Final</label>
                                                                     </div>
                                                                     <div class="col-lg-9 col-md-9 col-sm-9 col-xs-12">
-                                                                        <input name="final" type='date' class="form-control" />
+                                                                        <input name="final" id="final" type='date' class="form-control" />
 
 
                                                                     </div>
@@ -235,9 +237,10 @@ require("../modelo/Nomina.php") ?>
                 </div>
             </div>
 
+
             <?php require("footer.php"); ?>
 </body>
 
-
+<script src="archivos.js"></script>
 
 </html>

@@ -116,7 +116,7 @@ class Usuario extends db_abstract_class
 
         $arrayUsuarios = Usuario::getAll();
 
-        $htmlSelect = '<select name="usuario" class="form-control custom-select-value" required>';
+        $htmlSelect = '<select id="usuario" name="usuario" class="form-control custom-select-value" required>';
         $htmlSelect .= "<option value=''>Seleccione</option>";
         if (count($arrayUsuarios) > 0) {
             foreach ($arrayUsuarios as $usuario) {

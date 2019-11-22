@@ -1,38 +1,29 @@
 <?php
 require("../modelo/Anticipos.php");
 
-if (!empty($_GET['action'])) {
-    anticiposController::main($_GET['action']);
+if (!empty($_POST['action'])) {
+    anticiposController::main($_POST['action']);
 } else {
     echo "No se encontro ninguna accion...";
 }
 
 class anticiposController //cambiar nombre a anticipos
 {
-
+    
     static function main($action)
     {
         if ($action == "crear") { //va a este menu 
+            
             anticiposController::crear();
-        }else if($action=="ActivarUsuario"){
-            anticiposController::ActivarUsuario();
-        }else if($action=="llenardatos"){
-            anticiposController::llenardatos();
-        }else if($action=="editar"){
-            anticiposController::editar();
         }
     }
-    static public function llenardatos(){
-        $llenarDatos = anticiposController::buscarID($_GET["id"]);
-        
-    }
+   
 
     static public function crear()
     {
      
         try {
-         
-            $arrayUsuarios = array();
+            $response = [];
             $arrayUsuarios['ide_usua'] = $_POST['usuario'];//nombre del input de la vista
             $arrayUsuarios['precioAnticipo'] = $_POST['precioAnticipo'];
            
@@ -40,7 +31,9 @@ class anticiposController //cambiar nombre a anticipos
             $Usuarios = new Anticipos($arrayUsuarios);//lnombre del modelo en este caso es anticipos
            
             $Usuarios->insertar();
-            header("Location: ../vista/GestionarAnticipos.php");
+            $response['idusuario']=$_POST['usuario'];
+            echo json_encode($response);
+            //header("Location: ../vista/GestionarAnticipos.php");
         } catch (Exception $e) {
             echo $e;
         }

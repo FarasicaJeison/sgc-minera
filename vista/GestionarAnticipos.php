@@ -97,7 +97,7 @@ require("../modelo/Anticipos.php");
 
                                                     <th>Precio Anticipo</th>
                                                     <th>Fecha Anticipo</th>
-                                                    <th>Acciones</th>
+                                                   
 
                                                 </tr>
                                             </thead>
@@ -113,9 +113,7 @@ require("../modelo/Anticipos.php");
 
                                                         <td><?php echo $Anticipos->getPrecio_anti(); ?></td>
                                                         <td><?php echo $Anticipos->getFecha_anti(); ?></td>
-                                                        <td>
-                                                            <a href="editarAnticipo.php?idAnticipo=<?php echo $Anticipos->getcod_anti(); ?>" title="Actualizar" class="btn btn-primary btn-circle btn-sm"> <span class="fas fa-pencil-alt " style='color:white'></span></a>
-                                                        </td>
+                                                        
 
                                                     </tr>
                                                 <?php } ?>
@@ -132,7 +130,7 @@ require("../modelo/Anticipos.php");
         <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
             <div class="modal-dialog" role="document">
                 <div class="modal-content">
-                    <form method="post" action="../controlador/anticiposController.php?action=crear">
+                    <form onsubmit="guardarAnticipos(event)">
                         <div class="modal-header">
                             <h5 class="modal-title" id="exampleModalLabel">Agregar Anticipos</h5>
                             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
@@ -171,7 +169,7 @@ require("../modelo/Anticipos.php");
                                                                 <label class="login2 pull-right pull-right-pro">Precio Anticipo</label>
                                                             </div>
                                                             <div class="col-lg-9 col-md-9 col-sm-9 col-xs-12">
-                                                                <input name="precioAnticipo" type="text" class="form-control" />
+                                                                <input id="precioAnticipo" name="precioAnticipo" type="text" class="form-control" />
                                                             </div>
                                                         </div>
                                                     </div>
@@ -219,5 +217,5 @@ require("../modelo/Anticipos.php");
 
     <?php require("footer.php"); ?>
 </body>
-
+<script src="archivos.js"></script>
 </html>

@@ -1,8 +1,8 @@
 <?php
 require_once('../modelo/Nomina.php');
 
-if (!empty($_GET['action'])) {
-    NominaController::main($_GET['action']);
+if (!empty($_POST['action'])) {
+    NominaController::main($_POST['action']);
 } else {
     echo "No se encontro ninguna accion...";
 }
@@ -14,10 +14,6 @@ class NominaController
     {
         if ($action == "crear") {
             NominaController::crear();
-        }else if($action=="inactivarActividad"){
-            NominaController::inactivarActividad();
-        }else if($action=="editar"){
-            NominaController::editar();
         }
     }
     
@@ -31,6 +27,7 @@ class NominaController
 
     static public function crear()
     {
+        $response = [];
         $precionomina = Nomina::buscarprecio($_POST['inicio'],$_POST['final'],$_POST['usuario']);
         $preciodescuento= Nomina::buscardescuento($_POST['inicio'],$_POST['final'],$_POST['usuario']);
         try {
@@ -43,7 +40,9 @@ class NominaController
             $arrayActividades['hasta'] = $_POST['final'];
             $actividad = new Nomina($arrayActividades);
             $actividad->insertar();
-            header("Location: ../vista/GestionarNomina.php");
+            $response['idusuario']=$_POST['usuario'];
+            echo json_encode($response);
+           // header("Location: ../vista/GestionarNomina.php");
         } catch (Exception $e) {
             echo $e;
         }

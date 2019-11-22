@@ -74,3 +74,7 @@
 
   <!-- Custom scripts for all pages-->
   <script src="js/sb-admin-2.min.js"></script>
+  <script src="js/docsupport/jquery-3.2.1.min.js" type="text/javascript"></script>
+  <script src="js/chosen.jquery.js" type="text/javascript"></script>
+  <script src="js/docsupport/prism.js" type="text/javascript" charset="utf-8"></script>
+  <script src="js/docsupport/init.js" type="text/javascript" charset="utf-8"></script>
