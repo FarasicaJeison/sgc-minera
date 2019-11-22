@@ -47,7 +47,10 @@
     <link rel="stylesheet" href="css/calendar/fullcalendar.min.css">
     <link rel="stylesheet" href="css/calendar/fullcalendar.print.min.css">
     <!-- style CSS
+    ============================================ -->
+    <!-- modals CSS
 		============================================ -->
+    <link rel="stylesheet" href="css/modals.css">
     <link rel="stylesheet" href="style.css">
     <!-- responsive CSS
 		============================================ -->

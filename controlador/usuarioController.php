@@ -38,7 +38,7 @@ class UsuarioController
     public function Login (){
        
         try {
-
+            $response = [];
             $User = $_POST['usuario'];
             $Password = $_POST['contrasena'];
 
@@ -51,14 +51,19 @@ class UsuarioController
                     $_SESSION['nombUsua'] = $respuesta['nombUsua'];
                     header("Location: ../vista/gestionarUsuario.php");
                 }else if($respuesta == "Password Incorrecto"){
-                   echo "incorrecta";
+                  // echo "incorrecta";
+                  header("Location: ../vista/login.php");
                     
                 }else if($respuesta == "No existe el usuario"){
-                    echo "usuario no existe";
+                   // echo "usuario no existe";
+                   header("Location: ../vista/login.php");
                 }
             }else{
-                echo "datos vacios";
+               // echo "datos vacios";
+               header("Location: ../vista/login.php");
             }
+            //echo json_encode($response);
+
         } catch (Exception $e) {
            header("Location: ../vista/index.php?respuesta=error");
         }

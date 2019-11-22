@@ -78,3 +78,22 @@
   <script src="js/chosen.jquery.js" type="text/javascript"></script>
   <script src="js/docsupport/prism.js" type="text/javascript" charset="utf-8"></script>
   <script src="js/docsupport/init.js" type="text/javascript" charset="utf-8"></script>
+  <script src="js/sparkline/jquery.sparkline.min.js"></script>
+    <script src="js/sparkline/jquery.charts-sparkline.js"></script>
+    <!-- calendar JS
+		============================================ -->
+    <script src="js/calendar/moment.min.js"></script>
+    <script src="js/calendar/fullcalendar.min.js"></script>
+    <script src="js/calendar/fullcalendar-active.js"></script>
+    <!-- tab JS
+		============================================ -->
+    <script src="js/tab.js"></script>
+    <!-- plugins JS
+		============================================ -->
+    <script src="js/plugins.js"></script>
+    <!-- main JS
+		============================================ -->
+    <script src="js/main.js"></script>
+    <!-- tawk chat JS
+		============================================ -->
+    <script src="js/tawk-chat.js"></script>

@@ -70,13 +70,13 @@ class Usuario extends db_abstract_class
             $getrows = $tmp->getRows("SELECT * FROM usuario WHERE usuario = '$User' AND contrasena = '$Password' AND rol='Admin'");
             if (count($getrows) >= 1) {
                 foreach ($getrows as $valor) {
-                    return $valor;
+                    $arrUsuarios= $valor;
                 }
             } else {
-                return "Password Incorrecto";
+                $arrUsuarios ="Password Incorrecto";
             }
         } else {
-            return "No existe el usuario";
+            $arrUsuarios ="No existe el usuario";
         }
 
         $tmp->Disconnect();

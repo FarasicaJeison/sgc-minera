@@ -35,7 +35,7 @@ require("../modelo/Usuario.php");
             <div class="row">
                 <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                     <div class="logo-pro">
-                        <a href="index.html"><img class="main-logo" src="img/logo/logo.png" alt="" /></a>
+                        <br> <br> <br><br><br><br><br>
                     </div>
                 </div>
             </div>
@@ -65,9 +65,6 @@ require("../modelo/Usuario.php");
                         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                             <div class="sparkline13-list">
 
-                                &nbsp;
-                                <p> </p>
-                                &nbsp;
 
                                 <div class="sparkline13-hd">
                                     <div class="main-sparkline13-hd ">
